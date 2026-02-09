@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
@@ -344,7 +345,9 @@ export default function Home() {
             <div className="md:col-span-2">
               <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Legal</h4>
               <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <li className="hover:text-white transition-colors cursor-pointer">Privacidad</li>
+                <li className="hover:text-white transition-colors cursor-pointer">
+                  <Link href="/privacidad">Privacidad</Link>
+                </li>
                 <li className="hover:text-white transition-colors cursor-pointer">Términos</li>
                 <li className="hover:text-white transition-colors cursor-pointer">Cookies</li>
               </ul>

@@ -349,7 +349,9 @@ export default function Home() {
                   <Link href="/privacidad">Privacidad</Link>
                 </li>
                 <li className="hover:text-white transition-colors cursor-pointer">Términos</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Cookies</li>
+                <li className="hover:text-white transition-colors cursor-pointer">
+                  <Link href="/cookies">Cookies</Link>
+                </li>
               </ul>
             </div>
 

@@ -41,22 +41,38 @@ export default function Home() {
     {
       title: 'Derecho Fiscal',
       description: 'Estrategias de defensa y cumplimiento normativo de alto impacto.',
-      icon: <Landmark className="w-10 h-10 text-gold" />
+      icon: <Landmark className="w-10 h-10 text-gold" />,
+      leader: {
+        name: 'Israel Cadenas',
+        title: 'Especialista Legal'
+      }
     },
     {
       title: 'Derecho de Amparo',
       description: 'Protección constitucional inmediata ante actos de autoridad.',
-      icon: <ShieldCheck className="w-10 h-10 text-gold" />
+      icon: <ShieldCheck className="w-10 h-10 text-gold" />,
+      leader: {
+        name: 'Diana Montserrat Partida',
+        title: 'Especialista en Argumentación Jurídica'
+      }
     },
     {
       title: 'Consultoría Corporativa',
       description: 'Blindaje legal para empresas en expansión y consolidación.',
-      icon: <FileText className="w-10 h-10 text-gold" />
+      icon: <FileText className="w-10 h-10 text-gold" />,
+      leader: {
+        name: 'Alejandro Valenzuela',
+        title: 'Jurista Internacional'
+      }
     },
     {
       title: 'Litigio Civil',
       description: 'Resolución de conflictos con enfoque en la eficiencia y el resultado.',
-      icon: <Gavel className="w-10 h-10 text-gold" />
+      icon: <Gavel className="w-10 h-10 text-gold" />,
+      leader: {
+        name: 'Joel Garcia',
+        title: 'Especialista Legal'
+      }
     }
   ];
 
@@ -126,7 +142,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               className="px-12 py-5 bg-gold text-primary font-black rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
             >
-              Iniciar Consulta Gratis
+              Iniciar Consulta
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
             <motion.button
@@ -252,13 +268,19 @@ export default function Home() {
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="glass-card p-12 rounded-[2.5rem] hover:border-gold/30 transition-all cursor-pointer group"
+                className="glass-card p-10 md:p-12 rounded-[2.5rem] hover:border-gold/30 transition-all cursor-pointer group flex flex-col h-full"
               >
                 <div className="mb-8 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">{service.icon}</div>
                 <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-gold transition-colors">{service.title}</h3>
-                <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-8 flex-grow">
                   {service.description}
                 </p>
+
+                <div className="pt-8 border-t border-slate-200 dark:border-white/5 mt-auto">
+                  <p className="text-[9px] font-black text-gold uppercase tracking-[0.2em] mb-2">Líder de Área</p>
+                  <p className="text-sm font-bold text-primary dark:text-white mb-1">{service.leader.name}</p>
+                  <p className="text-xs text-slate-400 italic">{service.leader.title}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

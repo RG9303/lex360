@@ -348,7 +348,9 @@ export default function Home() {
                 <li className="hover:text-white transition-colors cursor-pointer">
                   <Link href="/privacidad">Privacidad</Link>
                 </li>
-                <li className="hover:text-white transition-colors cursor-pointer">Términos</li>
+                <li className="hover:text-white transition-colors cursor-pointer">
+                  <Link href="/terminos">Términos</Link>
+                </li>
                 <li className="hover:text-white transition-colors cursor-pointer">
                   <Link href="/cookies">Cookies</Link>
                 </li>

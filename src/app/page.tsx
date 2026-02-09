@@ -274,12 +274,12 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Triaje Legal Automatizado</h2>
+              <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
               <div className="space-y-10">
                 {[
-                  { icon: <Clock />, title: 'Disponibilidad 24/7', desc: 'Nuestro asistente analiza su caso en segundos.' },
-                  { icon: <Users />, title: 'Match Especialista', desc: 'IA que identifica al mejor experto para su situación.' },
-                  { icon: <ShieldCheck />, title: 'Cifrado de Extremo a Extremo', desc: 'Cumplimiento estricto de confidencialidad digital.' }
+                  { icon: <Landmark />, title: 'Estrategia Multidisciplinaria', desc: 'Análisis profundo de cada caso para ofrecer soluciones legales integrales y personalizadas.' },
+                  { icon: <Scale />, title: 'Defensa Ética y Resultados', desc: 'Compromiso total con la obtención de resultados estratégicos bajo los más altos estándares éticos.' },
+                  { icon: <ShieldCheck />, title: 'Protección Patrimonial 360°', desc: 'Especialistas en salvaguardar sus activos e intereses ante cualquier contingencia legal.' }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-8">
                     <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold shadow-lg">
@@ -302,9 +302,9 @@ export default function Home() {
             >
               <div className="absolute -top-20 -right-20 w-80 h-80 bg-gold/10 rounded-full blur-[100px]"></div>
               <div className="text-center">
-                <Landmark className="mx-auto w-20 h-20 text-gold mb-10 opacity-30" />
+                <Scale className="mx-auto w-20 h-20 text-gold mb-10 opacity-30" />
                 <p className="text-2xl md:text-3xl font-light italic text-slate-300 leading-relaxed">
-                  "La tecnología no reemplaza al abogado, lo potencia para ofrecer una justicia más <span className="text-white font-medium">humana y eficiente</span>."
+                  "Nuestra visión integra la maestría del derecho tradicional con la agilidad de la era digital para proteger su <span className="text-white font-medium">patrimonio y futuro</span>."
                 </p>
               </div>
             </motion.div>
@@ -333,7 +333,7 @@ export default function Home() {
             </div>
 
             <div className="md:col-span-2">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.4em] mb-8 text-gold">Explorar</h4>
+              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Explorar</h4>
               <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <li className="hover:text-white transition-colors cursor-pointer">Servicios</li>
                 <li className="hover:text-white transition-colors cursor-pointer">Nosotros</li>
@@ -342,7 +342,7 @@ export default function Home() {
             </div>
 
             <div className="md:col-span-2">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.4em] mb-8 text-gold">Legal</h4>
+              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Legal</h4>
               <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <li className="hover:text-white transition-colors cursor-pointer">Privacidad</li>
                 <li className="hover:text-white transition-colors cursor-pointer">Términos</li>
@@ -351,7 +351,7 @@ export default function Home() {
             </div>
 
             <div className="md:col-span-4">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.4em] mb-8 text-gold">Newsletter</h4>
+              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Newsletter</h4>
               <div className="flex bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md">
                 <input
                   type="email"

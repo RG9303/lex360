@@ -53,7 +53,7 @@ export default function CookiesPolicy() {
                             Usted tiene el control sobre sus datos. Al ingresar a nuestro Sitio, se le presentará un Banner de Cookies donde podrá aceptar todas, rechazarlas o configurarlas según sus preferencias.
                         </p>
                         <p className="mt-4">
-                            Adicionalmente, puede deshabilitar el uso de cookies directamente desde la configuración de su navegador. Tenga en cuenta que bloquear las "Cookies Estrictamente Necesarias" puede afectar el funcionamiento de la plataforma.
+                            Adicionalmente, puede deshabilitar el uso de cookies directamente desde la configuración de su navegador. Tenga en cuenta que bloquear las "Cookies Estrictamente Necesarias" puede afectar el funcionamiento de la plataforma y su capacidad para acceder a su cuenta.
                         </p>
                         <p className="mt-4">Para configurar su navegador, consulte los siguientes enlaces oficiales:</p>
                         <ul className="list-disc pl-6 space-y-2 mt-4">

@@ -68,7 +68,9 @@ export default function PrivacyNotice() {
 
                     <section>
                         <h2 className="text-xl font-bold text-primary dark:text-white mb-4 uppercase tracking-tight">4. Uso de Tecnologías de Rastreo (Cookies)</h2>
-                        <p>Le informamos que en nuestra página de Internet utilizamos cookies a través de las cuales es posible monitorear su comportamiento como usuario de Internet, para brindarle un mejor servicio. Usted puede deshabilitar estas tecnologías en la configuración de su navegador.</p>
+                        <p>
+                            Le informamos que en nuestra página de Internet utilizamos cookies a través de las cuales es posible monitorear su comportamiento como usuario de Internet, para brindarle un mejor servicio. Para conocer más sobre el uso de estas tecnologías, las finalidades y cómo gestionarlas, le invitamos a consultar nuestra <Link href="/cookies" className="text-gold hover:underline font-bold">Política de Cookies y Tecnologías de Rastreos</Link>.
+                        </p>
                     </section>
 
                     <section>

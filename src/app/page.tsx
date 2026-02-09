@@ -44,7 +44,8 @@ export default function Home() {
       icon: <Landmark className="w-10 h-10 text-gold" />,
       leader: {
         name: 'Israel Cadenas',
-        title: 'Especialista Legal'
+        title: 'Especialista Legal',
+        bio: 'Consultor estratégico en materia impositiva y defensa ante autoridades fiscales, enfocado en el blindaje patrimonial.'
       }
     },
     {
@@ -53,7 +54,8 @@ export default function Home() {
       icon: <ShieldCheck className="w-10 h-10 text-gold" />,
       leader: {
         name: 'Diana Montserrat Partida',
-        title: 'Especialista en Argumentación Jurídica'
+        title: 'Especialista en Argumentación Jurídica',
+        bio: 'Maestra en Procuración y Administración de Justicia. Miembro del Poder Judicial de la Federación con amplia trayectoria en defensa constitucional.'
       }
     },
     {
@@ -62,7 +64,8 @@ export default function Home() {
       icon: <FileText className="w-10 h-10 text-gold" />,
       leader: {
         name: 'Alejandro Valenzuela',
-        title: 'Jurista Internacional'
+        title: 'Jurista Internacional',
+        bio: 'Miembro de la Barra de Abogados de París y Experto Parlamentario por la Unión Interparlamentaria (UIP). Especialista en derecho comparado.'
       }
     },
     {
@@ -71,7 +74,8 @@ export default function Home() {
       icon: <Gavel className="w-10 h-10 text-gold" />,
       leader: {
         name: 'Joel Garcia',
-        title: 'Especialista Legal'
+        title: 'Especialista Legal',
+        bio: 'Experto en litigio civil y mercantil de alta complejidad, con enfoque en resoluciones ágiles y protección de intereses privados.'
       }
     }
   ];
@@ -279,7 +283,8 @@ export default function Home() {
                 <div className="pt-8 border-t border-slate-200 dark:border-white/5 mt-auto">
                   <p className="text-[9px] font-black text-gold uppercase tracking-[0.2em] mb-2">Líder de Área</p>
                   <p className="text-sm font-bold text-primary dark:text-white mb-1">{service.leader.name}</p>
-                  <p className="text-xs text-slate-400 italic">{service.leader.title}</p>
+                  <p className="text-xs text-slate-400 italic mb-3">{service.leader.title}</p>
+                  <p className="text-[11px] text-slate-500 leading-relaxed font-medium line-clamp-3 group-hover:line-clamp-none transition-all duration-500">{service.leader.bio}</p>
                 </div>
               </motion.div>
             ))}

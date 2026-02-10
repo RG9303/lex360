@@ -6,6 +6,13 @@ export interface Abogado {
     fullBio: string;
     specialties: string[];
     image?: string;
+    socialMedia?: {
+        linkedin?: string;
+        twitter?: string;
+        instagram?: string;
+        email?: string;
+    };
+    calendarUrl?: string; // Calendly or similar link
 }
 
 export const abogados: Abogado[] = [
@@ -21,7 +28,12 @@ A lo largo de su carrera ha ocupado cargos de alta responsabilidad en institucio
 En México, ha ejercido como Jefe de Asesores en la Honorable Cámara de Diputados, participando en la elaboración de marcos normativos estratégicos y en el fortalecimiento de procesos legislativos. Paralelamente, ha desarrollado una destacada labor académica como profesor de posgrado en la Facultad de Derecho y Criminología de la Universidad Autónoma de Nuevo León, impartiendo materias como Amparo, Derecho Administrativo, Civil y Familiar.
 
 Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panthéon-Sorbonne, y domina español, francés e inglés, lo que le ha permitido consolidar una visión jurídica con perspectiva comparada y vocación internacional. Su perfil combina análisis normativo, gestión legislativa y consultoría jurídica de alto nivel, orientado a ofrecer soluciones integrales en entornos complejos y multiculturales.`,
-        specialties: ['Derecho Internacional', 'Consultoría Legislativa', 'Amparo', 'Derecho Administrativo']
+        specialties: ['Derecho Internacional', 'Consultoría Legislativa', 'Amparo', 'Derecho Administrativo'],
+        image: '/team/alejandro-valenzuela.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/alejandro-valenzuela'
     },
     {
         slug: 'laura-iris-porras',
@@ -35,7 +47,12 @@ Es Licenciada en Derecho por la Universidad Nacional Autónoma de México (UNAM)
 Dentro del Poder Judicial ha ocupado diversos cargos, entre ellos Directora de Transparencia, Directora de Bienes Asegurados, Abandonados y Decomisados, Directora de Asuntos Contencioso Administrativo y Coordinadora de la Unidad de Estadística y Planeación Judicial del Consejo de la Judicatura Federal, donde participó en el diseño del actual Sistema Integral de Seguimiento de Expedientes (SISE). También se ha desempeñado como Secretaria Proyectista, Jueza de Distrito en funciones en el Estado de Guerrero, y colaboradora en la ponencia de la Ministra Olga Sánchez Cordero en la Suprema Corte de Justicia de la Nación.
 
 En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura Federal y en distintas instituciones educativas, en materias como Juicio de Amparo, Controversias Constitucionales, Administración Judicial y Técnica de Sentencia. Además, ha participado en múltiples diplomados y programas especializados en Derechos Humanos, Transparencia, Argumentación Jurídica e Innovación Judicial, reafirmando su compromiso con la modernización de la justicia y la formación de nuevas generaciones jurídicas.`,
-        specialties: ['Justicia Constitucional', 'Derecho Electoral', 'Amparo', 'Derechos Humanos']
+        specialties: ['Justicia Constitucional', 'Derecho Electoral', 'Amparo', 'Derechos Humanos'],
+        image: '/team/laura-iris-porras.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/laura-porras'
     },
     {
         slug: 'maria-elena-suarez',
@@ -47,7 +64,12 @@ En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura F
 Es Licenciada en Derecho y Maestra en Derecho Privado por la Universidad Cristóbal Colón, y cuenta con una Maestría en Justicia Adversarial por el Instituto de la Judicatura Federal. Además, ha realizado múltiples especializaciones en Argumentación Jurídica, Comunicación Oral y Escrita, Justicia Penal Acusatoria, Administración Estratégica y Perspectiva de Género, cursadas en el Instituto de la Judicatura Federal y en distintas instituciones del país.
 
 En el ámbito académico, ha sido docente en el Instituto de la Judicatura Federal y en la Universidad Cristóbal Colón, donde impartió asignaturas y talleres en Técnicas de Investigación Jurídica, Juicio de Amparo, Argumentación Jurídica y Perspectiva de Género. También ha participado en congresos nacionales e internacionales sobre sistema penal acusatorio, derechos humanos y transparencia judicial. A lo largo de su trayectoria, ha participado en más de cincuenta cursos, diplomados y programas de actualización enfocados en las transformaciones del derecho procesal, la equidad de género y la justicia constitucional. Es reconocida por su excelencia académica y compromiso institucional, así como por su contribución a las nuevas generaciones de juristas.`,
-        specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica']
+        specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica'],
+        image: '/team/maria-elena-suarez.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/maria-elena-suarez'
     },
     {
         slug: 'alejandro-ornelas',
@@ -65,7 +87,12 @@ Inmobiliario y Patrimonial: Asesora integralmente a desarrolladores y constructo
 Entre sus logros más significativos se encuentra la reestructuración de certificaciones contables para Banamex, validadas judicialmente. Su despacho fue reconocido entre los cinco de mejor desempeño a nivel nacional, logrando un índice de resolución del 90% en más de 1,200 expedientes mediante negociación directa. Además, ha conducido procesos de liquidación laboral masiva sin generar demandas, basándose en la conciliación.
 
 Egresado con excelencia académica de la Universidad de Guadalajara, cuenta con un postgrado en Derecho Corporativo por la Universidad Panamericana y un diplomado en Mediación. Alejandro Ornelas Nápoles concibe el derecho no solo como una herramienta de protección, sino como un instrumento que transforma, impulsa y genera valor. Su filosofía se centra en actuar como un "agente de desarrollo", convirtiendo el marco jurídico en una ventaja competitiva y de crecimiento sostenible para las empresas.`,
-        specialties: ['Derecho Corporativo', 'Derecho Fiscal', 'Derecho Inmobiliario', 'Mediación']
+        specialties: ['Derecho Corporativo', 'Derecho Fiscal', 'Derecho Inmobiliario', 'Mediación'],
+        image: '/team/alejandro-ornelas.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/alejandro-ornelas'
     },
     {
         slug: 'israel-ascencio-cadenas',
@@ -79,7 +106,12 @@ A lo largo de su carrera, ha brindado asesoría legal corporativa a empresas de 
 Su especialización en cobranza, recuperación de créditos y reestructuración de deudas le ha permitido representar eficazmente a empresas y organizaciones en procedimientos judiciales y extrajudiciales, destacando por su capacidad de negociación y conciliación. Complementa su perfil jurídico con formación en Psicoterapia Gestalt, lo que fortalece sus habilidades de comunicación, manejo de conflictos y negociación estratégica.
 
 Cuenta con Especialidad en Derecho de Amparo, así como con actualización continua, incluyendo un Diplomado en Juicio de Amparo impartido por la Suprema Corte de Justicia de la Nación, lo que respalda su dominio técnico y vigencia profesional. Su compromiso con el aprendizaje permanente, el liderazgo y el trabajo en equipo lo posicionan como un abogado experimentado, confiable y orientado a la excelencia jurídica.`,
-        specialties: ['Derecho Fiscal', 'Litigio Civil', 'Amparo', 'Cobranza Bancaria']
+        specialties: ['Derecho Fiscal', 'Litigio Civil', 'Amparo', 'Cobranza Bancaria'],
+        image: '/team/israel-ascencio.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/israel-ascencio'
     },
     {
         slug: 'elena-gil-valle',
@@ -95,7 +127,12 @@ Cuenta con una amplia trayectoria en el sector público, habiendo colaborado con
 En el ámbito de la sociedad civil, se desempeña como Presidenta de la Fundación de Abogados Egresados del Instituto Universitario ETAC, A.C., y como Procuradora General de la Organización Continental de Derechos Humanos, con presencia internacional y registro ante organismos nacionales e internacionales, incluyendo la Organización de las Naciones Unidas, donde ha participado en foros sociales en Ginebra desde 2009.
 
 Su perfil se complementa con una destacada labor académica como catedrática y asesora jurídica universitaria, impartiendo materias como Derecho Penal, Derecho Procesal Penal, Derecho Mercantil y seminarios de titulación en diversas instituciones de educación superior. La combinación de experiencia jurídica, compromiso social, liderazgo institucional y vocación docente posiciona a M. Elena Gil Valle como una profesional con una visión integral del derecho, orientada a la justicia social, la defensa de los derechos humanos y la formación de nuevas generaciones de juristas.`,
-        specialties: ['Derecho Penal', 'Derechos Humanos', 'Derecho Civil', 'Derecho Mercantil']
+        specialties: ['Derecho Penal', 'Derechos Humanos', 'Derecho Civil', 'Derecho Mercantil'],
+        image: '/team/elena-gil-valle.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/elena-gil-valle'
     },
     {
         slug: 'joel-nunez-garcia',
@@ -111,6 +148,11 @@ Cuenta con una amplia trayectoria en el sector público, habiendo desempeñado c
 En el ámbito de la sociedad civil, ha ocupado cargos de liderazgo and responsabilidad, entre ellos Presidente de la Federación de Estudiantes de Sinaloa, Contralor-Inspector de Derechos Humanos Internacionales y Coordinador Ejecutivo de la asociación civil CHAORDIC KAIZEN, enfocada en el desarrollo integral y la defensa jurídica de comunidades indígenas.
 
 Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consejo Nacional Indígena (SCNI), encabezando la interposición y análisis de recursos legales y juicios de amparo en defensa de los derechos constitucionales de los pueblos originarios, particularmente frente a reformas y leyes federales emitidas sin los procesos de consulta previstos en la Constitución. Su trayectoria se distingue por la combinación de litigio estratégico, experiencia gubernamental y compromiso con los derechos humanos, consolidándolo como un abogado con visión social, rigor jurídico y alcance nacional e internacional.`,
-        specialties: ['Derecho Civil', 'Amparo', 'Derecho Mercantil', 'Litigio Agrario']
+        specialties: ['Derecho Civil', 'Amparo', 'Derecho Mercantil', 'Litigio Agrario'],
+        image: '/team/joel-nunez.jpg',
+        socialMedia: {
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/joel-nunez'
     }
 ];

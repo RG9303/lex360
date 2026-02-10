@@ -162,5 +162,155 @@ Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consej
             email: 'contacto@lex-360.com.mx'
         },
         calendarUrl: 'https://calendly.com/lex-360/joel-nunez'
+    },
+    // Nuevos perfiles pendientes de CV
+    {
+        slug: 'guillermo-hamdan',
+        name: 'Guillermo Hamdan',
+        title: 'Abogado Asociado',
+        shortBio: 'Abogado especialista en desarrollo de estrategias legales.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho Corporativo', 'Litigio'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'abogadohamdan@gmail.com',
+            phone: '5547614616'
+        }
+    },
+    {
+        slug: 'carlos-g-gomez',
+        name: 'Carlos G. Gomez',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista en derecho administrativo y gestión pública.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho Administrativo', 'Gestión Pública'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'cgomez@espacio-publico.mx',
+            phone: '5554369589'
+        }
+    },
+    {
+        slug: 'alfonso-jimenez',
+        name: "Alfonso Jimenez O'Farril",
+        title: 'Abogado Asociado',
+        shortBio: 'Consultor jurídico con amplia experiencia.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Consultoría Jurídica'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '5554162721'
+        }
+    },
+    {
+        slug: 'angel-baron',
+        name: 'Angel Baron Alonso',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista en litigio y resolución de disputas.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Litigio'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '5617226633'
+        }
+    },
+    {
+        slug: 'aos',
+        name: 'Aos',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista legal.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho General'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '6141721984'
+        }
+    },
+    {
+        slug: 'armavargas',
+        name: 'ArmaVargas',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista legal.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho General'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '5523047976'
+        }
+    },
+    {
+        slug: 'carlos-angulo',
+        name: 'Carlos F. Angulo Parra',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista en derecho corporativo internacional.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho Corporativo', 'Internacional'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'carlosangulo50@gmail.com',
+            phone: '6566380218'
+        }
+    },
+    {
+        slug: 'desiree-cataneo',
+        name: 'Desiree Cataneo',
+        title: 'Abogada Asociada',
+        shortBio: 'Especialista en derecho civil y familiar.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho Civil', 'Familiar'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'desireecat@yahoo.com',
+            phone: '5579152328'
+        }
+    },
+    {
+        slug: 'diana-partida',
+        name: 'Diana Partida',
+        title: 'Abogada Asociada',
+        shortBio: 'Especialista en amparo y derechos humanos.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Amparo', 'Derechos Humanos'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'dianapartida@hotmail.com',
+            phone: '6141923923'
+        }
+    },
+    {
+        slug: 'eduardo',
+        name: 'Eduardo',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista legal.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho General'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '5572101184'
+        }
+    },
+    {
+        slug: 'hugo-arriaga',
+        name: 'Hugo Arriaga',
+        title: 'Abogado Asociado',
+        shortBio: 'Consultor legal experto.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Consultoría Legal'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '5527278342'
+        }
+    },
+    {
+        slug: 'jorge-cruz',
+        name: 'Jorge Antonio Cruz Ramos',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista en derecho penal.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho Penal'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            phone: '5554158693'
+        }
     }
 ];

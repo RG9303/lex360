@@ -7,8 +7,8 @@ import { ChevronLeft, Scale, ArrowRight, ShieldCheck, Landmark, Gavel, FileText,
 import { abogados } from '@/data/abogados';
 import React from 'react';
 
-export default function AbogadoProfileContent({ params }: { params: { slug: string } }) {
-    const abogado = abogados.find((a) => a.slug === params.slug);
+export default function AbogadoProfileContent({ slug }: { slug: string }) {
+    const abogado = abogados.find((a) => a.slug === slug);
 
     if (!abogado) {
         return notFound();

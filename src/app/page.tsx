@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark } from 'lucide-react';
+import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
 import { abogados } from '@/data/abogados';
 
 export default function Home() {
@@ -387,6 +387,20 @@ export default function Home() {
               <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
                 Líderes en asesoría jurídica integral. Combinamos décadas de experiencia con innovación tecnológica para proteger lo que más importa.
               </p>
+              <div className="flex gap-4">
+                <a href="https://www.facebook.com/LexSumma" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
+                  <Facebook size={18} />
+                </a>
+                <a href="https://twitter.com/lex360summa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
+                  <Twitter size={18} />
+                </a>
+                <a href="https://www.linkedin.com/company/lex-summa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
+                  <Linkedin size={18} />
+                </a>
+                <a href="https://www.youtube.com/@Lex360summa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
+                  <Youtube size={18} />
+                </a>
+              </div>
             </div>
 
             <div className="md:col-span-2">

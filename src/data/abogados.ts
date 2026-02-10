@@ -245,7 +245,7 @@ Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consej
         shortBio: 'Especialista en derecho corporativo internacional.',
         fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
         specialties: ['Derecho Corporativo', 'Internacional'],
-        image: '/team/placeholder-user.jpg',
+        image: '/team/carlos-angulo.jpg',
         socialMedia: {
             email: 'carlosangulo50@gmail.com',
             phone: '6566380218'

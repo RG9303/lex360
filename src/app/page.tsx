@@ -34,7 +34,7 @@ export default function Home() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" as any }
     }
   };
 
@@ -44,9 +44,10 @@ export default function Home() {
       description: 'Estrategias de defensa y cumplimiento normativo de alto impacto.',
       icon: <Landmark className="w-10 h-10 text-gold" />,
       leader: {
-        name: 'Israel Cadenas',
-        title: 'Especialista Legal',
-        bio: 'Consultor estratégico en materia impositiva y defensa ante autoridades fiscales, enfocado en el blindaje patrimonial.'
+        slug: 'israel-ascencio-cadenas',
+        name: 'Israel Ascencio Cadenas',
+        title: 'Especialista en Litigio y Consultoría Estratégica',
+        bio: 'Abogado con más de 40 años de experiencia en litigación y asesoría jurídica empresarial.'
       }
     },
     {
@@ -54,9 +55,10 @@ export default function Home() {
       description: 'Protección constitucional inmediata ante actos de autoridad.',
       icon: <ShieldCheck className="w-10 h-10 text-gold" />,
       leader: {
-        name: 'Diana Montserrat Partida',
-        title: 'Especialista en Argumentación Jurídica',
-        bio: 'Maestra en Procuración y Administración de Justicia. Miembro del Poder Judicial de la Federación con amplia trayectoria en defensa constitucional.'
+        slug: 'laura-iris-porras',
+        name: 'Laura Iris Porras Espinosa',
+        title: 'Jurista y Académica',
+        bio: 'Especialista en Justicia Constitucional con amplia trayectoria en el Poder Judicial de la Federación.'
       }
     },
     {
@@ -64,9 +66,10 @@ export default function Home() {
       description: 'Blindaje legal para empresas en expansión y consolidación.',
       icon: <FileText className="w-10 h-10 text-gold" />,
       leader: {
-        name: 'Alejandro Valenzuela',
-        title: 'Jurista Internacional',
-        bio: 'Miembro de la Barra de Abogados de París y Experto Parlamentario por la Unión Interparlamentaria (UIP). Especialista en derecho comparado.'
+        slug: 'alejandro-valenzuela',
+        name: 'Alejandro Valenzuela Sosa',
+        title: 'Jurista y Consultor Internacional',
+        bio: 'Miembro de la Barra de Abogados de París y Experto Parlamentario por la Unión Interparlamentaria (UIP).'
       }
     },
     {
@@ -74,9 +77,10 @@ export default function Home() {
       description: 'Resolución de conflictos con enfoque en la eficiencia y el resultado.',
       icon: <Gavel className="w-10 h-10 text-gold" />,
       leader: {
-        name: 'Joel Garcia',
-        title: 'Especialista Legal',
-        bio: 'Experto en litigio civil y mercantil de alta complejidad, con enfoque en resoluciones ágiles y protección de intereses privados.'
+        slug: 'joel-nunez-garcia',
+        name: 'Joel Núñez García',
+        title: 'Abogado Litigante',
+        bio: 'Experto en litigio civil y mercantil de alta complejidad, con enfoque en la defensa de derechos.'
       }
     }
   ];
@@ -98,9 +102,11 @@ export default function Home() {
           animate={{ opacity: 1, x: 0 }}
           className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300"
         >
-          <span className="hover:text-gold cursor-pointer transition-colors">Servicios</span>
-          <span className="hover:text-gold cursor-pointer transition-colors">Nosotros</span>
-          <span className="hover:text-gold cursor-pointer transition-colors">Contacto</span>
+          <Link href="#servicios" className="hover:text-gold transition-colors">Servicios</Link>
+          <Link href="/abogados" className="hover:text-gold transition-colors">Abogados</Link>
+          <Link href="#quienes-somos" className="hover:text-gold transition-colors">Nosotros</Link>
+          <Link href="#blog" className="hover:text-gold transition-colors">Blog Legal</Link>
+          <Link href="#contacto" className="hover:text-gold transition-colors">Contacto</Link>
         </motion.div>
       </nav>
 
@@ -280,12 +286,19 @@ export default function Home() {
                 <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-8 flex-grow">
                   {service.description}
                 </p>
-
-                <div className="pt-8 border-t border-slate-200 dark:border-white/5 mt-auto">
-                  <p className="text-[9px] font-black text-gold uppercase tracking-[0.2em] mb-2">Líder de Área</p>
-                  <p className="text-sm font-bold text-primary dark:text-white mb-1">{service.leader.name}</p>
-                  <p className="text-xs text-slate-400 italic mb-3">{service.leader.title}</p>
-                  <p className="text-[11px] text-slate-500 leading-relaxed font-medium line-clamp-3 group-hover:line-clamp-none transition-all duration-500">{service.leader.bio}</p>
+                <div className="absolute inset-0 bg-slate-950 p-6 flex flex-col justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-2xl">
+                  <p className="text-[10px] text-gold font-bold uppercase tracking-widest mb-1">Líder de Área</p>
+                  <p className="text-sm font-black mb-1 text-white">{service.leader.name}</p>
+                  <p className="text-[9px] text-slate-500 uppercase tracking-widest mb-3">{service.leader.title}</p>
+                  <p className="text-xs text-slate-400 font-light leading-relaxed mb-4">
+                    {service.leader.bio}
+                  </p>
+                  <Link
+                    href={`/abogados/${service.leader.slug}`}
+                    className="flex items-center gap-2 text-gold font-bold text-[10px] uppercase tracking-widest hover:gap-3 transition-all"
+                  >
+                    Ver Perfil <ArrowRight size={12} />
+                  </Link>
                 </div>
               </motion.div>
             ))}

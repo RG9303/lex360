@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Scale, ArrowRight, ShieldCheck, Landmark, Gavel, FileText, Linkedin, Mail, Calendar } from 'lucide-react';
+import { ChevronLeft, Scale, ArrowRight, ShieldCheck, Landmark, Gavel, FileText, Linkedin, Mail, Calendar, Phone } from 'lucide-react';
 import { abogados } from '@/data/abogados';
 import React from 'react';
 
@@ -75,6 +75,11 @@ export default function AbogadoProfileContent({ slug }: { slug: string }) {
                                     {abogado.socialMedia?.email && (
                                         <a href={`mailto:${abogado.socialMedia.email}`} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
                                             <Mail size={18} />
+                                        </a>
+                                    )}
+                                    {abogado.socialMedia?.phone && (
+                                        <a href={`tel:${abogado.socialMedia.phone}`} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
+                                            <Phone size={18} />
                                         </a>
                                     )}
                                 </div>

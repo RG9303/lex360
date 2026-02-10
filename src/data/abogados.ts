@@ -11,6 +11,7 @@ export interface Abogado {
         twitter?: string;
         instagram?: string;
         email?: string;
+        phone?: string;
     };
     calendarUrl?: string; // Calendly or similar link
 }
@@ -31,7 +32,8 @@ Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panth�
         specialties: ['Derecho Internacional', 'Consultoría Legislativa', 'Amparo', 'Derecho Administrativo'],
         image: '/team/alejandro-valenzuela.jpg',
         socialMedia: {
-            email: 'contacto@lex-360.com.mx'
+            email: 'alejandrovalenl@gmail.com',
+            phone: '5620200020'
         },
         calendarUrl: 'https://calendly.com/lex-360/alejandro-valenzuela'
     },
@@ -50,7 +52,8 @@ En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura F
         specialties: ['Justicia Constitucional', 'Derecho Electoral', 'Amparo', 'Derechos Humanos'],
         image: '/team/laura-iris-porras.jpg',
         socialMedia: {
-            email: 'contacto@lex-360.com.mx'
+            email: 'laura.porrase@gmail.com',
+            phone: '5512861589'
         },
         calendarUrl: 'https://calendly.com/lex-360/laura-porras'
     },
@@ -67,7 +70,8 @@ En el ámbito académico, ha sido docente en el Instituto de la Judicatura Feder
         specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica'],
         image: '/team/maria-elena-suarez.jpg',
         socialMedia: {
-            email: 'contacto@lex-360.com.mx'
+            email: 'marielsuapre@hotmail.com',
+            phone: '5512477209'
         },
         calendarUrl: 'https://calendly.com/lex-360/maria-elena-suarez'
     },
@@ -89,6 +93,7 @@ Egresado con excelencia académica de la Universidad de Guadalajara, cuenta con 
         specialties: ['Derecho Corporativo', 'Derecho Fiscal', 'Derecho Inmobiliario', 'Mediación'],
         image: '/team/alejandro-ornelas.jpg',
         socialMedia: {
+            phone: '3316009340',
             email: 'contacto@lex-360.com.mx'
         },
         calendarUrl: 'https://calendly.com/lex-360/alejandro-ornelas'
@@ -109,6 +114,7 @@ Cuenta con Especialidad en Derecho de Amparo, así como con actualización conti
         specialties: ['Derecho Fiscal', 'Litigio Civil', 'Amparo', 'Cobranza Bancaria'],
         image: '/team/israel-ascencio.jpg',
         socialMedia: {
+            phone: '4431460242',
             email: 'contacto@lex-360.com.mx'
         },
         calendarUrl: 'https://calendly.com/lex-360/israel-ascencio'
@@ -130,6 +136,7 @@ Su perfil se complementa con una destacada labor académica como catedrática y 
         specialties: ['Derecho Penal', 'Derechos Humanos', 'Derecho Civil', 'Derecho Mercantil'],
         image: '/team/elena-gil-valle.jpg',
         socialMedia: {
+            phone: '5536733684',
             email: 'contacto@lex-360.com.mx'
         },
         calendarUrl: 'https://calendly.com/lex-360/elena-gil-valle'
@@ -151,6 +158,7 @@ Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consej
         specialties: ['Derecho Civil', 'Amparo', 'Derecho Mercantil', 'Litigio Agrario'],
         image: '/team/joel-nunez.jpg',
         socialMedia: {
+            phone: '6647864439',
             email: 'contacto@lex-360.com.mx'
         },
         calendarUrl: 'https://calendly.com/lex-360/joel-nunez'

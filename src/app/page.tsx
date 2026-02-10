@@ -6,6 +6,7 @@ import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark } from 'lucide-react';
+import { abogados } from '@/data/abogados';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -43,45 +44,29 @@ export default function Home() {
       title: 'Derecho Fiscal',
       description: 'Estrategias de defensa y cumplimiento normativo de alto impacto.',
       icon: <Landmark className="w-10 h-10 text-gold" />,
-      leader: {
-        slug: 'israel-ascencio-cadenas',
-        name: 'Israel Ascencio Cadenas',
-        title: 'Especialista en Litigio y Consultoría Estratégica',
-        bio: 'Abogado con más de 40 años de experiencia en litigación y asesoría jurídica empresarial.'
-      }
+      specialty: 'Derecho Fiscal',
+      leaderSlug: 'israel-ascencio-cadenas'
     },
     {
       title: 'Derecho de Amparo',
       description: 'Protección constitucional inmediata ante actos de autoridad.',
       icon: <ShieldCheck className="w-10 h-10 text-gold" />,
-      leader: {
-        slug: 'laura-iris-porras',
-        name: 'Laura Iris Porras Espinosa',
-        title: 'Jurista y Académica',
-        bio: 'Especialista en Justicia Constitucional con amplia trayectoria en el Poder Judicial de la Federación.'
-      }
+      specialty: 'Amparo',
+      leaderSlug: 'laura-iris-porras'
     },
     {
       title: 'Consultoría Corporativa',
       description: 'Blindaje legal para empresas en expansión y consolidación.',
       icon: <FileText className="w-10 h-10 text-gold" />,
-      leader: {
-        slug: 'alejandro-valenzuela',
-        name: 'Alejandro Valenzuela Sosa',
-        title: 'Jurista y Consultor Internacional',
-        bio: 'Miembro de la Barra de Abogados de París y Experto Parlamentario por la Unión Interparlamentaria (UIP).'
-      }
+      specialty: 'Derecho Corporativo',
+      leaderSlug: 'alejandro-valenzuela'
     },
     {
       title: 'Litigio Civil',
       description: 'Resolución de conflictos con enfoque en la eficiencia y el resultado.',
       icon: <Gavel className="w-10 h-10 text-gold" />,
-      leader: {
-        slug: 'joel-nunez-garcia',
-        name: 'Joel Núñez García',
-        title: 'Abogado Litigante',
-        bio: 'Experto en litigio civil y mercantil de alta complejidad, con enfoque en la defensa de derechos.'
-      }
+      specialty: 'Derecho Civil',
+      leaderSlug: 'joel-nunez-garcia'
     }
   ];
 
@@ -274,34 +259,64 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {services.map((service, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="glass-card p-10 md:p-12 rounded-[2.5rem] hover:border-gold/30 transition-all cursor-pointer group flex flex-col h-full"
-              >
-                <div className="mb-8 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">{service.icon}</div>
-                <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-gold transition-colors">{service.title}</h3>
-                <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-8 flex-grow">
-                  {service.description}
-                </p>
-                <div className="absolute inset-0 bg-slate-950 p-6 flex flex-col justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-2xl">
-                  <p className="text-[10px] text-gold font-bold uppercase tracking-widest mb-1">Líder de Área</p>
-                  <p className="text-sm font-black mb-1 text-white">{service.leader.name}</p>
-                  <p className="text-[9px] text-slate-500 uppercase tracking-widest mb-3">{service.leader.title}</p>
-                  <p className="text-xs text-slate-400 font-light leading-relaxed mb-4">
-                    {service.leader.bio}
+            {services.map((service, i) => {
+              const leader = abogados.find(a => a.slug === service.leaderSlug) || abogados[0];
+              const specialists = abogados.filter(a =>
+                a.specialties.some(s => s.toLowerCase().includes(service.specialty.toLowerCase())) &&
+                a.slug !== service.leaderSlug
+              );
+
+              return (
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  whileHover={{ y: -10 }}
+                  className="group relative bg-white dark:bg-slate-900 p-12 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all border border-slate-100 dark:border-white/5 h-[450px] flex flex-col overflow-hidden"
+                >
+                  <div className="mb-10 p-4 w-fit rounded-2xl bg-gold/5 border border-gold/10 text-gold group-hover:scale-110 transition-transform duration-500">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-2xl font-black mb-4 tracking-tight group-hover:text-gold transition-colors">{service.title}</h3>
+                  <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-8 flex-grow">
+                    {service.description}
                   </p>
-                  <Link
-                    href={`/abogados/${service.leader.slug}`}
-                    className="flex items-center gap-2 text-gold font-bold text-[10px] uppercase tracking-widest hover:gap-3 transition-all"
-                  >
-                    Ver Perfil <ArrowRight size={12} />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="absolute inset-0 bg-slate-950 p-8 flex flex-col justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-2xl z-20">
+                    <p className="text-[10px] text-gold font-bold uppercase tracking-widest mb-2">Líder de Área</p>
+                    <Link href={`/abogados/${leader.slug}`} className="block group/leader">
+                      <p className="text-lg font-black mb-1 text-white group-hover/leader:text-gold transition-colors">{leader.name}</p>
+                      <p className="text-[9px] text-slate-500 uppercase tracking-widest mb-4">{leader.title}</p>
+                    </Link>
+
+                    {specialists.length > 0 && (
+                      <div className="mt-2 pt-6 border-t border-white/10">
+                        <p className="text-[9px] text-gold font-bold uppercase tracking-widest mb-4">Especialistas en el Área</p>
+                        <div className="flex flex-col gap-3">
+                          {specialists.map((spec) => (
+                            <Link
+                              key={spec.slug}
+                              href={`/abogados/${spec.slug}`}
+                              className="group/spec flex items-center justify-between py-1 border-b border-white/5 last:border-0"
+                            >
+                              <span className="text-[11px] text-slate-300 group-hover/spec:text-white transition-colors capitalize">{spec.name.toLowerCase()}</span>
+                              <ArrowRight size={10} className="text-gold opacity-0 group-hover/spec:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="mt-auto pt-8">
+                      <Link
+                        href={`/abogados/${leader.slug}`}
+                        className="bg-gold text-primary font-black px-6 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl inline-block"
+                      >
+                        Ver Perfil Completo
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

@@ -47,7 +47,7 @@ En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura F
 Es Licenciada en Derecho y Maestra en Derecho Privado por la Universidad Cristóbal Colón, y cuenta con una Maestría en Justicia Adversarial por el Instituto de la Judicatura Federal. Además, ha realizado múltiples especializaciones en Argumentación Jurídica, Comunicación Oral y Escrita, Justicia Penal Acusatoria, Administración Estratégica y Perspectiva de Género, cursadas en el Instituto de la Judicatura Federal y en distintas instituciones del país.
 
 En el ámbito académico, ha sido docente en el Instituto de la Judicatura Federal y en la Universidad Cristóbal Colón, donde impartió asignaturas y talleres en Técnicas de Investigación Jurídica, Juicio de Amparo, Argumentación Jurídica y Perspectiva de Género. También ha participado en congresos nacionales e internacionales sobre sistema penal acusatorio, derechos humanos y transparencia judicial. A lo largo de su trayectoria, ha participado en más de cincuenta cursos, diplomados y programas de actualización enfocados en las transformaciones del derecho procesal, la equidad de género y la justicia constitucional. Es reconocida por su excelencia académica y compromiso institucional, así como por su contribución a las nuevas generaciones de juristas.`,
-        specialties: ['Derecho Civil', 'Justicia Adversarial', 'Argumentación Jurídica', 'Perspectiva de Género']
+        specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica']
     },
     {
         slug: 'alejandro-ornelas',
@@ -79,7 +79,7 @@ A lo largo de su carrera, ha brindado asesoría legal corporativa a empresas de 
 Su especialización en cobranza, recuperación de créditos y reestructuración de deudas le ha permitido representar eficazmente a empresas y organizaciones en procedimientos judiciales y extrajudiciales, destacando por su capacidad de negociación y conciliación. Complementa su perfil jurídico con formación en Psicoterapia Gestalt, lo que fortalece sus habilidades de comunicación, manejo de conflictos y negociación estratégica.
 
 Cuenta con Especialidad en Derecho de Amparo, así como con actualización continua, incluyendo un Diplomado en Juicio de Amparo impartido por la Suprema Corte de Justicia de la Nación, lo que respalda su dominio técnico y vigencia profesional. Su compromiso con el aprendizaje permanente, el liderazgo y el trabajo en equipo lo posicionan como un abogado experimentado, confiable y orientado a la excelencia jurídica.`,
-        specialties: ['Litigio Civil', 'Cobranza Bancaria', 'Amparo', 'Mediación Estratégica']
+        specialties: ['Derecho Fiscal', 'Litigio Civil', 'Amparo', 'Cobranza Bancaria']
     },
     {
         slug: 'elena-gil-valle',
@@ -95,7 +95,7 @@ Cuenta con una amplia trayectoria en el sector público, habiendo colaborado con
 En el ámbito de la sociedad civil, se desempeña como Presidenta de la Fundación de Abogados Egresados del Instituto Universitario ETAC, A.C., y como Procuradora General de la Organización Continental de Derechos Humanos, con presencia internacional y registro ante organismos nacionales e internacionales, incluyendo la Organización de las Naciones Unidas, donde ha participado en foros sociales en Ginebra desde 2009.
 
 Su perfil se complementa con una destacada labor académica como catedrática y asesora jurídica universitaria, impartiendo materias como Derecho Penal, Derecho Procesal Penal, Derecho Mercantil y seminarios de titulación en diversas instituciones de educación superior. La combinación de experiencia jurídica, compromiso social, liderazgo institucional y vocación docente posiciona a M. Elena Gil Valle como una profesional con una visión integral del derecho, orientada a la justicia social, la defensa de los derechos humanos y la formación de nuevas generaciones de juristas.`,
-        specialties: ['Derecho Penal', 'Derechos Humanos', 'Litigio Colectivo', 'Derecho Mercantil']
+        specialties: ['Derecho Penal', 'Derechos Humanos', 'Derecho Civil', 'Derecho Mercantil']
     },
     {
         slug: 'joel-nunez-garcia',
@@ -108,9 +108,9 @@ Es socio fundador del despacho Defensores de Tijuana, con presencia en Baja Cali
 
 Cuenta con una amplia trayectoria en el sector público, habiendo desempeñado cargos relevantes como Regidor del H. Ayuntamiento de Mazatlán, Director General de Planeación del DIF, Director de Desarrollo Social Rural, así como funciones de secretaría particular, coordinación administrativa y asesoría legislativa en el Congreso de la Unión y en dependencias estatales del Gobierno de Sinaloa. 
 
-En el ámbito de la sociedad civil, ha ocupado cargos de liderazgo y responsabilidad, entre ellos Presidente de la Federación de Estudiantes de Sinaloa, Contralor-Inspector de Derechos Humanos Internacionales y Coordinador Ejecutivo de la asociación civil CHAORDIC KAIZEN, enfocada en el desarrollo integral y la defensa jurídica de comunidades indígenas.
+En el ámbito de la sociedad civil, ha ocupado cargos de liderazgo and responsabilidad, entre ellos Presidente de la Federación de Estudiantes de Sinaloa, Contralor-Inspector de Derechos Humanos Internacionales y Coordinador Ejecutivo de la asociación civil CHAORDIC KAIZEN, enfocada en el desarrollo integral y la defensa jurídica de comunidades indígenas.
 
 Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consejo Nacional Indígena (SCNI), encabezando la interposición y análisis de recursos legales y juicios de amparo en defensa de los derechos constitucionales de los pueblos originarios, particularmente frente a reformas y leyes federales emitidas sin los procesos de consulta previstos en la Constitución. Su trayectoria se distingue por la combinación de litigio estratégico, experiencia gubernamental y compromiso con los derechos humanos, consolidándolo como un abogado con visión social, rigor jurídico y alcance nacional e internacional.`,
-        specialties: ['Litigio Agrario', 'Gestión Gubernamental', 'Derechos Indígenas', 'Amparo']
+        specialties: ['Derecho Civil', 'Amparo', 'Derecho Mercantil', 'Litigio Agrario']
     }
 ];

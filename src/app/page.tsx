@@ -9,6 +9,7 @@ import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark
 import { abogados } from '@/data/abogados';
 import ServicesCarousel from '@/components/ServicesCarousel';
 import MobileMenu from '@/components/MobileMenu';
+import HeroAnimation from '@/components/HeroAnimation';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -72,19 +73,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div
-          style={{ scale: backgroundScale, y: backgroundY }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src="/background.png"
-            alt="Lawyers in discussion"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/80 to-slate-950/100"></div>
-          <div className="absolute inset-0 bg-primary/30 mix-blend-multiply"></div>
-        </motion.div>
+        <HeroAnimation />
 
         <motion.div
           style={{ opacity: heroOpacity }}
@@ -101,10 +90,7 @@ export default function Home() {
           >
             <ShieldCheck size={12} /> Innovación Legal Inteligente
           </motion.div>
-          <h1 className="text-4xl md:text-7xl font-black text-white leading-[1.1] mb-8 tracking-tighter drop-shadow-2xl uppercase">
-            SOLUCIONES <br /> <span className="text-gold">LEGALES</span> <br /> INTEGRALES
-          </h1>
-          <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light drop-shadow-md italic opacity-90">
+          <p className="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed font-bold tracking-[0.2em] drop-shadow-md italic opacity-70 uppercase">
             "Su tranquilidad, nuestra cobertura total."
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

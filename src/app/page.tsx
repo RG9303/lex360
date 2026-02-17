@@ -73,44 +73,23 @@ export default function Home() {
 
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
-        <HeroAnimation />
-
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="container mx-auto px-6 relative z-10 text-center"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gold text-[9px] font-bold tracking-[0.4em] uppercase mb-10 backdrop-blur-md"
+        <HeroAnimation>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-12 py-5 bg-gold text-primary font-black rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
           >
-            <ShieldCheck size={12} /> Innovación Legal Inteligente
-          </motion.div>
-          <p className="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed font-bold tracking-[0.2em] drop-shadow-md italic opacity-70 uppercase">
-            "Su tranquilidad, nuestra cobertura total."
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-12 py-5 bg-gold text-primary font-black rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
-            >
-              Iniciar Consulta
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            <motion.button
-              whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-              onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-12 py-5 border border-white/20 text-white font-bold rounded-full transition-all backdrop-blur-sm uppercase tracking-widest text-xs"
-            >
-              Conoce el Despacho
-            </motion.button>
-          </div>
-        </motion.div>
+            Iniciar Consulta
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+          <motion.button
+            whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+            onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-12 py-5 border border-white/20 text-white font-bold rounded-full transition-all backdrop-blur-sm uppercase tracking-widest text-xs"
+          >
+            Conoce el Despacho
+          </motion.button>
+        </HeroAnimation>
 
         {/* Scroll Indicator */}
         <motion.div

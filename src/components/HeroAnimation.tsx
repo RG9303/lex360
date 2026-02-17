@@ -129,12 +129,11 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover scale-105"
                 style={{
-                    filter: 'brightness(0.35) contrast(1.1) saturate(0.6) hue-rotate(-5deg)',
-                    // Darker cinematic grade to blend with Site aesthetics
+                    filter: 'brightness(0.6) contrast(1.1) saturate(0.7)',
+                    zIndex: -1
                 }}
             >
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-business-people-walking-in-a-hallway-4433-large.mp4" type="video/mp4" />
-                {/* Note: This is a placeholder professional walking video. User can replace with their own. */}
             </video>
 
             {/* 2. Digital Overlay Canvas (Brillos & Particles) */}

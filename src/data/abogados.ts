@@ -167,10 +167,20 @@ Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consej
     {
         slug: 'guillermo-hamdan',
         name: 'Guillermo Hamdan',
-        title: 'Abogado Asociado',
-        shortBio: 'Abogado especialista en desarrollo de estrategias legales.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Derecho Corporativo', 'Litigio'],
+        title: 'Abogado Litigante y Estratega Jurídico',
+        shortBio: 'Egresado de la Escuela Libre de Derecho con una trayectoria destacada en asuntos de alta relevancia mediática y política.',
+        fullBio: `Guillermo Hamdan es un distinguido abogado egresado de la prestigiosa Escuela Libre de Derecho, donde se graduó con menciones honoríficas y una tesis laureada. Su carrera comenzó a los 18 años en el despacho del licenciado Felipe Gómez Mont y, años más tarde, colaboró en la Procuraduría General de la República en asuntos especiales para la Presidencia de la República. Fue asociado del reconocido penalista Sergio Vela Treviño antes de fundar su propia firma de abogados litigantes.
+
+A lo largo de su exitosa trayectoria, ha patrocinado asuntos de gran trascendencia en la historia mediática de México, representando a políticos, periodistas, artistas, empresarios y deportistas. Destacan sus denuncias por el fraude en la privatización de Telmex y contra la inexistencia bancaria, así como su vinculación con el movimiento del Barzón y el PRD. Por varias décadas, ha sido el asesor jurídico personal del ingeniero Cuauhtémoc Cárdenas Solórzano.
+
+Como estratega internacional, asesora a algunos de los hombres más acaudalados del mundo y mantiene relaciones con gobiernos y organizaciones internacionales en colaboración con despachos estratégicos poderosos. Se especializa en grandes reclamaciones de operaciones de mercado secundario (MTN’s) y plataformas financieras. En el ámbito académico, ha impartido cátedras de Derecho Penal, Procesal Penal y Constitucional en la Universidad Anáhuac, la Escuela Libre de Derecho y la Universidad Panamericana.
+
+Es un activo comunicador con más de 300 entrevistas y conferencias en foros nacionales e internacionales sobre temas jurídicos y geopolíticos. Es autor de obras como "Infamia a la justicia" y el libro "Cuando lo invisible se hizo visible: Dios y el virus" (2020), y tiene proyectos literarios y cinematográficos en curso como "Mi Legado", "Historia de un Genocidio" e "Historia de un amor o un amor de historia".
+
+Recientemente, ha impulsado el PROYECTO de demandar la declaratoria de nulidad absoluta del Tratado de Guadalupe Hidalgo de 1848, buscando la restitución simbólica y jurídica de los territorios despojados a México. También ha presentado denuncias ante la Fiscalía General de la República y la Corte Penal Internacional relacionadas con la gestión de la pandemia y la violación del consentimiento informado, fundamentadas en su obra "El Holocausto Mexicano".
+
+Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígena y ha sido designado como "EL FISCAL DEL PUEBLO" de los Pueblos Originarios y Ancestrales de México. Es un reconocido activista social, defensor de las madres buscadoras y firme opositor a las reformas judiciales recientes, habiendo presentado más de 20 denuncias contra actos que considera violatorios del Estado de Derecho. Es miembro activo de la Coalición Mundial de Salud y Vida (COMUSAV).`,
+        specialties: ['Derecho Penal', 'Derecho Constitucional', 'Litigio de Alto Impacto', 'Estrategia Geopolítica'],
         image: '/team/placeholder-user.jpg',
         socialMedia: {
             email: 'abogadohamdan@gmail.com',

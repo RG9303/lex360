@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ChevronLeft, Scale, ArrowRight, ShieldCheck, Landmark, Gavel, FileText, Linkedin, Mail, Calendar, Phone } from 'lucide-react';
 import { abogados } from '@/data/abogados';
+import MobileMenu from '@/components/MobileMenu';
 import React from 'react';
 
 export default function AbogadoProfileContent({ slug }: { slug: string }) {
@@ -26,9 +27,12 @@ export default function AbogadoProfileContent({ slug }: { slug: string }) {
                     <img src="/logo.jpg" alt="Lex-360 Logo" className="w-10 h-10 rounded-full object-cover shadow-lg border border-gold/30" />
                     <span className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase italic">Lex-360</span>
                 </Link>
-                <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300">
-                    <Link href="/" className="hover:text-gold transition-colors">Inicio</Link>
-                    <Link href="/abogados" className="hover:text-gold transition-colors">Abogados</Link>
+                <div className="flex items-center gap-6">
+                    <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300">
+                        <Link href="/" className="hover:text-gold transition-colors">Inicio</Link>
+                        <Link href="/abogados" className="hover:text-gold transition-colors">Abogados</Link>
+                    </div>
+                    <MobileMenu />
                 </div>
             </nav>
 

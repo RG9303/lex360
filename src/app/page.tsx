@@ -5,8 +5,10 @@ import Link from 'next/link';
 import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark, Facebook, Twitter, Linkedin, Youtube, Menu } from 'lucide-react';
 import { abogados } from '@/data/abogados';
+import ServicesCarousel from '@/components/ServicesCarousel';
+import MobileMenu from '@/components/MobileMenu';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -39,36 +41,6 @@ export default function Home() {
     }
   };
 
-  const services = [
-    {
-      title: 'Derecho Fiscal',
-      description: 'Estrategias de defensa y cumplimiento normativo de alto impacto.',
-      icon: <Landmark className="w-10 h-10 text-gold" />,
-      specialty: 'Derecho Fiscal',
-      leaderSlug: 'israel-ascencio-cadenas'
-    },
-    {
-      title: 'Derecho de Amparo',
-      description: 'Protección constitucional inmediata ante actos de autoridad.',
-      icon: <ShieldCheck className="w-10 h-10 text-gold" />,
-      specialty: 'Amparo',
-      leaderSlug: 'laura-iris-porras'
-    },
-    {
-      title: 'Consultoría Corporativa',
-      description: 'Blindaje legal para empresas en expansión y consolidación.',
-      icon: <FileText className="w-10 h-10 text-gold" />,
-      specialty: 'Derecho Corporativo',
-      leaderSlug: 'alejandro-valenzuela'
-    },
-    {
-      title: 'Litigio Civil',
-      description: 'Resolución de conflictos con enfoque en la eficiencia y el resultado.',
-      icon: <Gavel className="w-10 h-10 text-gold" />,
-      specialty: 'Derecho Civil',
-      leaderSlug: 'joel-nunez-garcia'
-    }
-  ];
 
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950">
@@ -85,13 +57,16 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300"
+          className="flex items-center gap-6"
         >
-          <Link href="#servicios" className="hover:text-gold transition-colors">Servicios</Link>
-          <Link href="/abogados" className="hover:text-gold transition-colors">Abogados</Link>
-          <Link href="#quienes-somos" className="hover:text-gold transition-colors">Nosotros</Link>
-          <Link href="#blog" className="hover:text-gold transition-colors">Blog Legal</Link>
-          <Link href="#contacto" className="hover:text-gold transition-colors">Contacto</Link>
+          <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300">
+            <Link href="#servicios" className="hover:text-gold transition-colors">Servicios</Link>
+            <Link href="/abogados" className="hover:text-gold transition-colors">Abogados</Link>
+            <Link href="#quienes-somos" className="hover:text-gold transition-colors">Nosotros</Link>
+            <Link href="#blog" className="hover:text-gold transition-colors">Blog Legal</Link>
+            <Link href="#contacto" className="hover:text-gold transition-colors">Contacto</Link>
+          </div>
+          <MobileMenu />
         </motion.div>
       </nav>
 
@@ -252,72 +227,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {services.map((service, i) => {
-              const leader = abogados.find(a => a.slug === service.leaderSlug) || abogados[0];
-              const specialists = abogados.filter(a =>
-                a.specialties.some(s => s.toLowerCase().includes(service.specialty.toLowerCase())) &&
-                a.slug !== service.leaderSlug
-              );
-
-              return (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -10 }}
-                  className="group relative bg-white dark:bg-slate-900 p-12 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all border border-slate-100 dark:border-white/5 h-[450px] flex flex-col overflow-hidden"
-                >
-                  <div className="mb-10 p-4 w-fit rounded-2xl bg-gold/5 border border-gold/10 text-gold group-hover:scale-110 transition-transform duration-500">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-2xl font-black mb-4 tracking-tight group-hover:text-gold transition-colors">{service.title}</h3>
-                  <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-8 flex-grow">
-                    {service.description}
-                  </p>
-                  <div className="absolute inset-0 bg-slate-950 p-8 flex flex-col justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-2xl z-20">
-                    <p className="text-[10px] text-gold font-bold uppercase tracking-widest mb-2">Líder de Área</p>
-                    <Link href={`/abogados/${leader.slug}`} className="block group/leader">
-                      <p className="text-lg font-black mb-1 text-white group-hover/leader:text-gold transition-colors">{leader.name}</p>
-                      <p className="text-[9px] text-slate-500 uppercase tracking-widest mb-4">{leader.title}</p>
-                    </Link>
-
-                    {specialists.length > 0 && (
-                      <div className="mt-2 pt-6 border-t border-white/10">
-                        <p className="text-[9px] text-gold font-bold uppercase tracking-widest mb-4">Especialistas en el Área</p>
-                        <div className="flex flex-col gap-3">
-                          {specialists.map((spec) => (
-                            <Link
-                              key={spec.slug}
-                              href={`/abogados/${spec.slug}`}
-                              className="group/spec flex items-center justify-between py-1 border-b border-white/5 last:border-0"
-                            >
-                              <span className="text-[11px] text-slate-300 group-hover/spec:text-white transition-colors capitalize">{spec.name.toLowerCase()}</span>
-                              <ArrowRight size={10} className="text-gold opacity-0 group-hover/spec:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="mt-auto pt-8">
-                      <Link
-                        href={`/abogados/${leader.slug}`}
-                        className="bg-gold text-primary font-black px-6 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl inline-block"
-                      >
-                        Ver Perfil Completo
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          <ServicesCarousel />
         </div>
       </section>
 

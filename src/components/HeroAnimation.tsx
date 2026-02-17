@@ -23,7 +23,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         return () => clearInterval(timer);
     }, []);
 
-    // Plexus + Scales Background Effect
+    // High-Density Iridescent Globe Animation
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -34,140 +34,103 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
-        const points: Point[] = [];
-        const maxDistance = 160 * (width / 1920);
-        const pointCount = Math.floor((width * height) / 14000);
+        const points: { x: number, y: number, z: number, color: string }[] = [];
+        const beams: { angle: number, speed: number, size: number, color: string }[] = [];
 
-        class Point {
-            x: number;
-            y: number;
-            vx: number;
-            vy: number;
-            radius: number;
+        // 4000 points for high density
+        const count = 4000;
+        const radius = Math.min(width, height) * 0.4;
 
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 1.2 + 0.3;
-            }
+        for (let i = 0; i < count; i++) {
+            const phi = Math.acos(-1 + (2 * i) / count);
+            const theta = Math.sqrt(count * Math.PI) * phi;
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
+            // Add random "noise" to clusters to create silhouettes
+            const noise = (Math.sin(phi * 5) * Math.cos(theta * 5) > 0.3) ? 1.02 : 0.98;
 
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
+            points.push({
+                x: Math.cos(theta) * Math.sin(phi) * radius * noise,
+                y: Math.sin(theta) * Math.sin(phi) * radius * noise,
+                z: Math.cos(phi) * radius * noise,
+                color: '' // Determined during render for iridescence
+            });
         }
 
-        for (let i = 0; i < pointCount; i++) {
-            points.push(new Point());
+        // Dynamic orbital beams
+        for (let i = 0; i < 8; i++) {
+            beams.push({
+                angle: Math.random() * Math.PI * 2,
+                speed: (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1),
+                size: Math.random() * 100 + 50,
+                color: Math.random() > 0.5 ? '#00e5ff' : '#c5a059'
+            });
         }
 
         let rotation = 0;
 
-        const drawScales = (centerX: number, centerY: number, scale: number) => {
-            if (!ctx) return;
-            ctx.save();
-            ctx.translate(centerX, centerY);
-            ctx.rotate(Math.sin(rotation * 0.5) * 0.05); // Subtle tilt
-
-            ctx.strokeStyle = 'rgba(197, 160, 89, 0.4)';
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(197, 160, 89, 0.5)';
-            ctx.lineWidth = 1;
-
-            // Base/Stem
-            ctx.beginPath();
-            ctx.moveTo(0, 50 * scale);
-            ctx.lineTo(0, -80 * scale);
-            ctx.stroke();
-
-            // Crossbar
-            const barTilt = Math.sin(rotation * 0.8) * 10 * scale;
-            ctx.beginPath();
-            ctx.moveTo(-100 * scale, -60 * scale + barTilt);
-            ctx.lineTo(100 * scale, -60 * scale - barTilt);
-            ctx.stroke();
-
-            // Support base
-            ctx.beginPath();
-            ctx.moveTo(-30 * scale, 50 * scale);
-            ctx.lineTo(30 * scale, 50 * scale);
-            ctx.stroke();
-
-            // Hanging Scales (Left)
-            ctx.beginPath();
-            ctx.arc(-100 * scale, 0 * scale + barTilt, 40 * scale, 0, Math.PI, false);
-            ctx.stroke();
-            ctx.moveTo(-100 * scale, -60 * scale + barTilt);
-            ctx.lineTo(-140 * scale, 0 * scale + barTilt);
-            ctx.moveTo(-100 * scale, -60 * scale + barTilt);
-            ctx.lineTo(-60 * scale, 0 * scale + barTilt);
-            ctx.stroke();
-
-            // Hanging Scales (Right)
-            ctx.beginPath();
-            ctx.arc(100 * scale, 0 * scale - barTilt, 40 * scale, 0, Math.PI, false);
-            ctx.stroke();
-            ctx.moveTo(100 * scale, -60 * scale - barTilt);
-            ctx.lineTo(60 * scale, 0 * scale - barTilt);
-            ctx.moveTo(100 * scale, -60 * scale - barTilt);
-            ctx.lineTo(140 * scale, 0 * scale - barTilt);
-            ctx.stroke();
-
-            ctx.restore();
-        };
-
         const render = () => {
             ctx.clearRect(0, 0, width, height);
-            rotation += 0.01;
+            rotation += 0.002;
 
-            // Draw Atmospheric Glows
-            const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, width / 1.5);
-            gradient.addColorStop(0, 'rgba(2, 6, 23, 0)');
-            gradient.addColorStop(1, 'rgba(15, 23, 42, 0.4)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, height);
+            const centerX = width / 2;
+            const centerY = height / 2;
 
-            // Draw Scales of Justice (Central Background)
-            drawScales(width / 2, height / 2 - 50, 1.2);
+            // Draw Globe Points
+            points.sort((a, b) => b.z - a.z); // Sort for depth
 
-            // Draw Plexus Lines
-            ctx.lineWidth = 0.5;
-            for (let i = 0; i < points.length; i++) {
-                points[i].update();
-                for (let j = i + 1; j < points.length; j++) {
-                    const dx = points[i].x - points[j].x;
-                    const dy = points[i].y - points[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+            points.forEach((p, i) => {
+                // Rotate around Y axis
+                const rx = p.x * Math.cos(rotation) - p.z * Math.sin(rotation);
+                const rz = p.x * Math.sin(rotation) + p.z * Math.cos(rotation);
 
-                    if (dist < maxDistance) {
-                        const opacity = 1 - dist / maxDistance;
-                        ctx.beginPath();
-                        ctx.moveTo(points[i].x, points[i].y);
-                        ctx.lineTo(points[j].x, points[j].y);
+                // Perspective
+                const perspective = 1000 / (1000 + rz);
+                const px = centerX + rx * perspective;
+                const py = centerY + p.y * perspective;
 
-                        // Metallic Gradient Style (Cyan to Gold)
-                        const lineGrad = ctx.createLinearGradient(points[i].x, points[i].y, points[j].x, points[j].y);
-                        lineGrad.addColorStop(0, `rgba(0, 200, 255, ${opacity * 0.1})`); // Chrome/Cyan
-                        lineGrad.addColorStop(1, `rgba(197, 160, 89, ${opacity * 0.2})`); // Gold
+                if (px < 0 || px > width || py < 0 || py > height) return;
 
-                        ctx.strokeStyle = lineGrad;
-                        ctx.stroke();
+                // Iridescent "Tornasol" Logic
+                // Colors shift based on depth (rz) and vertical position (p.y)
+                const hue = (rz / radius) * 30 + 200; // Shift around Blue/Cyan
+                const saturation = 70 + (p.y / radius) * 20;
+                const lightness = 50 + (rz / radius) * 20;
+                const opacity = Math.max(0.1, 0.6 * perspective * (rz > 0 ? 1 : 0.4));
 
-                        // Intermittent bright nodes
-                        if (opacity > 0.9) {
-                            ctx.beginPath();
-                            ctx.arc(points[i].x, points[i].y, 1, 0, Math.PI * 2);
-                            ctx.fillStyle = `rgba(197, 160, 89, ${opacity * 0.5})`;
-                            ctx.fill();
-                        }
-                    }
+                const size = Math.max(0.5, 1.5 * perspective);
+
+                ctx.beginPath();
+                ctx.arc(px, py, size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity})`;
+                ctx.fill();
+
+                // Intermittent bright nodes for "metallic" shine
+                if (i % 200 === 0 && rz > 0) {
+                    ctx.beginPath();
+                    ctx.arc(px, py, size * 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.4})`;
+                    ctx.fill();
                 }
-            }
+            });
+
+            // Draw Orbital Beams
+            beams.forEach(b => {
+                b.angle += b.speed;
+                const bx = Math.cos(b.angle) * radius * 1.1;
+                const bz = Math.sin(b.angle) * radius * 1.1;
+
+                const p = 1000 / (1000 + bz);
+                const bpx = centerX + bx * p;
+                const bpy = centerY + (Math.sin(b.angle * 0.5) * radius * 0.2) * p;
+
+                ctx.beginPath();
+                const grad = ctx.createRadialGradient(bpx, bpy, 0, bpx, bpy, b.size * p);
+                grad.addColorStop(0, b.color + '66');
+                grad.addColorStop(1, 'transparent');
+                ctx.fillStyle = grad;
+                ctx.arc(bpx, bpy, b.size * p, 0, Math.PI * 2);
+                ctx.fill();
+            });
 
             animationFrameId = requestAnimationFrame(render);
         };
@@ -187,30 +150,30 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
     }, []);
 
     return (
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#020617]">
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#010411]">
             {/* Canvas Layer */}
             <canvas
                 ref={canvasRef}
-                className="absolute inset-0 z-0 opacity-60"
-                style={{ filter: 'contrast(1.1) brightness(0.9)' }}
+                className="absolute inset-0 z-0"
+                style={{ filter: 'contrast(1.2) brightness(1.1) saturate(1.2)' }}
             />
 
-            {/* Metallic/Shadow Overlays */}
+            {/* Atmosphere & Silhouettes */}
             <div className="absolute inset-0 z-[5] pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80" />
-                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,229,255,0.03)_0%,transparent_70%)]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#010411]/20 to-[#010411]/80" />
             </div>
 
             {/* Content Container */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
                 {/* Top Badge */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-900/40 border border-white/10 text-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-16 backdrop-blur-xl"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-16 backdrop-blur-xl"
                 >
-                    <div className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_10px_rgba(197,160,89,1)] animate-pulse" />
-                    <ShieldCheck size={14} className="text-gold" /> Innovación Legal Inteligente
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_12px_#00e5ff] animate-pulse" />
+                    <ShieldCheck size={14} className="text-cyan-400 opacity-80" /> Innovación Legal Inteligente
                 </motion.div>
 
                 {/* Phrases Cycle */}
@@ -218,18 +181,18 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                            exit={{ opacity: 0, y: -40, filter: 'blur(10px)' }}
-                            transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-center"
                         >
-                            <h1 className="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight uppercase italic relative">
-                                <span className="relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter uppercase italic">
+                                <span className="relative z-10 block drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                                     {phrases[index].split(' ').map((word, i) => {
-                                        const isGold = (phrases[index].split(' ').length > 2) ? (i === 1) : (i === 0);
+                                        const isFocus = (phrases[index].split(' ').length > 2) ? (i === 1) : (i === 0);
                                         return (
-                                            <span key={i} className={isGold ? "text-gold" : "text-white"}>
+                                            <span key={i} className={isFocus ? "text-transparent bg-clip-text bg-gradient-to-r from-gold via-white to-gold animate-shimmer" : "text-white"}>
                                                 {word}{' '}
                                                 {i === 1 && phrases[index].split(' ').length > 2 && <br className="hidden md:block" />}
                                             </span>
@@ -244,20 +207,20 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                 {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
+                    animate={{ opacity: 0.6 }}
                     className="text-slate-400 text-[10px] md:text-xs max-w-2xl text-center mb-16 leading-relaxed font-black tracking-[0.6em] uppercase italic"
                 >
-                    "Estrategia Jurídica de Vanguardia"
+                    "Estrategia Jurídica Global"
                 </motion.p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                <div className="flex flex-col sm:flex-row gap-8 justify-center shadow-2xl">
                     {children}
                 </div>
             </div>
 
-            {/* Glassmorphism Scanlines Overlay */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-[20] bg-[length:100%_4px] bg-[linear-gradient(rgba(255,255,255,0)_50%,rgba(255,255,255,1)_50%)]" />
+            {/* Deep Vignette Overlay */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(1,4,17,0.5)_100%)] z-20" />
         </div>
     );
 }

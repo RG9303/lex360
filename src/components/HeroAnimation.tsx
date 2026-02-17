@@ -23,7 +23,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         return () => clearInterval(timer);
     }, []);
 
-    // Plexus Background Effect
+    // Plexus + Scales Background Effect
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -35,8 +35,8 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         let height = canvas.height = window.innerHeight;
 
         const points: Point[] = [];
-        const maxDistance = 150 * (width / 1920); // Responsive distance
-        const pointCount = Math.floor((width * height) / 15000); // Responsive density
+        const maxDistance = 160 * (width / 1920);
+        const pointCount = Math.floor((width * height) / 14000);
 
         class Point {
             x: number;
@@ -48,9 +48,9 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 1.5 + 0.5;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 1.2 + 0.3;
             }
 
             update() {
@@ -60,32 +60,85 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
-
-            draw() {
-                if (!ctx) return;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(197, 160, 89, 0.4)';
-                ctx.fill();
-            }
         }
 
         for (let i = 0; i < pointCount; i++) {
             points.push(new Point());
         }
 
+        let rotation = 0;
+
+        const drawScales = (centerX: number, centerY: number, scale: number) => {
+            if (!ctx) return;
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(Math.sin(rotation * 0.5) * 0.05); // Subtle tilt
+
+            ctx.strokeStyle = 'rgba(197, 160, 89, 0.4)';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = 'rgba(197, 160, 89, 0.5)';
+            ctx.lineWidth = 1;
+
+            // Base/Stem
+            ctx.beginPath();
+            ctx.moveTo(0, 50 * scale);
+            ctx.lineTo(0, -80 * scale);
+            ctx.stroke();
+
+            // Crossbar
+            const barTilt = Math.sin(rotation * 0.8) * 10 * scale;
+            ctx.beginPath();
+            ctx.moveTo(-100 * scale, -60 * scale + barTilt);
+            ctx.lineTo(100 * scale, -60 * scale - barTilt);
+            ctx.stroke();
+
+            // Support base
+            ctx.beginPath();
+            ctx.moveTo(-30 * scale, 50 * scale);
+            ctx.lineTo(30 * scale, 50 * scale);
+            ctx.stroke();
+
+            // Hanging Scales (Left)
+            ctx.beginPath();
+            ctx.arc(-100 * scale, 0 * scale + barTilt, 40 * scale, 0, Math.PI, false);
+            ctx.stroke();
+            ctx.moveTo(-100 * scale, -60 * scale + barTilt);
+            ctx.lineTo(-140 * scale, 0 * scale + barTilt);
+            ctx.moveTo(-100 * scale, -60 * scale + barTilt);
+            ctx.lineTo(-60 * scale, 0 * scale + barTilt);
+            ctx.stroke();
+
+            // Hanging Scales (Right)
+            ctx.beginPath();
+            ctx.arc(100 * scale, 0 * scale - barTilt, 40 * scale, 0, Math.PI, false);
+            ctx.stroke();
+            ctx.moveTo(100 * scale, -60 * scale - barTilt);
+            ctx.lineTo(60 * scale, 0 * scale - barTilt);
+            ctx.moveTo(100 * scale, -60 * scale - barTilt);
+            ctx.lineTo(140 * scale, 0 * scale - barTilt);
+            ctx.stroke();
+
+            ctx.restore();
+        };
+
         const render = () => {
             ctx.clearRect(0, 0, width, height);
+            rotation += 0.01;
 
-            // Update and draw points
-            points.forEach(p => {
-                p.update();
-                // p.draw(); // Hidden points for cleaner look, only show lines
-            });
+            // Draw Atmospheric Glows
+            const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, width / 1.5);
+            gradient.addColorStop(0, 'rgba(2, 6, 23, 0)');
+            gradient.addColorStop(1, 'rgba(15, 23, 42, 0.4)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
 
-            // Draw lines (Plexus)
+            // Draw Scales of Justice (Central Background)
+            drawScales(width / 2, height / 2 - 50, 1.2);
+
+            // Draw Plexus Lines
             ctx.lineWidth = 0.5;
             for (let i = 0; i < points.length; i++) {
+                points[i].update();
                 for (let j = i + 1; j < points.length; j++) {
                     const dx = points[i].x - points[j].x;
                     const dy = points[i].y - points[j].y;
@@ -96,14 +149,20 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                         ctx.beginPath();
                         ctx.moveTo(points[i].x, points[i].y);
                         ctx.lineTo(points[j].x, points[j].y);
-                        ctx.strokeStyle = `rgba(0, 180, 255, ${opacity * 0.15})`;
+
+                        // Metallic Gradient Style (Cyan to Gold)
+                        const lineGrad = ctx.createLinearGradient(points[i].x, points[i].y, points[j].x, points[j].y);
+                        lineGrad.addColorStop(0, `rgba(0, 200, 255, ${opacity * 0.1})`); // Chrome/Cyan
+                        lineGrad.addColorStop(1, `rgba(197, 160, 89, ${opacity * 0.2})`); // Gold
+
+                        ctx.strokeStyle = lineGrad;
                         ctx.stroke();
 
-                        // Subtle gold dots at intersections
-                        if (opacity > 0.8) {
+                        // Intermittent bright nodes
+                        if (opacity > 0.9) {
                             ctx.beginPath();
                             ctx.arc(points[i].x, points[i].y, 1, 0, Math.PI * 2);
-                            ctx.fillStyle = `rgba(197, 160, 89, ${opacity * 0.3})`;
+                            ctx.fillStyle = `rgba(197, 160, 89, ${opacity * 0.5})`;
                             ctx.fill();
                         }
                     }
@@ -128,43 +187,45 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
     }, []);
 
     return (
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-slate-950">
-            {/* Canvas Plexus Layer */}
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#020617]">
+            {/* Canvas Layer */}
             <canvas
                 ref={canvasRef}
-                className="absolute inset-0 z-0 opacity-40"
+                className="absolute inset-0 z-0 opacity-60"
+                style={{ filter: 'contrast(1.1) brightness(0.9)' }}
             />
 
-            {/* Deep Background Overlays */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-900/10 rounded-full blur-[150px]" />
-                <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
+            {/* Metallic/Shadow Overlays */}
+            <div className="absolute inset-0 z-[5] pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80" />
+                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
             </div>
 
             {/* Content Container */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
                 {/* Top Badge */}
                 <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gold text-[9px] font-bold tracking-[0.4em] uppercase mb-12 backdrop-blur-md"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-900/40 border border-white/10 text-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-16 backdrop-blur-xl"
                 >
-                    <ShieldCheck size={12} className="text-gold/80" /> Innovación Legal Inteligente
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_10px_rgba(197,160,89,1)] animate-pulse" />
+                    <ShieldCheck size={14} className="text-gold" /> Innovación Legal Inteligente
                 </motion.div>
 
                 {/* Phrases Cycle */}
-                <div className="h-[120px] md:h-[200px] flex items-center justify-center w-full mb-6">
+                <div className="h-[120px] md:h-[200px] flex items-center justify-center w-full mb-8">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -30, scale: 1.02 }}
-                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                            exit={{ opacity: 0, y: -40, filter: 'blur(10px)' }}
+                            transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
                             className="text-center"
                         >
-                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight uppercase italic relative">
-                                <span className="relative z-10">
+                            <h1 className="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight uppercase italic relative">
+                                <span className="relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
                                     {phrases[index].split(' ').map((word, i) => {
                                         const isGold = (phrases[index].split(' ').length > 2) ? (i === 1) : (i === 0);
                                         return (
@@ -175,8 +236,6 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                                         );
                                     })}
                                 </span>
-                                {/* Subtle Glow Behind Text */}
-                                <span className="absolute inset-0 blur-2xl bg-white/5 -z-10" />
                             </h1>
                         </motion.div>
                     </AnimatePresence>
@@ -186,20 +245,19 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 0.5 }}
-                    transition={{ delay: 0.5 }}
-                    className="text-slate-300 text-xs md:text-sm max-w-2xl text-center mb-16 leading-relaxed font-bold tracking-[0.3em] uppercase italic"
+                    className="text-slate-400 text-[10px] md:text-xs max-w-2xl text-center mb-16 leading-relaxed font-black tracking-[0.6em] uppercase italic"
                 >
                     "Estrategia Jurídica de Vanguardia"
                 </motion.p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                     {children}
                 </div>
             </div>
 
-            {/* Scanline Effect */}
-            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.01),rgba(0,255,0,0.005),rgba(0,0,255,0.01))] z-20 bg-[length:100%_4px,3px_100%] pointer-events-none" />
+            {/* Glassmorphism Scanlines Overlay */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-[20] bg-[length:100%_4px] bg-[linear-gradient(rgba(255,255,255,0)_50%,rgba(255,255,255,1)_50%)]" />
         </div>
     );
 }

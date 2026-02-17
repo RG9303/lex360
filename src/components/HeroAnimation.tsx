@@ -9,12 +9,14 @@ const phrases = [
     "LEGISLACIÓN INTELIGENTE",
     "PROTECCIÓN PATRIMONIAL",
     "INNOVACIÓN JURÍDICA",
-    "EXCELENCIA ÉTICA"
+    "EXCELENCIA ÉTICA",
+    "LEX 360"
 ];
 
 export default function HeroAnimation({ children }: { children?: React.ReactNode }) {
     const [index, setIndex] = useState(0);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const isFinale = index === phrases.length - 1;
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -23,7 +25,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         return () => clearInterval(timer);
     }, []);
 
-    // High-Density Iridescent Globe Animation
+    // High-Density Iridescent Globe + Explosion Animation
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -34,103 +36,95 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
-        const points: { x: number, y: number, z: number, color: string }[] = [];
-        const beams: { angle: number, speed: number, size: number, color: string }[] = [];
-
-        // 4000 points for high density
         const count = 4000;
         const radius = Math.min(width, height) * 0.4;
+        const points: { x: number, y: number, z: number, ox: number, oy: number, oz: number, speed: number }[] = [];
 
         for (let i = 0; i < count; i++) {
             const phi = Math.acos(-1 + (2 * i) / count);
             const theta = Math.sqrt(count * Math.PI) * phi;
-
-            // Add random "noise" to clusters to create silhouettes
-            const noise = (Math.sin(phi * 5) * Math.cos(theta * 5) > 0.3) ? 1.02 : 0.98;
+            const x = Math.cos(theta) * Math.sin(phi) * radius;
+            const y = Math.sin(theta) * Math.sin(phi) * radius;
+            const z = Math.cos(phi) * radius;
 
             points.push({
-                x: Math.cos(theta) * Math.sin(phi) * radius * noise,
-                y: Math.sin(theta) * Math.sin(phi) * radius * noise,
-                z: Math.cos(phi) * radius * noise,
-                color: '' // Determined during render for iridescence
-            });
-        }
-
-        // Dynamic orbital beams
-        for (let i = 0; i < 8; i++) {
-            beams.push({
-                angle: Math.random() * Math.PI * 2,
-                speed: (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1),
-                size: Math.random() * 100 + 50,
-                color: Math.random() > 0.5 ? '#00e5ff' : '#c5a059'
+                x, y, z,
+                ox: x, oy: y, oz: z,
+                speed: Math.random() * 0.1 + 0.05
             });
         }
 
         let rotation = 0;
+        let explosionFactor = 0;
 
         const render = () => {
             ctx.clearRect(0, 0, width, height);
             rotation += 0.002;
 
+            // Explosion logic for Lex 360
+            if (isFinale) {
+                explosionFactor = Math.min(2.5, explosionFactor + 0.02);
+            } else {
+                explosionFactor = Math.max(1, explosionFactor - 0.05);
+            }
+
             const centerX = width / 2;
             const centerY = height / 2;
 
-            // Draw Globe Points
-            points.sort((a, b) => b.z - a.z); // Sort for depth
+            points.sort((a, b) => b.oz - a.oz);
 
             points.forEach((p, i) => {
-                // Rotate around Y axis
-                const rx = p.x * Math.cos(rotation) - p.z * Math.sin(rotation);
-                const rz = p.x * Math.sin(rotation) + p.z * Math.cos(rotation);
+                // Apply explosion expansion
+                const ex = p.ox * explosionFactor;
+                const ey = p.oy * explosionFactor;
+                const ez = p.oz * explosionFactor;
 
-                // Perspective
+                // Apply rotation
+                const rx = ex * Math.cos(rotation) - ez * Math.sin(rotation);
+                const rz = ex * Math.sin(rotation) + ez * Math.cos(rotation);
+
                 const perspective = 1000 / (1000 + rz);
                 const px = centerX + rx * perspective;
-                const py = centerY + p.y * perspective;
+                const py = centerY + ey * perspective;
 
                 if (px < 0 || px > width || py < 0 || py > height) return;
 
-                // Iridescent "Tornasol" Logic
-                // Colors shift based on depth (rz) and vertical position (p.y)
-                const hue = (rz / radius) * 30 + 200; // Shift around Blue/Cyan
-                const saturation = 70 + (p.y / radius) * 20;
-                const lightness = 50 + (rz / radius) * 20;
-                const opacity = Math.max(0.1, 0.6 * perspective * (rz > 0 ? 1 : 0.4));
-
-                const size = Math.max(0.5, 1.5 * perspective);
+                // Tornasol Metallic Colors
+                const hue = (rz / radius) * 40 + 190; // Deep Metallic Blues/Cyans
+                const saturation = 80 + (ey / radius) * 20;
+                const lightness = 40 + (rz / radius) * 30;
+                const opacity = Math.max(0.05, 0.7 * perspective * (rz > 0 ? 1 : 0.3));
 
                 ctx.beginPath();
-                ctx.arc(px, py, size, 0, Math.PI * 2);
+                ctx.arc(px, py, Math.max(0.5, 1.2 * perspective), 0, Math.PI * 2);
                 ctx.fillStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity})`;
                 ctx.fill();
 
-                // Intermittent bright nodes for "metallic" shine
-                if (i % 200 === 0 && rz > 0) {
+                // Connect lines for the "Plexus/Mesh" feel (Metallic Blue)
+                if (i % 80 === 0 && !isFinale) {
+                    const nextP = points[(i + 1) % points.length];
+                    const nx = (nextP.ox * explosionFactor) * Math.cos(rotation) - (nextP.oz * explosionFactor) * Math.sin(rotation);
+                    const ny = nextP.oy * explosionFactor;
+                    const nz = (nextP.ox * explosionFactor) * Math.sin(rotation) + (nextP.oz * explosionFactor) * Math.cos(rotation);
+
+                    const np = 1000 / (1000 + nz);
                     ctx.beginPath();
-                    ctx.arc(px, py, size * 2.5, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.4})`;
-                    ctx.fill();
+                    ctx.moveTo(px, py);
+                    ctx.lineTo(centerX + nx * np, centerY + ny * np);
+                    ctx.strokeStyle = `rgba(0, 229, 255, ${opacity * 0.15})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
                 }
             });
 
-            // Draw Orbital Beams
-            beams.forEach(b => {
-                b.angle += b.speed;
-                const bx = Math.cos(b.angle) * radius * 1.1;
-                const bz = Math.sin(b.angle) * radius * 1.1;
-
-                const p = 1000 / (1000 + bz);
-                const bpx = centerX + bx * p;
-                const bpy = centerY + (Math.sin(b.angle * 0.5) * radius * 0.2) * p;
-
-                ctx.beginPath();
-                const grad = ctx.createRadialGradient(bpx, bpy, 0, bpx, bpy, b.size * p);
-                grad.addColorStop(0, b.color + '66');
+            // Glowing center for Lex 360 reveal
+            if (isFinale) {
+                const grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 300 * explosionFactor);
+                grad.addColorStop(0, 'rgba(0, 229, 255, 0.15)');
                 grad.addColorStop(1, 'transparent');
                 ctx.fillStyle = grad;
-                ctx.arc(bpx, bpy, b.size * p, 0, Math.PI * 2);
-                ctx.fill();
-            });
+                ctx.fillRect(0, 0, width, height);
+            }
 
             animationFrameId = requestAnimationFrame(render);
         };
@@ -147,80 +141,99 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
             cancelAnimationFrame(animationFrameId);
             window.removeEventListener('resize', handleResize);
         }
-    }, []);
+    }, [isFinale]);
 
     return (
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#010411]">
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#010208]">
             {/* Canvas Layer */}
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 z-0"
-                style={{ filter: 'contrast(1.2) brightness(1.1) saturate(1.2)' }}
+                style={{ filter: 'contrast(1.3) brightness(1.2) saturate(1.5)' }}
             />
 
-            {/* Atmosphere & Silhouettes */}
+            {/* Cinematic Overlays */}
             <div className="absolute inset-0 z-[5] pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,229,255,0.03)_0%,transparent_70%)]" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#010411]/20 to-[#010411]/80" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,180,255,0.05)_0%,transparent_70%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#010208] to-transparent" />
             </div>
 
             {/* Content Container */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
                 {/* Top Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-16 backdrop-blur-xl"
-                >
-                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_12px_#00e5ff] animate-pulse" />
-                    <ShieldCheck size={14} className="text-cyan-400 opacity-80" /> Innovación Legal Inteligente
-                </motion.div>
+                <AnimatePresence>
+                    {!isFinale && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-900/40 border border-white/5 text-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-16 backdrop-blur-xl"
+                        >
+                            <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-pulse" />
+                            <ShieldCheck size={14} className="text-cyan-400 opacity-80" /> Innovación Legal Inteligente
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Phrases Cycle */}
-                <div className="h-[120px] md:h-[200px] flex items-center justify-center w-full mb-8">
+                <div className="h-[150px] md:h-[250px] flex items-center justify-center w-full mb-8">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            initial={isFinale ? { opacity: 0, scale: 0.2, z: -500 } : { opacity: 0, scale: 0.9, y: 30 }}
+                            animate={isFinale ?
+                                { opacity: 1, scale: 1.2, z: 0, transition: { type: "spring", stiffness: 50, damping: 15 } } :
+                                { opacity: 1, scale: 1, y: 0 }
+                            }
+                            exit={isFinale ? { opacity: 0, scale: 2, z: 500 } : { opacity: 0, scale: 1.1, y: -30 }}
+                            transition={{ duration: 0.8, ease: "circOut" }}
                             className="text-center"
                         >
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter uppercase italic">
-                                <span className="relative z-10 block drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                                    {phrases[index].split(' ').map((word, i) => {
-                                        const isFocus = (phrases[index].split(' ').length > 2) ? (i === 1) : (i === 0);
-                                        return (
-                                            <span key={i} className={isFocus ? "text-transparent bg-clip-text bg-gradient-to-r from-gold via-white to-gold animate-shimmer" : "text-white"}>
-                                                {word}{' '}
-                                                {i === 1 && phrases[index].split(' ').length > 2 && <br className="hidden md:block" />}
-                                            </span>
-                                        );
-                                    })}
-                                </span>
+                            <h1 className={`${isFinale ? "text-6xl md:text-8xl lg:text-9xl tracking-[0.2em] font-black" : "text-4xl md:text-6xl lg:text-7xl font-black"} text-white leading-tight uppercase italic drop-shadow-[0_0_30px_rgba(0,180,255,0.4)]`}>
+                                {isFinale ? (
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-cyan-400 to-gold animate-shimmer block">
+                                        {phrases[index]}
+                                    </span>
+                                ) : (
+                                    <span className="relative z-10 block">
+                                        {phrases[index].split(' ').map((word, i) => {
+                                            const isFocus = (phrases[index].split(' ').length > 2) ? (i === 1) : (i === 0);
+                                            return (
+                                                <span key={i} className={isFocus ? "text-gold" : "text-white"}>
+                                                    {word}{' '}
+                                                    {i === 1 && phrases[index].split(' ').length > 2 && <br className="hidden md:block" />}
+                                                </span>
+                                            );
+                                        })}
+                                    </span>
+                                )}
                             </h1>
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
                 {/* Subtitle */}
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.6 }}
-                    className="text-slate-400 text-[10px] md:text-xs max-w-2xl text-center mb-16 leading-relaxed font-black tracking-[0.6em] uppercase italic"
-                >
-                    "Estrategia Jurídica Global"
-                </motion.p>
+                <AnimatePresence>
+                    {!isFinale && (
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.4 }}
+                            exit={{ opacity: 0 }}
+                            className="text-slate-300 text-[10px] md:text-xs max-w-2xl text-center mb-16 leading-relaxed font-black tracking-[0.6em] uppercase italic"
+                        >
+                            "Estrategia Jurídica Global"
+                        </motion.p>
+                    )}
+                </AnimatePresence>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-8 justify-center shadow-2xl">
+                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                     {children}
                 </div>
             </div>
 
-            {/* Deep Vignette Overlay */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(1,4,17,0.5)_100%)] z-20" />
+            {/* Cinematic Vignette */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,2,10,0.6)_100%)] z-20" />
         </div>
     );
 }

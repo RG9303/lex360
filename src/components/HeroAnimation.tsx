@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck } from 'lucide-react';
 
@@ -12,139 +12,170 @@ const phrases = [
     "EXCELENCIA ÉTICA"
 ];
 
+const CHARS = "ABCDEFGHIKLMNOPQRSTVXYZ0123456789$#@&";
+
+const ScrambleText = ({ text }: { text: string }) => {
+    const [displayText, setDisplayText] = useState(text);
+
+    useEffect(() => {
+        let frame = 0;
+        const duration = 15; // frames of scrambling
+        const interval = setInterval(() => {
+            frame++;
+            setDisplayText(text.split('').map((char, i) => {
+                if (char === ' ') return ' ';
+                if (frame > (duration + i * 2)) return char;
+                return CHARS[Math.floor(Math.random() * CHARS.length)];
+            }).join(''));
+
+            if (frame > duration + text.length * 2) clearInterval(interval);
+        }, 30);
+        return () => clearInterval(interval);
+    }, [text]);
+
+    return <span>{displayText}</span>;
+}
+
 export default function HeroAnimation({ children }: { children?: React.ReactNode }) {
     const [index, setIndex] = useState(0);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % phrases.length);
-        }, 4500);
+        }, 5000);
         return () => clearInterval(timer);
+    }, []);
+
+    // Canvas Globe Animation
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let animationFrameId: number;
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const points: { x: number, y: number, z: number }[] = [];
+        const count = 1200; // High density
+        const radius = Math.min(width, height) * 0.35;
+
+        for (let i = 0; i < count; i++) {
+            const phi = Math.acos(-1 + (2 * i) / count);
+            const theta = Math.sqrt(count * Math.PI) * phi;
+            points.push({
+                x: Math.cos(theta) * Math.sin(phi) * radius,
+                y: Math.sin(theta) * Math.sin(phi) * radius,
+                z: Math.cos(phi) * radius
+            });
+        }
+
+        let rotation = 0;
+
+        const render = () => {
+            ctx.clearRect(0, 0, width, height);
+            rotation += 0.003;
+
+            const centerX = width / 2;
+            const centerY = height / 2;
+
+            points.sort((a, b) => b.z - a.z); // Simple z-buffer sort
+
+            points.forEach((p, i) => {
+                // Rotate around Y axis
+                const x = p.x * Math.cos(rotation) - p.z * Math.sin(rotation);
+                const z = p.x * Math.sin(rotation) + p.z * Math.cos(rotation);
+
+                // Perspective
+                const perspective = 1000 / (1000 + z);
+                const px = centerX + x * perspective;
+                const py = centerY + p.y * perspective;
+
+                const size = Math.max(0.5, 2 * perspective);
+                const opacity = Math.max(0.05, 0.4 * perspective * (z > 0 ? 1 : 0.5));
+
+                ctx.beginPath();
+                ctx.arc(px, py, size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(197, 160, 89, ${opacity})`;
+                ctx.fill();
+
+                // Occasional light streaks
+                if (i % 50 === 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(px, py);
+                    ctx.lineTo(px + 40 * perspective, py - 20 * perspective);
+                    ctx.strokeStyle = `rgba(0, 180, 255, ${opacity * 0.3})`;
+                    ctx.stroke();
+                }
+            });
+
+            // Add subtle scanlines
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.02)';
+            for (let i = 0; i < height; i += 4) {
+                ctx.fillRect(0, i, width, 1);
+            }
+
+            animationFrameId = requestAnimationFrame(render);
+        };
+
+        render();
+
+        const handleResize = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+            window.removeEventListener('resize', handleResize);
+        }
     }, []);
 
     return (
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-            {/* Background Layers */}
-            <div className="absolute inset-0 z-0 bg-slate-950">
-                {/* Deep Gradient Glows */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[120px] opacity-30" />
-                <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[100px] animate-pulse" />
+            {/* Canvas Layer */}
+            <canvas
+                ref={canvasRef}
+                className="absolute inset-0 z-0 opacity-60"
+                style={{ filter: 'blur(0.5px) contrast(1.2)' }}
+            />
 
-                {/* Starfield / Data Nodes */}
-                <div className="absolute inset-0">
-                    {[...Array(40)].map((_, i) => (
-                        <motion.div
-                            key={`node-${i}`}
-                            className="absolute w-[2px] h-[2px] bg-gold/20 rounded-full"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: [0, 0.4, 0] }}
-                            transition={{
-                                duration: 3 + Math.random() * 5,
-                                repeat: Infinity,
-                                delay: Math.random() * 10
-                            }}
-                            style={{
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`
-                            }}
-                        />
-                    ))}
-                </div>
-
-                {/* Dynamic SVG Globe */}
-                <svg className="w-full h-full opacity-40" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="ringGrad" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stopColor="#C5A059" stopOpacity="0.8" />
-                            <stop offset="100%" stopColor="#C5A059" stopOpacity="0" />
-                        </radialGradient>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                    </defs>
-
-                    <motion.g
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-                        style={{ transformOrigin: '500px 500px' }}
-                    >
-                        {/* Latitude & Longitude with complex arcs */}
-                        {[...Array(12)].map((_, i) => (
-                            <React.Fragment key={i}>
-                                <ellipse
-                                    cx="500" cy="500" rx="400" ry={30 * (i + 1)}
-                                    fill="none" stroke="#C5A059" strokeWidth="0.5" strokeOpacity="0.15"
-                                />
-                                <ellipse
-                                    cx="500" cy="500" rx={30 * (i + 1)} ry="400"
-                                    fill="none" stroke="#C5A059" strokeWidth="0.5" strokeOpacity="0.15"
-                                    transform={`rotate(${30 * i} 500 500)`}
-                                />
-                            </React.Fragment>
-                        ))}
-
-                        {/* Glowing Connection Nodes */}
-                        {[...Array(8)].map((_, i) => (
-                            <motion.circle
-                                key={`con-${i}`}
-                                cx={500 + 350 * Math.cos((i * 45 * Math.PI) / 180)}
-                                cy={500 + 350 * Math.sin((i * 45 * Math.PI) / 180)}
-                                r="3"
-                                fill="#C5A059"
-                                filter="url(#glow)"
-                                animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.8, 0.3] }}
-                                transition={{ duration: 2 + i, repeat: Infinity }}
-                            />
-                        ))}
-                    </motion.g>
-
-                    {/* Inner pulsating tech rings */}
-                    <motion.circle
-                        cx="500" cy="500" r="300"
-                        fill="none" stroke="#C5A059" strokeWidth="1" strokeDasharray="10 20"
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                        style={{ transformOrigin: '500px 500px' }}
-                    />
-                </svg>
+            {/* Background Glows */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.05)_0%,transparent_70%)]" />
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
             </div>
 
             {/* Content Container */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
                 {/* Top Badge */}
                 <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gold text-[9px] font-bold tracking-[0.4em] uppercase mb-10 backdrop-blur-md"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-slate-900/40 border border-white/5 text-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-16 backdrop-blur-xl"
                 >
-                    <ShieldCheck size={12} /> Innovación Legal Inteligente
+                    <div className="w-1 h-1 rounded-full bg-gold animate-ping" />
+                    <ShieldCheck size={14} className="opacity-80" /> Innovación Legal Inteligente
                 </motion.div>
 
                 {/* Phrases Cycle */}
-                <div className="h-[200px] md:h-[300px] flex items-center justify-center w-full">
+                <div className="h-[140px] md:h-[220px] flex items-center justify-center w-full mb-8">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.95, filter: 'blur(8px)' }}
-                            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                            exit={{ opacity: 0, scale: 1.05, filter: 'blur(8px)' }}
-                            transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 10 }}
+                            transition={{ duration: 0.6 }}
                             className="text-center"
                         >
-                            <h1 className="text-4xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] uppercase italic">
-                                {phrases[index].split(' ').map((word, i) => {
-                                    const isGold = (phrases[index].split(' ').length > 2) ? (i === 1) : (i === 0);
-                                    return (
-                                        <span key={i} className={isGold ? "text-gold" : "text-white"}>
-                                            {word}{' '}
-                                            {i === 1 && phrases[index].split(' ').length > 2 && <br className="hidden md:block" />}
-                                        </span>
-                                    );
-                                })}
+                            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] uppercase">
+                                <ScrambleText text={phrases[index]} />
                             </h1>
                         </motion.div>
                     </AnimatePresence>
@@ -153,17 +184,21 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                 {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.6 }}
-                    className="text-slate-300 text-xs md:text-sm max-w-2xl text-center mb-12 leading-relaxed font-bold tracking-[0.3em] uppercase italic"
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    className="text-slate-400 text-xs md:text-sm max-w-2xl text-center mb-16 leading-relaxed font-bold tracking-[0.4em] uppercase tracking-widest opacity-60"
                 >
-                    "Su tranquilidad, nuestra cobertura total."
+                    "Estrategia Jurídica de Vanguardia"
                 </motion.p>
 
-                {/* CTA Buttons - Passed from Parent or Static here */}
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                     {children}
                 </div>
             </div>
+
+            {/* Aesthetic Overlays */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.4)_100%)] z-[5]" />
         </div>
     );
 }

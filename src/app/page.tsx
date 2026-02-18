@@ -102,25 +102,37 @@ export default function Home() {
       </section>
 
       {/* Atmospheric Mid-Section Container */}
-      <div className="relative">
-        {/* Background Layer with Cinematic Justice Scales */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="relative overflow-hidden">
+        {/* 1. Subtle Background Layer for Section 2 (Quienes Somos) */}
+        <div className="absolute top-0 left-0 w-full h-[35%] z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[#02050a]" />
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03]" />
+          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-transparent to-[#02050a]/50" />
+        </div>
+
+        {/* 2. Refined 3D Scale Background Layer for Sections 3 & 4 (Servicios & AI Trust) */}
+        <div className="absolute bottom-0 left-0 w-full h-[65%] z-0 pointer-events-none">
+          {/* Main Cinematic Scale Asset - Positioned Left */}
           <div
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-fixed bg-center opacity-[0.22] mix-blend-luminosity scale-110"
-            style={{ filter: 'grayscale(100%) brightness(0.7) contrast(1.1)' }}
+            className="absolute inset-x-0 top-0 bottom-0 bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1500')] bg-no-repeat opacity-[0.18] mix-blend-screen scale-90"
+            style={{
+              backgroundPosition: 'left 15% center',
+              backgroundSize: 'auto 80%',
+              filter: 'grayscale(60%) brightness(0.6) contrast(1.2)'
+            }}
           />
-          {/* Top Gradient - Blend from Hero (Obsidian) */}
-          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#02050a] via-[#02050a]/80 to-transparent" />
-          {/* Bottom Gradient - Blend to Footer (Obsidian) */}
-          <div className="absolute bottom-0 inset-x-0 h-96 bg-gradient-to-t from-[#02050a] via-[#02050a]/90 to-transparent" />
-          {/* Subtle Noise/Atmosphere Overlay */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.05]" />
+          {/* Overlay to ensure smooth transition from Section 2 */}
+          <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#02050a] via-[#02050a]/40 to-transparent" />
+          {/* Bottom Fade to Footer */}
+          <div className="absolute bottom-0 inset-x-0 h-64 bg-gradient-to-t from-[#02050a] to-transparent" />
+          {/* Subtle vignette/shading on the right to keep text legible */}
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#02050a] to-transparent" />
         </div>
 
         {/* Content Layers (Sections 2 to 4) */}
         <div className="relative z-10">
           {/* Quienes Somos Section */}
-          <section id="quienes-somos" className="py-32 bg-transparent relative overflow-hidden">
+          <section id="quienes-somos" className="py-32 bg-transparent relative">
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
             <div className="container mx-auto px-6">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">

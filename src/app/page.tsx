@@ -103,31 +103,33 @@ export default function Home() {
 
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
-        {/* Floating 3D Justice Scale (Copper/Gold) */}
-        <div className="absolute top-[25%] -left-20 md:-left-40 z-0 pointer-events-none w-full max-w-2xl aspect-square">
+        {/* Floating 3D Justice Scale (Copper/Gold) - Refined for v18 */}
+        <div className="absolute top-[35%] left-0 z-0 pointer-events-none w-full max-w-xl aspect-square opacity-60">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            whileInView={{ opacity: 0.45, scale: 1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.6, x: -100 }}
+            whileInView={{ opacity: 1, scale: 0.9, x: 0 }}
             animate={{
-              y: [0, -25, 0],
-              rotate: [0, 2, -2, 0]
+              y: [0, -15, 0],
+              rotate: [0, 1.5, -1.5, 0]
             }}
             transition={{
               opacity: { duration: 1.5 },
               scale: { duration: 1.5 },
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+              x: { duration: 1.5 },
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" }
             }}
             className="w-full h-full"
           >
             <div
-              className="w-full h-full bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200')] bg-contain bg-no-repeat mix-blend-screen"
+              className="w-full h-full bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000')] bg-contain bg-no-repeat mix-blend-screen"
               style={{
-                filter: 'sepia(80%) saturate(150%) brightness(0.8) contrast(1.2)'
+                filter: 'sepia(90%) saturate(180%) brightness(0.7) contrast(1.3)',
+                backgroundPosition: 'left center'
               }}
             />
             {/* Ambient Glow behind scale */}
-            <div className="absolute inset-0 bg-gold/10 blur-[120px] rounded-full scale-75 -z-10" />
+            <div className="absolute -left-20 top-1/4 w-80 h-80 bg-gold/10 blur-[100px] rounded-full -z-10" />
           </motion.div>
         </div>
 

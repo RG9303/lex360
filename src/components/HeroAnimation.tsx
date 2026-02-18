@@ -39,33 +39,37 @@ const phrases = [
 ];
 
 const mediaAssets = [
-    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800", // Scales
-    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=800", // Gavel
-    "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&q=80&w=800", // Architecture
-    "https://images.unsplash.com/photo-1521791136064-7986c295944b?auto=format&fit=crop&q=80&w=800", // Tech Law
-    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", // Documents
-    "https://images.unsplash.com/photo-1473186578172-c141e6798ee4?auto=format&fit=crop&q=80&w=800", // Library
+    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800", // Justice
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800", // Docs
+    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=800", // Gavel
+    "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?q=80&w=800", // Building
+    "https://images.unsplash.com/photo-1521791136064-7986c295944b?q=80&w=800", // Tech
+    "https://images.unsplash.com/photo-1473186578172-c141e6798ee4?q=80&w=800", // Library
 ];
 
 function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
-    const texture = useLoader(THREE.TextureLoader, textureUrl);
+    const [texture, setTexture] = useState<THREE.Texture | null>(null);
     const speed = 0.2 + (index % 3) * 0.1;
+
+    useEffect(() => {
+        const loader = new THREE.TextureLoader();
+        loader.load(
+            textureUrl,
+            (tex) => setTexture(tex),
+            undefined,
+            () => console.warn(`Texture failed to load: ${textureUrl}`)
+        );
+    }, [textureUrl]);
 
     useFrame((state) => {
         if (meshRef.current) {
-            // Orbital rotation around the center
             const time = state.clock.elapsedTime * speed;
             const radius = Math.sqrt(position[0] ** 2 + position[2] ** 2);
             const angle = Math.atan2(position[2], position[0]) + time * 0.2;
-
             meshRef.current.position.x = Math.cos(angle) * radius;
             meshRef.current.position.z = Math.sin(angle) * radius;
-
-            // Face the center
             meshRef.current.lookAt(0, meshRef.current.position.y, 0);
-
-            // Subtle float
             meshRef.current.position.y += Math.sin(state.clock.elapsedTime + index) * 0.005;
         }
     });
@@ -74,7 +78,8 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
         <mesh ref={meshRef} position={position}>
             <boxGeometry args={[2, 2, 0.1]} />
             <meshStandardMaterial
-                map={texture}
+                map={texture || undefined}
+                color={!texture ? "#001a2a" : "#fff"}
                 metalness={0.9}
                 roughness={0.1}
                 transparent

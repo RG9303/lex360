@@ -137,9 +137,14 @@ function LexPerspective() {
 
     useFrame((state) => {
         if (groupRef.current) {
-            // Slow rotation based on mouse
-            groupRef.current.rotation.y += (mouseRef.current.x * 0.5 - groupRef.current.rotation.y) * 0.05;
-            groupRef.current.rotation.x += (mouseRef.current.y * 0.2 - groupRef.current.rotation.x) * 0.05;
+            // Constant autonomous rotation (Autonomous Movement)
+            groupRef.current.rotation.y += 0.001;
+
+            // Dampened mouse-dependency (Subtle Parallax)
+            const targetY = mouseRef.current.x * 0.15;
+            const targetX = mouseRef.current.y * 0.1;
+            groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y % (Math.PI * 2)) * 0.02;
+            groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.02;
         }
     });
 
@@ -246,11 +251,11 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                     </AnimatePresence>
                 </div>
 
-                {/* Cinematic Tagline */}
+                {/* Cinematic Tagline - Formalized Version */}
                 <motion.p
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.35 }}
-                    className="text-white text-[11px] md:text-xs max-w-2xl text-center mb-20 leading-relaxed font-extralight tracking-[1.4em] uppercase italic"
+                    animate={{ opacity: 0.45 }}
+                    className="text-white text-[13px] md:text-sm max-w-4xl text-center mb-20 leading-relaxed font-light tracking-[1.2em] uppercase"
                 >
                     "Fidelidad. Inteligencia. Trascendencia."
                 </motion.p>

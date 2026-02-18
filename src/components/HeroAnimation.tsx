@@ -39,9 +39,9 @@ const phrases = [
 ];
 
 const mediaAssets = [
-    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=60&w=500", // Justice
-    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=60&w=500", // Gavel
-    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=60&w=500", // Docs
+    "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=60&w=600", // Meeting
+    "https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=60&w=600", // Workspace
+    "https://images.unsplash.com/photo-1589216532372-1c2a367900d9?auto=format&fit=crop&q=60&w=600", // Professional Motion
 ];
 
 function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
@@ -68,6 +68,12 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
             meshRef.current.position.z = Math.sin(angle) * radius;
             meshRef.current.lookAt(0, meshRef.current.position.y, 0);
             meshRef.current.position.y += Math.sin(state.clock.elapsedTime + index) * 0.005;
+
+            // Filmic texture movement
+            if (texture) {
+                texture.offset.x = Math.sin(state.clock.elapsedTime * 0.1 + index) * 0.02;
+                texture.offset.y = Math.cos(state.clock.elapsedTime * 0.05 + index) * 0.02;
+            }
         }
     });
 
@@ -219,12 +225,12 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                             animate={{ opacity: 1, filter: 'blur(0px)', scale: 1, y: 0 }}
                             exit={{ opacity: 0, filter: 'blur(30px)', scale: 0.85, y: -10 }}
                             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-center"
+                            className="text-center px-4"
                         >
-                            <h1 className={`${isBrand ? "text-7xl md:text-9xl lg:text-[11.5rem] font-black tracking-tighter ph-4" : "text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.25em]"} text-white leading-[1] uppercase relative drop-shadow-[0_10px_40px_rgba(200,169,110,0.4)]`}>
+                            <h1 className={`${isBrand ? "text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter" : "text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em]"} text-white leading-[1.2] uppercase relative drop-shadow-[0_20px_50px_rgba(200,169,110,0.3)]`}>
                                 {isBrand ? (
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer inline-block pb-4">
-                                        LEX 360<span className="relative -top-4 ml-1">°</span>
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer inline-flex items-baseline gap-2">
+                                        LEX 360<span className="text-[0.6em] leading-none">°</span>
                                     </span>
                                 ) : (
                                     phrases[index].split(' ').map((word, i) => {

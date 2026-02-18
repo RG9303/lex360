@@ -102,31 +102,40 @@ export default function Home() {
       </section>
 
       {/* Atmospheric Mid-Section Container */}
-      <div className="relative overflow-hidden">
-        {/* 1. Subtle Background Layer for Section 2 (Quienes Somos) */}
-        <div className="absolute top-0 left-0 w-full h-[35%] z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[#02050a]" />
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03]" />
-          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-transparent to-[#02050a]/50" />
+      <div className="relative overflow-hidden bg-[#02050a]">
+        {/* Floating 3D Justice Scale (Copper/Gold) */}
+        <div className="absolute top-[25%] -left-20 md:-left-40 z-0 pointer-events-none w-full max-w-2xl aspect-square">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            whileInView={{ opacity: 0.45, scale: 1, rotate: 0 }}
+            animate={{
+              y: [0, -25, 0],
+              rotate: [0, 2, -2, 0]
+            }}
+            transition={{
+              opacity: { duration: 1.5 },
+              scale: { duration: 1.5 },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="w-full h-full"
+          >
+            <div
+              className="w-full h-full bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200')] bg-contain bg-no-repeat mix-blend-screen"
+              style={{
+                filter: 'sepia(80%) saturate(150%) brightness(0.8) contrast(1.2)'
+              }}
+            />
+            {/* Ambient Glow behind scale */}
+            <div className="absolute inset-0 bg-gold/10 blur-[120px] rounded-full scale-75 -z-10" />
+          </motion.div>
         </div>
 
-        {/* 2. Refined 3D Scale Background Layer for Sections 3 & 4 (Servicios & AI Trust) */}
-        <div className="absolute bottom-0 left-0 w-full h-[65%] z-0 pointer-events-none">
-          {/* Main Cinematic Scale Asset - Positioned Left */}
-          <div
-            className="absolute inset-x-0 top-0 bottom-0 bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1500')] bg-no-repeat opacity-[0.18] mix-blend-screen scale-90"
-            style={{
-              backgroundPosition: 'left 15% center',
-              backgroundSize: 'auto 80%',
-              filter: 'grayscale(60%) brightness(0.6) contrast(1.2)'
-            }}
-          />
-          {/* Overlay to ensure smooth transition from Section 2 */}
-          <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#02050a] via-[#02050a]/40 to-transparent" />
-          {/* Bottom Fade to Footer */}
-          <div className="absolute bottom-0 inset-x-0 h-64 bg-gradient-to-t from-[#02050a] to-transparent" />
-          {/* Subtle vignette/shading on the right to keep text legible */}
-          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#02050a] to-transparent" />
+        {/* 1. Subtle Background Layer (Stardust only) */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03]" />
+          {/* Transition blend Hero -> Content */}
+          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#02050a] to-transparent" />
         </div>
 
         {/* Content Layers (Sections 2 to 4) */}

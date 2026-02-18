@@ -39,12 +39,9 @@ const phrases = [
 ];
 
 const mediaAssets = [
-    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800", // Justice
-    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800", // Docs
-    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=800", // Gavel
-    "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?q=80&w=800", // Building
-    "https://images.unsplash.com/photo-1521791136064-7986c295944b?q=80&w=800", // Tech
-    "https://images.unsplash.com/photo-1473186578172-c141e6798ee4?q=80&w=800", // Library
+    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=60&w=500", // Justice
+    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=60&w=500", // Gavel
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=60&w=500", // Docs
 ];
 
 function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
@@ -97,9 +94,9 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
 }
 
 function JurisprudenceCylinder() {
-    const count = 12;
+    const count = 6;
     const radius = 8;
-    const heightRange = 10;
+    const heightRange = 8;
 
     const cubeData = React.useMemo(() => {
         return Array.from({ length: count }).map((_, i) => {
@@ -180,7 +177,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
             <div className="absolute inset-0 z-10 opacity-70">
                 {mounted && (
                     <ErrorBoundary fallback={<div className="absolute inset-0 bg-[#02050a]" />}>
-                        <Canvas dpr={[1, 2]} gl={{ antialias: true, powerPreference: "high-performance" }}>
+                        <Canvas dpr={1} gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}>
                             <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={50} />
                             <color attach="background" args={['#02050a']} />
                             <fog attach="fog" args={['#02050a', 15, 30]} />

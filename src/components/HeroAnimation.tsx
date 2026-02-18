@@ -209,15 +209,6 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
 
             {/* 4. Content Container */}
             <div className="relative z-30 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
-                {/* Badge - Minimalist Lex 360 */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-3 px-8 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-extralight tracking-[0.6em] uppercase mb-16 backdrop-blur-3xl shadow-[0_0_30px_rgba(0,229,255,0.05)]"
-                >
-                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-pulse" />
-                    <ShieldCheck size={16} className="opacity-40" /> Lex-360: Innovación sin límites
-                </motion.div>
 
                 {/* Brand/Phrases Reveal */}
                 <div className="h-[220px] md:h-[320px] flex items-center justify-center w-full mb-12">
@@ -230,10 +221,10 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                             className="text-center"
                         >
-                            <h1 className={`${isBrand ? "text-7xl md:text-9xl lg:text-[11rem] font-black tracking-tighter italic" : "text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.25em]"} text-white leading-[0.85] uppercase relative drop-shadow-[0_0_60px_rgba(255,255,255,0.2)]`}>
+                            <h1 className={`${isBrand ? "text-7xl md:text-9xl lg:text-[11.5rem] font-black tracking-tighter ph-4" : "text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.25em]"} text-white leading-[1] uppercase relative drop-shadow-[0_10px_40px_rgba(200,169,110,0.4)]`}>
                                 {isBrand ? (
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer">
-                                        {phrases[index]}
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer inline-block pb-4">
+                                        LEX 360<span className="relative -top-4 ml-1">°</span>
                                     </span>
                                 ) : (
                                     phrases[index].split(' ').map((word, i) => {

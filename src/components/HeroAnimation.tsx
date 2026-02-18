@@ -5,7 +5,7 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck } from 'lucide-react';
 import * as THREE from 'three';
-import { Float, Text, Environment, PerspectiveCamera, MeshDistortMaterial, Bloom, EffectComposer } from '@react-three/drei';
+import { Float, Environment, PerspectiveCamera, OrbitControls, useScroll, ScrollControls, Scroll } from '@react-three/drei';
 
 const phrases = [
     "LEX 360°",
@@ -17,76 +17,111 @@ const phrases = [
 ];
 
 const mediaAssets = [
-    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800", // Scales of Justice
-    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=800", // Gavel / Courtroom
-    "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&q=80&w=800", // Modern Corporate Building
-    "https://images.unsplash.com/photo-1521791136064-7986c295944b?auto=format&fit=crop&q=80&w=800", // Business Handshake
+    "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800", // Scales
+    "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=800", // Gavel
+    "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&q=80&w=800", // Architecture
+    "https://images.unsplash.com/photo-1521791136064-7986c295944b?auto=format&fit=crop&q=80&w=800", // Tech Law
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", // Documents
+    "https://images.unsplash.com/photo-1473186578172-c141e6798ee4?auto=format&fit=crop&q=80&w=800", // Library
 ];
 
-function LegalCube({ position, textureUrl, delay }: { position: [number, number, number], textureUrl: string, delay: number }) {
+function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const texture = useLoader(THREE.TextureLoader, textureUrl);
+    const speed = 0.2 + (index % 3) * 0.1;
 
     useFrame((state) => {
         if (meshRef.current) {
-            meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.5 + delay) * 0.1;
-            meshRef.current.rotation.y = Math.cos(state.clock.elapsedTime * 0.3 + delay) * 0.1;
+            // Orbital rotation around the center
+            const time = state.clock.elapsedTime * speed;
+            const radius = Math.sqrt(position[0] ** 2 + position[2] ** 2);
+            const angle = Math.atan2(position[2], position[0]) + time * 0.2;
+
+            meshRef.current.position.x = Math.cos(angle) * radius;
+            meshRef.current.position.z = Math.sin(angle) * radius;
+
+            // Face the center
+            meshRef.current.lookAt(0, meshRef.current.position.y, 0);
+
+            // Subtle float
+            meshRef.current.position.y += Math.sin(state.clock.elapsedTime + index) * 0.005;
         }
     });
 
     return (
-        <Float speed={2} rotationIntensity={0.5} floatIntensity={1} position={position}>
-            <mesh ref={meshRef}>
-                <boxGeometry args={[2, 2, 2]} />
-                <meshStandardMaterial
-                    map={texture}
-                    metalness={0.7}
-                    roughness={0.2}
-                    emissive="#00e5ff"
-                    emissiveIntensity={0.05}
-                />
-                {/* Glow edges effect */}
-                <lineSegments>
-                    <edgesGeometry args={[new THREE.BoxGeometry(2, 2, 2)]} />
-                    <lineBasicMaterial color="#00e5ff" linewidth={2} transparent opacity={0.4} />
-                </lineSegments>
+        <mesh ref={meshRef} position={position}>
+            <boxGeometry args={[2, 2, 0.1]} />
+            <meshStandardMaterial
+                map={texture}
+                metalness={0.9}
+                roughness={0.1}
+                transparent
+                opacity={0.8}
+                emissive="#00e5ff"
+                emissiveIntensity={0.1}
+            />
+            {/* Golden Frame */}
+            <mesh position={[0, 0, -0.06]}>
+                <boxGeometry args={[2.1, 2.1, 0.05]} />
+                <meshStandardMaterial color="#c8a96e" metalness={1} roughness={0.1} />
             </mesh>
-        </Float>
+        </mesh>
     );
 }
 
-function CubeWall() {
-    const cubes = [];
-    const spacing = 4;
-    const rows = 3;
-    const cols = 4;
+function JurisprudenceCylinder() {
+    const count = 12;
+    const radius = 8;
+    const heightRange = 10;
 
-    for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-            cubes.push(
-                <LegalCube
-                    key={`${i}-${j}`}
-                    position={[(i - cols / 2 + 0.5) * spacing, (j - rows / 2 + 0.5) * spacing, Math.sin(i + j) * 2]}
-                    textureUrl={mediaAssets[(i + j) % mediaAssets.length]}
-                    delay={i * 0.5 + j * 0.3}
-                />
-            );
-        }
+    const frames = [];
+    for (let i = 0; i < count; i++) {
+        const angle = (i / count) * Math.PI * 2;
+        const x = Math.cos(angle) * radius;
+        const z = Math.sin(angle) * radius;
+        const y = (Math.random() - 0.5) * heightRange;
+
+        frames.push(
+            <GlassCube
+                key={i}
+                index={i}
+                position={[x, y, z]}
+                textureUrl={mediaAssets[i % mediaAssets.length]}
+            />
+        );
     }
 
-    return <group position={[0, 0, -5]}>{cubes}</group>;
+    return <group>{frames}</group>;
 }
 
-function BackgroundAtmosphere() {
+function LexPerspective() {
+    const groupRef = useRef<THREE.Group>(null);
+    const mouseRef = useRef({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            mouseRef.current.x = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseRef.current.y = (e.clientY / window.innerHeight - 0.5) * 2;
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    useFrame((state) => {
+        if (groupRef.current) {
+            // Slow rotation based on mouse
+            groupRef.current.rotation.y += (mouseRef.current.x * 0.5 - groupRef.current.rotation.y) * 0.05;
+            groupRef.current.rotation.x += (mouseRef.current.y * 0.2 - groupRef.current.rotation.x) * 0.05;
+        }
+    });
+
     return (
-        <>
-            <color attach="background" args={['#02040a']} />
-            <fog attach="fog" args={['#02040a', 10, 25]} />
-            <ambientLight intensity={0.2} />
-            <pointLight position={[10, 10, 10]} intensity={1.5} color="#00e5ff" />
-            <pointLight position={[-10, -10, -10]} intensity={0.8} color="#c8a96e" />
-            <Environment preset="night" />
-        </>
+        <group ref={groupRef}>
+            <JurisprudenceCylinder />
+            {/* Central Core Light */}
+            <pointLight intensity={2} color="#00e5ff" distance={20} />
+            <pointLight position={[0, 5, 0]} intensity={1} color="#c8a96e" />
+        </group>
     );
 }
 
@@ -102,48 +137,56 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
     }, []);
 
     return (
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#02040a]">
-            {/* 3D Engine Layer */}
-            <div className="absolute inset-0 z-0">
-                <Canvas shadows>
-                    <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
-                    <BackgroundAtmosphere />
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#02050a]">
+            {/* 3D Engine - Lex-360 Unique Cylindrical Orbit */}
+            <div className="absolute inset-0 z-0 opacity-70">
+                <Canvas dpr={[1, 2]}>
+                    <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={50} />
+                    <color attach="background" args={['#02050a']} />
+                    <fog attach="fog" args={['#02050a', 15, 30]} />
+
+                    <ambientLight intensity={0.4} />
+                    <spotLight position={[20, 20, 20]} angle={0.15} penumbra={1} intensity={1} color="#00e5ff" />
+
                     <Suspense fallback={null}>
-                        <CubeWall />
+                        <LexPerspective />
+                        <Environment preset="night" />
                     </Suspense>
                 </Canvas>
             </div>
 
             {/* Cinematic Overlays */}
             <div className="absolute inset-0 z-10 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(2,4,10,0.9)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#02040a] via-[#02040a]/40 to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(2,5,10,0.8)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#02050a] via-transparent to-transparent" />
+                {/* Lens Vignette */}
+                <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]" />
             </div>
 
             {/* Content Container */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
-                {/* Top Badge */}
+                {/* Badge - Minimalist Lex 360 */}
                 <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-3 px-8 py-2 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-[10px] font-extralight tracking-[0.5em] uppercase mb-16 backdrop-blur-3xl"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="inline-flex items-center gap-3 px-8 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-extralight tracking-[0.6em] uppercase mb-16 backdrop-blur-3xl shadow-[0_0_30px_rgba(0,229,255,0.05)]"
                 >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-pulse" />
-                    <ShieldCheck size={16} className="opacity-60" /> Jurisprudencia de Innovación
+                    <ShieldCheck size={16} className="opacity-40" /> Lex-360: Innovación sin límites
                 </motion.div>
 
-                {/* Phrases Cycle */}
-                <div className="h-[200px] md:h-[300px] flex items-center justify-center w-full mb-12">
+                {/* Brand/Phrases Reveal */}
+                <div className="h-[220px] md:h-[320px] flex items-center justify-center w-full mb-12">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, filter: 'blur(20px)', letterSpacing: '0.3em', scale: 1.1 }}
-                            animate={{ opacity: 1, filter: 'blur(0px)', letterSpacing: isBrand ? '-0.02em' : '0.15em', scale: 1 }}
-                            exit={{ opacity: 0, filter: 'blur(20px)', letterSpacing: '0.3em', scale: 0.9 }}
-                            transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
+                            initial={{ opacity: 0, filter: 'blur(30px)', scale: 1.15, y: 10 }}
+                            animate={{ opacity: 1, filter: 'blur(0px)', scale: 1, y: 0 }}
+                            exit={{ opacity: 0, filter: 'blur(30px)', scale: 0.85, y: -10 }}
+                            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                             className="text-center"
                         >
-                            <h1 className={`${isBrand ? "text-7xl md:text-9xl lg:text-[10rem] font-black italic tracking-tighter" : "text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.2em]"} text-white leading-[0.9] uppercase relative drop-shadow-[0_0_50px_rgba(255,255,255,0.3)]`}>
+                            <h1 className={`${isBrand ? "text-7xl md:text-9xl lg:text-[11rem] font-black tracking-tighter italic" : "text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.25em]"} text-white leading-[0.85] uppercase relative drop-shadow-[0_0_60px_rgba(255,255,255,0.2)]`}>
                                 {isBrand ? (
                                     <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer">
                                         {phrases[index]}
@@ -164,24 +207,23 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                     </AnimatePresence>
                 </div>
 
-                {/* Cinematic Subtitle */}
+                {/* Cinematic Tagline */}
                 <motion.p
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.4 }}
-                    transition={{ delay: 1 }}
-                    className="text-white text-[11px] md:text-xs max-w-2xl text-center mb-16 leading-relaxed font-extralight tracking-[1.2em] uppercase italic"
+                    animate={{ opacity: 0.35 }}
+                    className="text-white text-[11px] md:text-xs max-w-2xl text-center mb-20 leading-relaxed font-extralight tracking-[1.4em] uppercase italic"
                 >
-                    "Fidelidad. Inteligencia. Resultados."
+                    "Fidelidad. Inteligencia. Trascendencia."
                 </motion.p>
 
-                {/* CTA Buttons */}
+                {/* CTA Section */}
                 <div className="flex flex-col sm:flex-row gap-12 justify-center items-center">
                     {children}
                 </div>
             </div>
 
-            {/* Cinematic Film Overlay */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.06] z-30 mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+            {/* Cinematic Overlay FX */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.08] z-30 mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
         </div>
     );
 }

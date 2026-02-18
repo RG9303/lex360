@@ -74,24 +74,28 @@ function JurisprudenceCylinder() {
     const radius = 8;
     const heightRange = 10;
 
-    const frames = [];
-    for (let i = 0; i < count; i++) {
-        const angle = (i / count) * Math.PI * 2;
-        const x = Math.cos(angle) * radius;
-        const z = Math.sin(angle) * radius;
-        const y = (Math.random() - 0.5) * heightRange;
+    const cubeData = React.useMemo(() => {
+        return Array.from({ length: count }).map((_, i) => {
+            const angle = (i / count) * Math.PI * 2;
+            const x = Math.cos(angle) * radius;
+            const z = Math.sin(angle) * radius;
+            const y = (Math.random() - 0.5) * heightRange;
+            return { x, y, z, textureUrl: mediaAssets[i % mediaAssets.length] };
+        });
+    }, []);
 
-        frames.push(
-            <GlassCube
-                key={i}
-                index={i}
-                position={[x, y, z]}
-                textureUrl={mediaAssets[i % mediaAssets.length]}
-            />
-        );
-    }
-
-    return <group>{frames}</group>;
+    return (
+        <group>
+            {cubeData.map((data, i) => (
+                <GlassCube
+                    key={i}
+                    index={i}
+                    position={[data.x, data.y, data.z]}
+                    textureUrl={data.textureUrl}
+                />
+            ))}
+        </group>
+    );
 }
 
 function LexPerspective() {
@@ -127,9 +131,11 @@ function LexPerspective() {
 
 export default function HeroAnimation({ children }: { children?: React.ReactNode }) {
     const [index, setIndex] = useState(0);
+    const [mounted, setMounted] = useState(false);
     const isBrand = index === 0;
 
     useEffect(() => {
+        setMounted(true);
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % phrases.length);
         }, 6000);
@@ -140,19 +146,21 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#02050a]">
             {/* 3D Engine - Lex-360 Unique Cylindrical Orbit */}
             <div className="absolute inset-0 z-0 opacity-70">
-                <Canvas dpr={[1, 2]}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={50} />
-                    <color attach="background" args={['#02050a']} />
-                    <fog attach="fog" args={['#02050a', 15, 30]} />
+                {mounted && (
+                    <Canvas dpr={[1, 2]}>
+                        <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={50} />
+                        <color attach="background" args={['#02050a']} />
+                        <fog attach="fog" args={['#02050a', 15, 30]} />
 
-                    <ambientLight intensity={0.4} />
-                    <spotLight position={[20, 20, 20]} angle={0.15} penumbra={1} intensity={1} color="#00e5ff" />
+                        <ambientLight intensity={0.4} />
+                        <spotLight position={[20, 20, 20]} angle={0.15} penumbra={1} intensity={1} color="#00e5ff" />
 
-                    <Suspense fallback={null}>
-                        <LexPerspective />
-                        <Environment preset="night" />
-                    </Suspense>
-                </Canvas>
+                        <Suspense fallback={null}>
+                            <LexPerspective />
+                            <Environment preset="night" />
+                        </Suspense>
+                    </Canvas>
+                )}
             </div>
 
             {/* Cinematic Overlays */}

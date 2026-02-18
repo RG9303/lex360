@@ -39,9 +39,9 @@ const phrases = [
 ];
 
 const mediaAssets = [
-    "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=60&w=600", // Meeting
-    "https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=60&w=600", // Workspace
-    "https://images.unsplash.com/photo-1589216532372-1c2a367900d9?auto=format&fit=crop&q=60&w=600", // Professional Motion
+    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=60&w=800", // Lawyer in office
+    "https://images.unsplash.com/photo-1453723023592-224419f7065a?auto=format&fit=crop&q=60&w=800", // Meeting room
+    "https://images.unsplash.com/photo-1521791136064-7986c295b2ad?auto=format&fit=crop&q=60&w=800", // Handshake/Agreement
 ];
 
 function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
@@ -78,24 +78,39 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
     });
 
     return (
-        <mesh ref={meshRef} position={position}>
-            <boxGeometry args={[2, 2, 0.1]} />
-            <meshStandardMaterial
-                map={texture || undefined}
-                color={!texture ? "#001a2a" : "#fff"}
-                metalness={0.9}
-                roughness={0.1}
-                transparent
-                opacity={0.8}
-                emissive="#00e5ff"
-                emissiveIntensity={0.1}
-            />
-            {/* Golden Frame */}
-            <mesh position={[0, 0, -0.06]}>
-                <boxGeometry args={[2.1, 2.1, 0.05]} />
+        <group ref={meshRef} position={position}>
+            {/* Front Panel */}
+            <mesh>
+                <boxGeometry args={[2, 2, 0.05]} />
+                <meshStandardMaterial
+                    map={texture || undefined}
+                    color={!texture ? "#001a2a" : "#fff"}
+                    metalness={0.7}
+                    roughness={0.2}
+                    transparent
+                    opacity={0.9}
+                    emissive="#00e5ff"
+                    emissiveIntensity={0.05}
+                />
+            </mesh>
+            {/* Back Panel (So imagery is visible from behind) */}
+            <mesh rotation={[0, Math.PI, 0]} position={[0, 0, -0.01]}>
+                <boxGeometry args={[2, 2, 0.05]} />
+                <meshStandardMaterial
+                    map={texture || undefined}
+                    color={!texture ? "#001a2a" : "#fff"}
+                    metalness={0.7}
+                    roughness={0.2}
+                    transparent
+                    opacity={0.9}
+                />
+            </mesh>
+            {/* Golden Frame - Centered to wrap both */}
+            <mesh position={[0, 0, -0.03]}>
+                <boxGeometry args={[2.05, 2.05, 0.08]} />
                 <meshStandardMaterial color="#c8a96e" metalness={1} roughness={0.1} />
             </mesh>
-        </mesh>
+        </group>
     );
 }
 
@@ -227,7 +242,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                             className="text-center px-4"
                         >
-                            <h1 className={`${isBrand ? "text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter" : "text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em]"} text-white leading-[1.2] uppercase relative drop-shadow-[0_20px_50px_rgba(200,169,110,0.3)]`}>
+                            <h1 className={`${isBrand ? "text-6xl md:text-8xl lg:text-[8.5rem] font-black tracking-tighter" : "text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em]"} text-white leading-[1.2] uppercase relative drop-shadow-[0_20px_50px_rgba(200,169,110,0.3)]`}>
                                 {isBrand ? (
                                     <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer inline-flex items-baseline gap-2">
                                         LEX 360<span className="text-[0.6em] leading-none">°</span>

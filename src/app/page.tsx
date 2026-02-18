@@ -44,7 +44,7 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-950">
+    <main className="min-h-screen bg-[#02050a]">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-lg bg-white/5 border-b border-white/5">
         <motion.div
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* Quienes Somos Section */}
-      <section id="quienes-somos" className="py-32 bg-white dark:bg-slate-950 relative overflow-hidden">
+      <section id="quienes-somos" className="py-32 bg-[#02050a] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
@@ -113,7 +113,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-[10px] font-black text-gold uppercase tracking-[0.5em] mb-8">¿Quiénes somos?</h2>
+                <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-8">¿Quiénes somos?</h2>
                 <h3 className="text-3xl md:text-5xl font-black text-primary dark:text-white leading-tight mb-8 tracking-tighter">
                   Estrategia Jurídica <br /> con Visión 360°
                 </h3>
@@ -140,7 +140,7 @@ export default function Home() {
                   "Desde nuestra fundación, trabajamos con un principio esencial: la justicia debe ser tan <span className="text-gold">precisa como humana</span>."
                 </p>
 
-                <h4 className="text-[9px] font-black text-primary dark:text-white uppercase tracking-[0.3em] mb-10 border-b border-gold/30 pb-4 inline-block">
+                <h4 className="text-xs font-black text-primary dark:text-white uppercase tracking-[0.3em] mb-10 border-b border-gold/30 pb-4 inline-block">
                   Objetivos Estratégicos
                 </h4>
 
@@ -177,7 +177,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="servicios" className="py-32 bg-slate-50 dark:bg-slate-900/30">
+      <section id="servicios" className="py-32 bg-[#02050a]">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,9 +186,9 @@ export default function Home() {
             className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
           >
             <div className="max-w-2xl">
-              <h2 className="text-[10px] font-black text-gold uppercase tracking-[0.5em] mb-6">Especialización</h2>
-              <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">Servicios Legales Premium</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-lg font-light">Soluciones integrales con el respaldo tecnológico de Lex-360.</p>
+              <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-6">Especialización</h2>
+              <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Servicios Legales Premium</h3>
+              <p className="text-slate-400 text-lg font-light">Soluciones integrales con el respaldo tecnológico de Lex-360.</p>
             </div>
           </motion.div>
 
@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* AI Trust Section */}
-      <section className="py-32 bg-primary text-white relative overflow-hidden">
+      <section className="py-32 bg-[#02050a] text-white relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-gold/5 opacity-50"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">

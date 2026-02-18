@@ -101,148 +101,167 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Quienes Somos Section */}
-      <section id="quienes-somos" className="py-32 bg-[#02050a] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
-            <div className="lg:col-span-5">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-8">¿Quiénes somos?</h2>
-                <h3 className="text-3xl md:text-5xl font-black text-primary dark:text-white leading-tight mb-8 tracking-tighter">
-                  Estrategia Jurídica <br /> con Visión 360°
-                </h3>
-                <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-light">
-                  <p>
-                    En <span className="font-bold text-primary dark:text-white">Lex 360° Bufete de Abogados</span>, entendemos que el derecho no se limita a la interpretación de las leyes, sino que abarca la comprensión profunda de las personas y sus contextos.
-                  </p>
-                  <p>
-                    Nacimos con la visión de ofrecer asesoría jurídica integral que combina la experiencia tradicional del litigio con la innovación tecnológica.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+      {/* Atmospheric Mid-Section Container */}
+      <div className="relative">
+        {/* Background Layer with Cinematic Justice Scales */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-fixed bg-center opacity-[0.22] mix-blend-luminosity scale-110"
+            style={{ filter: 'grayscale(100%) brightness(0.7) contrast(1.1)' }}
+          />
+          {/* Top Gradient - Blend from Hero (Obsidian) */}
+          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#02050a] via-[#02050a]/80 to-transparent" />
+          {/* Bottom Gradient - Blend to Footer (Obsidian) */}
+          <div className="absolute bottom-0 inset-x-0 h-96 bg-gradient-to-t from-[#02050a] via-[#02050a]/90 to-transparent" />
+          {/* Subtle Noise/Atmosphere Overlay */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.05]" />
+        </div>
 
-            <div className="lg:col-span-7">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-slate-50 dark:bg-white/[0.02] p-8 md:p-16 rounded-[3rem] border border-slate-200 dark:border-white/5 shadow-2xl"
-              >
-                <p className="text-slate-500 dark:text-slate-300 text-xl md:text-2xl mb-12 italic font-light leading-relaxed">
-                  "Desde nuestra fundación, trabajamos con un principio esencial: la justicia debe ser tan <span className="text-gold">precisa como humana</span>."
-                </p>
-
-                <h4 className="text-xs font-black text-primary dark:text-white uppercase tracking-[0.3em] mb-10 border-b border-gold/30 pb-4 inline-block">
-                  Objetivos Estratégicos
-                </h4>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                  {[
-                    { title: 'Cobertura Total', desc: 'Expertos de primer nivel en todas las áreas del derecho mexicano.' },
-                    { title: 'Visión Preventiva', desc: 'Modelo "Auditoría Legal 360°" enfocado en la prevención de litigios.' },
-                    { title: 'Innovación Tecnológica', desc: 'Herramientas LegalTech para un servicio ágil y transparente.' },
-                    { title: 'Colaboración Interna', desc: 'Cultura multidisciplinaria para análisis legales integrales.' },
-                    { title: 'Referente de Opinión', desc: 'Fuente de análisis estratégico sobre cambios legislativos.' }
-                  ].map((obj, i) => (
-                    <motion.div
-                      key={i}
-                      className="group"
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + (i * 0.1) }}
-                    >
-                      <h5 className="font-bold text-primary dark:text-white mb-3 flex gap-3 transition-all">
-                        <span className="text-gold">0{i + 1}.</span>
-                        {obj.title}
-                      </h5>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-light">
-                        {obj.desc}
+        {/* Content Layers (Sections 2 to 4) */}
+        <div className="relative z-10">
+          {/* Quienes Somos Section */}
+          <section id="quienes-somos" className="py-32 bg-transparent relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
+            <div className="container mx-auto px-6">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+                <div className="lg:col-span-5">
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-8">¿Quiénes somos?</h2>
+                    <h3 className="text-3xl md:text-5xl font-black text-primary dark:text-white leading-tight mb-8 tracking-tighter">
+                      Estrategia Jurídica <br /> con Visión 360°
+                    </h3>
+                    <div className="space-y-6 text-slate-400 text-lg leading-relaxed font-light">
+                      <p>
+                        En <span className="font-bold text-white">Lex 360° Bufete de Abogados</span>, entendemos que el derecho no se limita a la interpretación de las leyes, sino que abarca la comprensión profunda de las personas y sus contextos.
                       </p>
-                    </motion.div>
-                  ))}
+                      <p>
+                        Nacimos con la visión de ofrecer asesoría jurídica integral que combina la experiencia tradicional del litigio con la innovación tecnológica.
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <div className="lg:col-span-7">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="bg-white/[0.03] p-8 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-md"
+                  >
+                    <p className="text-slate-300 text-xl md:text-2xl mb-12 italic font-light leading-relaxed">
+                      "Desde nuestra fundación, trabajamos con un principio esencial: la justicia debe ser tan <span className="text-gold">precisa como humana</span>."
+                    </p>
+
+                    <h4 className="text-xs font-bold text-white uppercase tracking-[0.3em] mb-10 border-b border-gold/30 pb-4 inline-block">
+                      Objetivos Estratégicos
+                    </h4>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                      {[
+                        { title: 'Cobertura Total', desc: 'Expertos de primer nivel en todas las áreas del derecho mexicano.' },
+                        { title: 'Visión Preventiva', desc: 'Modelo "Auditoría Legal 360°" enfocado en la prevención de litigios.' },
+                        { title: 'Innovación Tecnológica', desc: 'Herramientas LegalTech para un servicio ágil y transparente.' },
+                        { title: 'Colaboración Interna', desc: 'Cultura multidisciplinaria para análisis legales integrales.' },
+                        { title: 'Referente de Opinión', desc: 'Fuente de análisis estratégico sobre cambios legislativos.' }
+                      ].map((obj, i) => (
+                        <motion.div
+                          key={i}
+                          className="group"
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.3 + (i * 0.1) }}
+                        >
+                          <h5 className="font-bold text-white mb-3 flex gap-3 transition-all">
+                            <span className="text-gold">0{i + 1}.</span>
+                            {obj.title}
+                          </h5>
+                          <p className="text-sm text-slate-400 leading-relaxed font-light">
+                            {obj.desc}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Services Section */}
+          <section id="servicios" className="py-32 bg-transparent relative">
+            <div className="container mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
+              >
+                <div className="max-w-2xl">
+                  <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-6">Especialización</h2>
+                  <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Servicios Legales Premium</h3>
+                  <p className="text-slate-400 text-lg font-light">Soluciones integrales con el respaldo tecnológico de Lex-360.</p>
                 </div>
               </motion.div>
+
+              <ServicesCarousel />
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Services Section */}
-      <section id="servicios" className="py-32 bg-[#02050a]">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
-          >
-            <div className="max-w-2xl">
-              <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-6">Especialización</h2>
-              <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Servicios Legales Premium</h3>
-              <p className="text-slate-400 text-lg font-light">Soluciones integrales con el respaldo tecnológico de Lex-360.</p>
-            </div>
-          </motion.div>
-
-          <ServicesCarousel />
-        </div>
-      </section>
-
-      {/* AI Trust Section */}
-      <section className="py-32 bg-[#02050a] text-white relative overflow-hidden border-t border-white/5">
-        <div className="absolute inset-0 bg-gold/5 opacity-50"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
-              <div className="space-y-10">
-                {[
-                  { icon: <Landmark />, title: 'Estrategia Multidisciplinaria', desc: 'Análisis profundo de cada caso para ofrecer soluciones legales integrales y personalizadas.' },
-                  { icon: <Scale />, title: 'Defensa Ética y Resultados', desc: 'Compromiso total con la obtención de resultados estratégicos bajo los más altos estándares éticos.' },
-                  { icon: <ShieldCheck />, title: 'Protección Patrimonial 360°', desc: 'Especialistas en salvaguardar sus activos e intereses ante cualquier contingencia legal.' }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-8">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold shadow-lg">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold mb-2 group-hover:text-gold transition-colors">{item.title}</h4>
-                      <p className="text-slate-400 leading-relaxed font-light">{item.desc}</p>
-                    </div>
+          {/* AI Trust Section */}
+          <section className="py-32 bg-transparent text-white relative overflow-hidden border-t border-white/5">
+            <div className="container mx-auto px-6 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
+                  <div className="space-y-10">
+                    {[
+                      { icon: <Landmark />, title: 'Estrategia Multidisciplinaria', desc: 'Análisis profundo de cada caso para ofrecer soluciones legales integrales y personalizadas.' },
+                      { icon: <Scale />, title: 'Defensa Ética y Resultados', desc: 'Compromiso total con la obtención de resultados estratégicos bajo los más altos estándares éticos.' },
+                      { icon: <ShieldCheck />, title: 'Protección Patrimonial 360°', desc: 'Especialistas en salvaguardar sus activos e intereses ante cualquier contingencia legal.' }
+                    ].map((item, i) => (
+                      <div key={i} className="flex gap-8">
+                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold shadow-lg">
+                          {item.icon}
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-bold mb-2 group-hover:text-gold transition-colors">{item.title}</h4>
+                          <p className="text-slate-400 leading-relaxed font-light">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </motion.div>
+                </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="glass-card bg-white/5 border-white/10 p-16 rounded-[4rem] relative shadow-2xl"
-            >
-              <div className="absolute -top-20 -right-20 w-80 h-80 bg-gold/10 rounded-full blur-[100px]"></div>
-              <div className="text-center">
-                <Scale className="mx-auto w-20 h-20 text-gold mb-10 opacity-30" />
-                <p className="text-2xl md:text-3xl font-light italic text-slate-300 leading-relaxed">
-                  "Nuestra visión integra la maestría del derecho tradicional con la agilidad de la era digital para proteger su <span className="text-white font-medium">patrimonio y futuro</span>."
-                </p>
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="glass-card bg-white/5 border-white/10 p-16 rounded-[4rem] relative shadow-2xl backdrop-blur-md"
+                >
+                  <div className="absolute -top-20 -right-20 w-80 h-80 bg-gold/10 rounded-full blur-[100px]"></div>
+                  <div className="text-center">
+                    <Scale className="mx-auto w-20 h-20 text-gold mb-10 opacity-30" />
+                    <p className="text-2xl md:text-3xl font-light italic text-slate-300 leading-relaxed">
+                      "Nuestra visión integra la maestría del derecho tradicional con la agilidad de la era digital para proteger su <span className="text-white font-medium">patrimonio y futuro</span>."
+                    </p>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
 
       <footer className="relative py-24 bg-slate-950 text-white overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-primary/20 pointer-events-none"></div>

@@ -106,10 +106,10 @@ export default function Home() {
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
         {/* Floating 3D Justice Scale (Golden) - Now actual 3D, Move to Right */}
-        <div className="absolute top-[12%] -right-[15%] md:right-[-5%] lg:right-0 z-0 pointer-events-none w-full max-w-7xl aspect-square opacity-100">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-100">
           <div className="w-full h-full relative">
             <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
-              <PerspectiveCamera makeDefault position={[5, 4, 38]} fov={35} />
+              <PerspectiveCamera makeDefault position={[8, 4, 52]} fov={35} />
               <ambientLight intensity={0.8} />
               <spotLight position={[10, 20, 10]} angle={0.3} penumbra={1} intensity={2} color="#c8a96e" />
               <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" />
@@ -119,8 +119,8 @@ export default function Home() {
 
               <Environment preset="night" />
             </Canvas>
-            {/* Ambient Glow behind scale */}
-            <div className="absolute right-1/4 top-1/4 w-96 h-96 bg-gold/10 blur-[130px] rounded-full -z-10" />
+            {/* Ambient Glow behind scale - shifted to match camera placement */}
+            <div className="absolute right-[5%] top-[20%] w-[500px] h-[500px] bg-gold/5 blur-[150px] rounded-full -z-10" />
           </div>
         </div>
 
@@ -240,12 +240,12 @@ export default function Home() {
                   <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
                   <div className="space-y-10">
                     {/*
-### Solución de Despliegue y Visibilidad (Build & Visibility Fixes)
-- **Corrección de "Corte" (Clipping)**: Se amplió el contenedor del Canvas de `max-w-3xl` a `max-w-5xl` y se ajustó la distancia de la cámara (`z: 28`) para asegurar que la viga y los platillos de la balanza sean visibles en su totalidad sin recortes laterales.
-- **Build Fixes**: Refactorización de `HeroAnimation.tsx` y corrección de entidades HTML para permitir el despliegue exitoso en Vercel.
+### Refinamiento de Posición y Encuadre
+- **Balance Visual**: Se desplazó la balanza hacia la izquierda (ajuste de cámara `X: 5`) para eliminar el espacio vacío y mejorar la integración con el texto.
+- **Visibilidad Total**: Se alejó la cámara a `Z: 38` y se amplió el lienzo a `max-w-7xl`, garantizando que **ningún componente** de la balanza se corte en los bordes.
 
 ### Resultado Final
-La **Balanza 3D Ornamentada** ahora se muestra completa, perfectamente encuadrada en el lado derecho de la web, con todos sus detalles de orfebrería visibles y sin cortes bruscos.
+La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equilibrada y sin interferir con la legibilidad, tal como una pieza central de diseño premium.
 */}
                     {[
                       { icon: <Landmark />, title: 'Estrategia Multidisciplinaria', desc: 'Análisis profundo de cada caso para ofrecer soluciones legales integrales y personalizadas.' },

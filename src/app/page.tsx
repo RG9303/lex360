@@ -106,10 +106,10 @@ export default function Home() {
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
         {/* Floating 3D Justice Scale (Golden) - Now actual 3D, Move to Right */}
-        <div className="absolute top-[20%] -right-[10%] z-0 pointer-events-none w-full max-w-3xl aspect-square opacity-100">
+        <div className="absolute top-[15%] -right-[5%] lg:right-0 z-0 pointer-events-none w-full max-w-5xl aspect-square opacity-100">
           <div className="w-full h-full relative">
             <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
-              <PerspectiveCamera makeDefault position={[0, 4, 22]} fov={35} />
+              <PerspectiveCamera makeDefault position={[0, 4, 28]} fov={35} />
               <ambientLight intensity={0.8} />
               <spotLight position={[10, 20, 10]} angle={0.3} penumbra={1} intensity={2} color="#c8a96e" />
               <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" />

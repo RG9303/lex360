@@ -35,12 +35,12 @@ export default function Home() {
     }
   };
 
-  const itemVariants: any = {
+  const itemVariants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" as any }
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
@@ -179,7 +179,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                       {[
                         { title: 'Cobertura Total', desc: 'Expertos de primer nivel en todas las áreas del derecho mexicano.' },
-                        { title: 'Visión Preventiva', desc: 'Modelo "Auditoría Legal 360°" enfocado en la prevención de litigios.' },
+                        { title: 'Visión Preventiva', desc: 'Modelo &quot;Auditoría Legal 360°&quot; enfocado en la prevención de litigios.' },
                         { title: 'Innovación Tecnológica', desc: 'Herramientas LegalTech para un servicio ágil y transparente.' },
                         { title: 'Colaboración Interna', desc: 'Cultura multidisciplinaria para análisis legales integrales.' },
                         { title: 'Referente de Opinión', desc: 'Fuente de análisis estratégico sobre cambios legislativos.' }

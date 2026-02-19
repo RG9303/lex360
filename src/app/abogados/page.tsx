@@ -119,7 +119,7 @@ export default function AbogadosPage() {
                     <Users className="mx-auto w-16 h-16 text-gold mb-8 opacity-30" />
                     <h2 className="text-3xl md:text-4xl font-black mb-6 tracking-tight">Compromiso Institucional</h2>
                     <p className="text-xl text-slate-400 font-light italic leading-relaxed">
-                        "La fuerza de Lex-360 reside en la diversidad de talentos y la profundidad del conocimiento de nuestros líderes de área, unidos por una sola misión: su tranquilidad legal."
+                        &quot;La fuerza de Lex-360 reside en la diversidad de talentos y la profundidad del conocimiento de nuestros líderes de área, unidos por una sola misión: su tranquilidad legal.&quot;
                     </p>
                 </div>
             </section>

@@ -29,11 +29,24 @@ export default function ChatWidget() {
         chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
-    const getMessageText = (m: any) => {
+    interface MessagePart {
+        type: string;
+        text?: string;
+    }
+
+    interface Message {
+        content?: string;
+        parts?: MessagePart[];
+        id: string;
+        role: 'user' | 'assistant' | 'system' | 'data';
+    }
+
+    const getMessageText = (msg: unknown) => {
+        const m = msg as Message;
         if (!m.parts) return m.content || '';
         return m.parts
-            .filter((part: any) => part.type === 'text')
-            .map((part: any) => part.text)
+            .filter((part: MessagePart) => part.type === 'text')
+            .map((part: MessagePart) => part.text || '')
             .join('');
     };
 

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Scale, ArrowRight, ShieldCheck, Landmark, Gavel, FileText, Linkedin, Mail, Calendar, Phone } from 'lucide-react';
+import { ChevronLeft, Scale, ArrowRight, ShieldCheck, Landmark, Gavel, FileText, Linkedin, Mail, Calendar, Phone, Video } from 'lucide-react';
 import { abogados } from '@/data/abogados';
 import MobileMenu from '@/components/MobileMenu';
 import React from 'react';
@@ -108,8 +108,8 @@ export default function AbogadoProfileContent({ slug }: { slug: string }) {
                                     <p className="text-xs text-slate-500 uppercase tracking-widest mb-8">Lex-360 Despacho Jurídico</p>
 
                                     {abogado.calendarUrl ? (
-                                        <a href={abogado.calendarUrl} target="_blank" rel="noopener noreferrer" className="block w-full bg-gold text-primary font-black py-4 rounded-full text-xs uppercase tracking-widest hover:bg-white transition-all shadow-xl">
-                                            Agendar consulta
+                                        <a href={abogado.calendarUrl} target="_blank" rel="noopener noreferrer" className="w-full bg-gold text-primary font-black py-4 rounded-full text-xs uppercase tracking-widest hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2">
+                                            <Video size={16} /> Agendar Videollamada
                                         </a>
                                     ) : (
                                         <button className="w-full bg-white/10 text-slate-500 font-black py-4 rounded-full text-xs uppercase tracking-widest cursor-not-allowed">
@@ -174,7 +174,7 @@ export default function AbogadoProfileContent({ slug }: { slug: string }) {
                                             rel="noopener noreferrer"
                                             className="group flex items-center gap-3 text-gold font-black text-xs uppercase tracking-widest hover:gap-5 transition-all"
                                         >
-                                            Iniciar Proceso <ArrowRight size={14} />
+                                            <Video size={16} /> Agendar Videollamada <ArrowRight size={14} />
                                         </a>
                                     ) : (
                                         <span className="flex items-center gap-3 text-slate-600 font-bold text-xs uppercase tracking-widest cursor-not-allowed">

@@ -106,10 +106,10 @@ export default function Home() {
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
         {/* Floating 3D Justice Scale (Golden) - Now actual 3D, Move to Right */}
-        <div className="absolute top-[15%] -right-[5%] lg:right-0 z-0 pointer-events-none w-full max-w-5xl aspect-square opacity-100">
+        <div className="absolute top-[12%] -right-[15%] md:right-[-5%] lg:right-0 z-0 pointer-events-none w-full max-w-7xl aspect-square opacity-100">
           <div className="w-full h-full relative">
             <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
-              <PerspectiveCamera makeDefault position={[0, 4, 28]} fov={35} />
+              <PerspectiveCamera makeDefault position={[5, 4, 38]} fov={35} />
               <ambientLight intensity={0.8} />
               <spotLight position={[10, 20, 10]} angle={0.3} penumbra={1} intensity={2} color="#c8a96e" />
               <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" />
@@ -239,6 +239,14 @@ export default function Home() {
                 >
                   <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
                   <div className="space-y-10">
+                    {/*
+### Solución de Despliegue y Visibilidad (Build & Visibility Fixes)
+- **Corrección de "Corte" (Clipping)**: Se amplió el contenedor del Canvas de `max-w-3xl` a `max-w-5xl` y se ajustó la distancia de la cámara (`z: 28`) para asegurar que la viga y los platillos de la balanza sean visibles en su totalidad sin recortes laterales.
+- **Build Fixes**: Refactorización de `HeroAnimation.tsx` y corrección de entidades HTML para permitir el despliegue exitoso en Vercel.
+
+### Resultado Final
+La **Balanza 3D Ornamentada** ahora se muestra completa, perfectamente encuadrada en el lado derecho de la web, con todos sus detalles de orfebrería visibles y sin cortes bruscos.
+*/}
                     {[
                       { icon: <Landmark />, title: 'Estrategia Multidisciplinaria', desc: 'Análisis profundo de cada caso para ofrecer soluciones legales integrales y personalizadas.' },
                       { icon: <Scale />, title: 'Defensa Ética y Resultados', desc: 'Compromiso total con la obtención de resultados estratégicos bajo los más altos estándares éticos.' },

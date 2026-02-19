@@ -105,21 +105,22 @@ export default function Home() {
 
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
-        {/* Floating 3D Justice Scale (Golden) - Now actual 3D */}
-        <div className="absolute top-[25%] -left-[10%] z-0 pointer-events-none w-full max-w-2xl aspect-square opacity-70">
+        {/* Floating 3D Justice Scale (Golden) - Now actual 3D, Move to Right */}
+        <div className="absolute top-[20%] -right-[10%] z-0 pointer-events-none w-full max-w-3xl aspect-square opacity-100">
           <div className="w-full h-full relative">
             <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
-              <PerspectiveCamera makeDefault position={[0, 4, 18]} fov={40} />
-              <ambientLight intensity={0.6} />
-              <spotLight position={[10, 15, 10]} angle={0.2} penumbra={1} intensity={1.5} color="#c8a96e" />
-              <pointLight position={[-10, 5, -10]} intensity={0.5} color="#c8a96e" />
+              <PerspectiveCamera makeDefault position={[0, 4, 22]} fov={35} />
+              <ambientLight intensity={0.8} />
+              <spotLight position={[10, 20, 10]} angle={0.3} penumbra={1} intensity={2} color="#c8a96e" />
+              <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" />
+              <pointLight position={[-10, 5, -10]} intensity={0.8} color="#c8a96e" />
 
               <JusticeScaleModel />
 
               <Environment preset="night" />
             </Canvas>
             {/* Ambient Glow behind scale */}
-            <div className="absolute left-1/4 top-1/4 w-80 h-80 bg-gold/5 blur-[120px] rounded-full -z-10" />
+            <div className="absolute right-1/4 top-1/4 w-96 h-96 bg-gold/10 blur-[130px] rounded-full -z-10" />
           </div>
         </div>
 
@@ -363,6 +364,6 @@ export default function Home() {
       </footer>
 
       <ChatWidget />
-    </main>
+    </main >
   );
 }

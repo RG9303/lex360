@@ -2,13 +2,13 @@
 
 import { useChat } from '@ai-sdk/react';
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, User, Bot, Calendar, Scale, ArrowRight } from 'lucide-react';
+import { MessageCircle, X, Send, User, Bot, Scale, ArrowRight, HelpCircle, MessageSquare, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
-    const [userData, setUserData] = useState({ name: '', contact: '', category: '', caseDescription: '', step: 'initial' as 'initial' | 'name' | 'contact' | 'case' | 'completed' });
+    const [userData, setUserData] = useState({ name: '', contact: '', category: '', caseDescription: '', step: 'welcome' as 'welcome' | 'faqs' | 'initial' | 'name' | 'contact' | 'case' | 'completed' });
     const { messages, sendMessage, status, setMessages } = useChat();
     const chatEndRef = useRef<HTMLDivElement>(null);
 
@@ -82,7 +82,8 @@ Descripción: ${val}`
         { id: 'case', label: 'Caso' }
     ];
 
-    const currentStepIndex = steps.findIndex(s => s.id === (userData.step === 'completed' ? 'case' : userData.step));
+    const showSteps = ['initial', 'name', 'contact', 'case'].includes(userData.step);
+    const currentStepIndex = steps.findIndex(s => s.id === userData.step);
 
     return (
         <div className="fixed bottom-6 right-6 z-[9999] font-sans">
@@ -118,7 +119,7 @@ Descripción: ${val}`
                         </div>
 
                         {/* Step Indicator */}
-                        {userData.step !== 'completed' && (
+                        {showSteps && (
                             <div className="flex px-8 py-4 gap-2 border-b border-white/5 bg-white/[0.02]">
                                 {steps.map((s, i) => (
                                     <div
@@ -131,18 +132,131 @@ Descripción: ${val}`
 
                         {/* Messages / Form Area */}
                         <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                            {userData.step === 'welcome' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="py-2 space-y-6"
+                                >
+                                    <div className="text-center space-y-3 mb-6 mt-2">
+                                        <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[#c8a96e]/20 to-transparent rounded-2xl flex items-center justify-center border border-[#c8a96e]/30">
+                                            <Bot className="text-[#c8a96e]" size={32} />
+                                        </div>
+                                        <h4 className="text-white/90 font-bold tracking-tight text-lg">Asistente Lex-360</h4>
+                                        <p className="text-sm text-white/50 px-6">¿En qué podemos ayudarle hoy?</p>
+                                    </div>
+                                    <div className="space-y-3 px-2">
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            onClick={() => setUserData(prev => ({ ...prev, step: 'initial' }))}
+                                            className="w-full text-left bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 p-4 rounded-2xl transition-all group flex items-center justify-between shadow-sm"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl bg-white/5 text-white/70 flex items-center justify-center group-hover:bg-[#c8a96e]/20 group-hover:text-[#c8a96e] transition-colors">
+                                                    <Scale size={20} />
+                                                </div>
+                                                <div>
+                                                    <div className="text-[13px] text-white/90 font-bold uppercase tracking-wider">Evaluar mi Caso</div>
+                                                    <div className="text-[11px] text-white/40 mt-0.5">Diagnóstico legal 360°</div>
+                                                </div>
+                                            </div>
+                                            <ChevronRight size={18} className="text-white/20 group-hover:text-[#c8a96e]" />
+                                        </motion.button>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            onClick={() => setUserData(prev => ({ ...prev, step: 'faqs' }))}
+                                            className="w-full text-left bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 p-4 rounded-2xl transition-all group flex items-center justify-between shadow-sm"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl bg-white/5 text-white/70 flex items-center justify-center group-hover:bg-[#c8a96e]/20 group-hover:text-[#c8a96e] transition-colors">
+                                                    <HelpCircle size={20} />
+                                                </div>
+                                                <div>
+                                                    <div className="text-[13px] text-white/90 font-bold uppercase tracking-wider">Preguntas Comunes</div>
+                                                    <div className="text-[11px] text-white/40 mt-0.5">Respuestas rápidas</div>
+                                                </div>
+                                            </div>
+                                            <ChevronRight size={18} className="text-white/20 group-hover:text-[#c8a96e]" />
+                                        </motion.button>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            onClick={() => setUserData(prev => ({ ...prev, step: 'completed' }))}
+                                            className="w-full text-left bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 p-4 rounded-2xl transition-all group flex items-center justify-between shadow-sm"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl bg-white/5 text-white/70 flex items-center justify-center group-hover:bg-[#c8a96e]/20 group-hover:text-[#c8a96e] transition-colors">
+                                                    <MessageSquare size={20} />
+                                                </div>
+                                                <div>
+                                                    <div className="text-[13px] text-white/90 font-bold uppercase tracking-wider">Asesoría Libre</div>
+                                                    <div className="text-[11px] text-white/40 mt-0.5">Chatee directamente</div>
+                                                </div>
+                                            </div>
+                                            <ChevronRight size={18} className="text-white/20 group-hover:text-[#c8a96e]" />
+                                        </motion.button>
+                                    </div>
+                                </motion.div>
+                            )}
+
+                            {userData.step === 'faqs' && (
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="py-2 space-y-4"
+                                >
+                                    <button
+                                        onClick={() => setUserData(prev => ({ ...prev, step: 'welcome' }))}
+                                        className="text-xs text-[#c8a96e] hover:underline flex items-center gap-1.5 px-2 mb-2 font-medium uppercase tracking-wider"
+                                    >
+                                        <ArrowRight className="rotate-180" size={12} /> Volver al Inicio
+                                    </button>
+                                    <div className="space-y-3 px-2">
+                                        {[
+                                            "¿Qué servicios legales ofrece Lex-360?",
+                                            "¿Tiene algún costo la primera evaluación?",
+                                            "¿Dónde se ubican sus oficinas?",
+                                            "¿Cómo es el proceso de un amparo?"
+                                        ].map((faq, idx) => (
+                                            <motion.button
+                                                key={idx}
+                                                whileHover={{ scale: 1.02, x: 4 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                onClick={() => {
+                                                    setUserData(prev => ({ ...prev, step: 'completed' }));
+                                                    sendMessage({ text: faq });
+                                                }}
+                                                className="w-full text-left bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 p-4 rounded-xl transition-all text-sm text-white/80 shadow-sm"
+                                            >
+                                                {faq}
+                                            </motion.button>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+
                             {userData.step === 'initial' && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="text-center py-10 space-y-8"
+                                    className="text-center py-6 space-y-8"
                                 >
-                                    <div className="w-16 h-16 mx-auto bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
+                                    <button
+                                        onClick={() => setUserData(prev => ({ ...prev, step: 'welcome' }))}
+                                        className="text-[10px] text-white/40 hover:text-white/80 transition-colors flex items-center justify-center gap-1 mx-auto uppercase tracking-wider mb-2"
+                                    >
+                                        <ArrowRight className="rotate-180" size={10} /> Cancelar
+                                    </button>
+                                    <div className="w-16 h-16 mx-auto bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 shadow-inner">
                                         <Scale className="text-[#c8a96e]" size={32} />
                                     </div>
                                     <div className="space-y-4">
                                         <p className="text-sm text-white/90 font-medium px-6 leading-relaxed">
-                                            &quot;Bienvenido. Para brindarle una visión 360° de su asunto, iniciaremos un breve proceso de recepción.&quot;
+                                            &quot;Bienvenido al Triage Lex-360. Iniciaremos un breve proceso de recepción de su caso.&quot;
                                         </p>
                                         <p className="text-xs text-white/40 uppercase tracking-[0.2em]">Seleccione la materia:</p>
                                     </div>
@@ -156,7 +270,7 @@ Descripción: ${val}`
                                             <button
                                                 key={suggestion.label}
                                                 onClick={() => setUserData(prev => ({ ...prev, category: suggestion.cat, step: 'name' }))}
-                                                className="text-[11px] bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 py-4 rounded-2xl transition-all text-white/80 font-bold uppercase tracking-wider"
+                                                className="text-[11px] bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 py-4 rounded-2xl transition-all text-white/80 font-bold uppercase tracking-wider shadow-sm"
                                             >
                                                 {suggestion.label}
                                             </button>
@@ -165,7 +279,7 @@ Descripción: ${val}`
                                 </motion.div>
                             )}
 
-                            {userData.step !== 'initial' && userData.step !== 'completed' && (
+                            {['name', 'contact', 'case'].includes(userData.step) && (
                                 <motion.div
                                     key={userData.step}
                                     initial={{ opacity: 0, x: 20 }}
@@ -224,7 +338,7 @@ Descripción: ${val}`
                                                 <div className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${m.role === 'user' ? 'bg-[#c8a96e]/20 text-[#c8a96e]' : 'bg-[#c8a96e] text-[#02050a] shadow-lg'}`}>
                                                     {m.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                                                 </div>
-                                                <div className={`p-4 rounded-2xl text-[13.5px] leading-relaxed ${m.role === 'user'
+                                                <div className={`p-4 rounded-2xl text-[13.5px] leading-relaxed whitespace-pre-wrap ${m.role === 'user'
                                                     ? 'bg-gradient-to-br from-[#c8a96e] to-[#a68a56] text-[#02050a] font-medium rounded-tr-none shadow-[0_10px_20px_rgba(200,169,110,0.2)]'
                                                     : 'bg-white/5 border border-white/10 text-white/90 rounded-tl-none backdrop-blur-md'
                                                     }`}>

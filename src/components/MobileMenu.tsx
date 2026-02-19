@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Briefcase, BookOpen, Mail, ChevronRight } from 'lucide-react';
+import { Menu, X, Home, Users, Briefcase, BookOpen, Mail, ChevronRight, Lock } from 'lucide-react';
 import Link from 'next/link';
 
 export default function MobileMenu() {
@@ -15,6 +15,7 @@ export default function MobileMenu() {
         { label: 'Nosotros', href: '/#quienes-somos', icon: <Users size={20} /> },
         { label: 'Blog Legal', href: '/#blog', icon: <BookOpen size={20} /> },
         { label: 'Contacto', href: '/#contacto', icon: <Mail size={20} /> },
+        { label: 'Portal Clientes', href: '/login', icon: <Lock size={20} className="text-gold" /> },
     ];
 
     return (

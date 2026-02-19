@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube, Lock } from 'lucide-react';
 import ServicesCarousel from '@/components/ServicesCarousel';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
@@ -68,6 +68,10 @@ export default function Home() {
             <Link href="#quienes-somos" className="hover:text-gold transition-colors">Nosotros</Link>
             <Link href="#blog" className="hover:text-gold transition-colors">Blog Legal</Link>
             <Link href="#contacto" className="hover:text-gold transition-colors">Contacto</Link>
+            <div className="w-[1px] h-4 bg-white/20 mx-2"></div>
+            <Link href="/login" className="flex items-center gap-2 hover:text-white transition-colors border border-white/20 px-4 py-1.5 rounded-full hover:bg-white/10">
+              <Lock size={12} /> Portal Clientes
+            </Link>
           </div>
           <MobileMenu />
         </motion.div>

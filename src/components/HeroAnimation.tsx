@@ -46,20 +46,8 @@ const mediaAssets = [
 
 function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
-    const textureRef = useRef<THREE.Texture | null>(null);
+    const texture = useLoader(THREE.TextureLoader, textureUrl);
     const speed = 0.2 + (index % 3) * 0.1;
-
-    useEffect(() => {
-        const loader = new THREE.TextureLoader();
-        loader.load(
-            textureUrl,
-            (tex) => {
-                textureRef.current = tex;
-            },
-            undefined,
-            () => console.warn(`Texture failed to load: ${textureUrl}`)
-        );
-    }, [textureUrl]);
 
     useFrame((state) => {
         if (meshRef.current) {
@@ -72,9 +60,9 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
             meshRef.current.position.y += Math.sin(state.clock.elapsedTime + index) * 0.005;
 
             // Filmic texture movement
-            if (textureRef.current) {
-                textureRef.current.offset.x = Math.sin(state.clock.elapsedTime * 0.1 + index) * 0.02;
-                textureRef.current.offset.y = Math.cos(state.clock.elapsedTime * 0.05 + index) * 0.02;
+            if (texture) {
+                texture.offset.x = Math.sin(state.clock.elapsedTime * 0.1 + index) * 0.02;
+                texture.offset.y = Math.cos(state.clock.elapsedTime * 0.05 + index) * 0.02;
             }
         }
     });
@@ -85,7 +73,7 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
             <mesh>
                 <boxGeometry args={[2, 2, 0.05]} />
                 <meshStandardMaterial
-                    map={textureRef.current || undefined}
+                    map={texture}
                     color="#fff"
                     metalness={0.7}
                     roughness={0.2}
@@ -99,7 +87,7 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
             <mesh rotation={[0, Math.PI, 0]} position={[0, 0, -0.01]}>
                 <boxGeometry args={[2, 2, 0.05]} />
                 <meshStandardMaterial
-                    map={textureRef.current || undefined}
+                    map={texture}
                     color="#fff"
                     metalness={0.7}
                     roughness={0.2}

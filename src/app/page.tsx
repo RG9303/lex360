@@ -10,6 +10,9 @@ import { abogados } from '@/data/abogados';
 import ServicesCarousel from '@/components/ServicesCarousel';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
+import { JusticeScaleModel } from '@/components/JusticeScale';
+import { Canvas } from '@react-three/fiber';
+import { PerspectiveCamera, Environment } from '@react-three/drei';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -103,34 +106,22 @@ export default function Home() {
 
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
-        {/* Floating 3D Justice Scale (Copper/Gold) - Refined for v18 */}
-        <div className="absolute top-[35%] left-0 z-0 pointer-events-none w-full max-w-xl aspect-square opacity-60">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.6, x: -100 }}
-            whileInView={{ opacity: 1, scale: 0.9, x: 0 }}
-            animate={{
-              y: [0, -15, 0],
-              rotate: [0, 1.5, -1.5, 0]
-            }}
-            transition={{
-              opacity: { duration: 1.5 },
-              scale: { duration: 1.5 },
-              x: { duration: 1.5 },
-              y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-            }}
-            className="w-full h-full"
-          >
-            <div
-              className="w-full h-full bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000')] bg-contain bg-no-repeat mix-blend-screen"
-              style={{
-                filter: 'sepia(90%) saturate(180%) brightness(0.7) contrast(1.3)',
-                backgroundPosition: 'left center'
-              }}
-            />
+        {/* Floating 3D Justice Scale (Golden) - Now actual 3D */}
+        <div className="absolute top-[30%] left-0 z-0 pointer-events-none w-full max-w-2xl aspect-square opacity-80">
+          <div className="w-full h-full relative">
+            <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
+              <PerspectiveCamera makeDefault position={[0, 4, 15]} fov={45} />
+              <ambientLight intensity={0.5} />
+              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} color="#c8a96e" />
+              <pointLight position={[-10, -10, -10]} intensity={0.5} color="#c8a96e" />
+
+              <JusticeScaleModel />
+
+              <Environment preset="night" />
+            </Canvas>
             {/* Ambient Glow behind scale */}
             <div className="absolute -left-20 top-1/4 w-80 h-80 bg-gold/10 blur-[100px] rounded-full -z-10" />
-          </motion.div>
+          </div>
         </div>
 
         {/* 1. Subtle Background Layer (Stardust only) */}

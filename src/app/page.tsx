@@ -5,8 +5,7 @@ import Link from 'next/link';
 import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Scale, ShieldCheck, Clock, Users, ArrowRight, Gavel, FileText, Landmark, Facebook, Twitter, Linkedin, Youtube, Menu } from 'lucide-react';
-import { abogados } from '@/data/abogados';
+import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
 import ServicesCarousel from '@/components/ServicesCarousel';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
@@ -107,20 +106,20 @@ export default function Home() {
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
         {/* Floating 3D Justice Scale (Golden) - Now actual 3D */}
-        <div className="absolute top-[30%] left-0 z-0 pointer-events-none w-full max-w-2xl aspect-square opacity-80">
+        <div className="absolute top-[25%] -left-[10%] z-0 pointer-events-none w-full max-w-2xl aspect-square opacity-70">
           <div className="w-full h-full relative">
             <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
-              <PerspectiveCamera makeDefault position={[0, 4, 15]} fov={45} />
-              <ambientLight intensity={0.5} />
-              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} color="#c8a96e" />
-              <pointLight position={[-10, -10, -10]} intensity={0.5} color="#c8a96e" />
+              <PerspectiveCamera makeDefault position={[0, 4, 18]} fov={40} />
+              <ambientLight intensity={0.6} />
+              <spotLight position={[10, 15, 10]} angle={0.2} penumbra={1} intensity={1.5} color="#c8a96e" />
+              <pointLight position={[-10, 5, -10]} intensity={0.5} color="#c8a96e" />
 
               <JusticeScaleModel />
 
               <Environment preset="night" />
             </Canvas>
             {/* Ambient Glow behind scale */}
-            <div className="absolute -left-20 top-1/4 w-80 h-80 bg-gold/10 blur-[100px] rounded-full -z-10" />
+            <div className="absolute left-1/4 top-1/4 w-80 h-80 bg-gold/5 blur-[120px] rounded-full -z-10" />
           </div>
         </div>
 
@@ -169,7 +168,7 @@ export default function Home() {
                     className="bg-white/[0.03] p-8 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-md"
                   >
                     <p className="text-slate-300 text-xl md:text-2xl mb-12 italic font-light leading-relaxed">
-                      "Desde nuestra fundación, trabajamos con un principio esencial: la justicia debe ser tan <span className="text-gold">precisa como humana</span>."
+                      &quot;Desde nuestra fundación, trabajamos con un principio esencial: la justicia debe ser tan <span className="text-gold">precisa como humana</span>.&quot;
                     </p>
 
                     <h4 className="text-xs font-bold text-white uppercase tracking-[0.3em] mb-10 border-b border-gold/30 pb-4 inline-block">
@@ -267,7 +266,7 @@ export default function Home() {
                   <div className="text-center">
                     <Scale className="mx-auto w-20 h-20 text-gold mb-10 opacity-30" />
                     <p className="text-2xl md:text-3xl font-light italic text-slate-300 leading-relaxed">
-                      "Nuestra visión integra la maestría del derecho tradicional con la agilidad de la era digital para proteger su <span className="text-white font-medium">patrimonio y futuro</span>."
+                      &quot;Nuestra visión integra la maestría del derecho tradicional con la agilidad de la era digital para proteger su <span className="text-white font-medium">patrimonio y futuro</span>.&quot;
                     </p>
                   </div>
                 </motion.div>

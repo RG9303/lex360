@@ -220,7 +220,10 @@ Descripción: ${val}`
                                             "¿Qué servicios legales ofrece Lex-360?",
                                             "¿Tiene algún costo la primera evaluación?",
                                             "¿Dónde se ubican sus oficinas?",
-                                            "¿Cómo es el proceso de un amparo?"
+                                            "¿Cómo es el proceso de un amparo?",
+                                            "¿Qué incluye una defensa fiscal?",
+                                            "¿Tienen abogados especialistas en derecho corporativo?",
+                                            "¿Cuánto tiempo toma resolver un caso mercantil?"
                                         ].map((faq, idx) => (
                                             <motion.button
                                                 key={idx}
@@ -260,21 +263,29 @@ Descripción: ${val}`
                                         </p>
                                         <p className="text-xs text-white/40 uppercase tracking-[0.2em]">Seleccione la materia:</p>
                                     </div>
-                                    <div className="grid grid-cols-2 gap-3 px-4">
-                                        {[
-                                            { label: 'Fiscal/Adm.', cat: 'Derecho Fiscal' },
-                                            { label: 'Amparo', cat: 'Derecho Constitucional' },
-                                            { label: 'Civil/Merc.', cat: 'Derecho Civil' },
-                                            { label: 'Otro', cat: 'Otro' }
-                                        ].map((suggestion) => (
-                                            <button
-                                                key={suggestion.label}
-                                                onClick={() => setUserData(prev => ({ ...prev, category: suggestion.cat, step: 'name' }))}
-                                                className="text-[11px] bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-[#c8a96e]/10 py-4 rounded-2xl transition-all text-white/80 font-bold uppercase tracking-wider shadow-sm"
+                                    <div className="px-4">
+                                        <div className="relative">
+                                            <select
+                                                onChange={(e) => {
+                                                    if (e.target.value) {
+                                                        setUserData(prev => ({ ...prev, category: e.target.value, step: 'name' }));
+                                                    }
+                                                }}
+                                                defaultValue=""
+                                                className="w-full bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 py-4 px-5 rounded-2xl transition-all text-white/90 text-sm font-medium appearance-none outline-none focus:ring-2 focus:ring-[#c8a96e]/50 shadow-sm cursor-pointer"
                                             >
-                                                {suggestion.label}
-                                            </button>
-                                        ))}
+                                                <option value="" disabled className="bg-[#02050a] text-white/50">Seleccione su área legal...</option>
+                                                <option value="Derecho Fiscal" className="bg-[#02050a] text-white py-2">Derecho Fiscal y Administrativo</option>
+                                                <option value="Derecho Constitucional" className="bg-[#02050a] text-white py-2">Amparo / Constitucional</option>
+                                                <option value="Derecho Civil" className="bg-[#02050a] text-white py-2">Civil, Mercantil y Familiar</option>
+                                                <option value="Derecho Penal" className="bg-[#02050a] text-white py-2">Derecho Penal y DDHH</option>
+                                                <option value="Derecho Corporativo" className="bg-[#02050a] text-white py-2">Corporativo e Inmobiliario</option>
+                                                <option value="Otro" className="bg-[#02050a] text-white py-2">Otro / No estoy seguro</option>
+                                            </select>
+                                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                                                <ChevronRight size={16} className="rotate-90" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </motion.div>
                             )}
@@ -298,20 +309,41 @@ Descripción: ${val}`
                                     </div>
 
                                     <div className="pl-14">
-                                        <div className="flex gap-3">
-                                            <input
-                                                autoFocus
-                                                value={input}
-                                                onChange={handleInputChange}
-                                                onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
-                                                placeholder="Escriba aquí..."
-                                                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:ring-1 focus:ring-gold outline-none transition-all placeholder:text-white/20 shadow-inner"
-                                            />
+                                        <div className={`flex gap-3 ${userData.step === 'case' ? 'flex-col' : ''}`}>
+                                            {userData.step === 'case' ? (
+                                                <textarea
+                                                    autoFocus
+                                                    value={input}
+                                                    onChange={(e) => setInput(e.target.value)}
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === 'Enter' && !e.shiftKey) {
+                                                            e.preventDefault();
+                                                            handleSubmit(e);
+                                                        }
+                                                    }}
+                                                    placeholder="Describa su situación legal con el mayor detalle posible..."
+                                                    className="w-full h-32 resize-none bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:ring-1 focus:ring-gold outline-none transition-all placeholder:text-white/20 shadow-inner custom-scrollbar"
+                                                />
+                                            ) : (
+                                                <input
+                                                    autoFocus
+                                                    value={input}
+                                                    onChange={handleInputChange}
+                                                    onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
+                                                    placeholder="Escriba aquí..."
+                                                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:ring-1 focus:ring-gold outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                />
+                                            )}
                                             <button
                                                 onClick={handleSubmit}
-                                                className="w-14 h-14 bg-gold text-primary rounded-xl flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
+                                                className={`bg-gold text-primary rounded-xl flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all ${userData.step === 'case' ? 'w-full py-4 mt-2' : 'w-14 h-14'
+                                                    }`}
                                             >
-                                                <ArrowRight size={20} />
+                                                {userData.step === 'case' ? (
+                                                    <span className="font-bold text-sm tracking-wide uppercase flex items-center gap-2">Enviar Caso <ArrowRight size={16} /></span>
+                                                ) : (
+                                                    <ArrowRight size={20} />
+                                                )}
                                             </button>
                                         </div>
                                     </div>

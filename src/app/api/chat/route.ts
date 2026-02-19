@@ -46,11 +46,22 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
    const { messages } = await req.json();
 
-   const result = await streamText({
-      model: openai('gpt-4o'),
-      messages,
-      system: systemPrompt,
+   // Normalize messages to ensure they have the 'content' field expected by streamText
+   const normalizedMessages = messages.map((m: any) => {
+      if (!m.content && m.parts && m.parts.length > 0) {
+         const textPart = m.parts.find((p: any) => p.type === 'text');
+         if (textPart) {
+            return { ...m, content: textPart.text };
+         }
+      }
+      return m;
    });
 
-   return result.toTextStreamResponse();
+   const response = await streamText({
+      model: openai('gpt-4o'),
+      system: systemPrompt,
+      messages: normalizedMessages,
+   });
+
+   return response.toTextStreamResponse();
 }

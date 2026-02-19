@@ -46,8 +46,16 @@ const mediaAssets = [
 
 function GlassCube({ position, textureUrl, index }: { position: [number, number, number], textureUrl: string, index: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
-    const texture = useLoader(THREE.TextureLoader, textureUrl);
+    const [texture, setTexture] = useState<THREE.Texture | null>(null);
     const speed = 0.2 + (index % 3) * 0.1;
+
+    useEffect(() => {
+        let isMounted = true;
+        new THREE.TextureLoader().load(textureUrl, (t) => {
+            if (isMounted) setTexture(t);
+        });
+        return () => { isMounted = false; };
+    }, [textureUrl]);
 
     useFrame((state) => {
         if (meshRef.current) {
@@ -73,8 +81,8 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
             <mesh>
                 <boxGeometry args={[2, 2, 0.05]} />
                 <meshStandardMaterial
-                    map={texture}
-                    color="#fff"
+                    map={texture || undefined}
+                    color={texture ? "#fff" : "#1a1a1a"}
                     metalness={0.7}
                     roughness={0.2}
                     transparent
@@ -87,8 +95,8 @@ function GlassCube({ position, textureUrl, index }: { position: [number, number,
             <mesh rotation={[0, Math.PI, 0]} position={[0, 0, -0.01]}>
                 <boxGeometry args={[2, 2, 0.05]} />
                 <meshStandardMaterial
-                    map={texture}
-                    color="#fff"
+                    map={texture || undefined}
+                    color={texture ? "#fff" : "#1a1a1a"}
                     metalness={0.7}
                     roughness={0.2}
                     transparent

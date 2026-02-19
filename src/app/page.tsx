@@ -240,12 +240,12 @@ export default function Home() {
                   <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
                   <div className="space-y-10">
                     {/*
-### Refinamiento de Posición y Encuadre
-- **Balance Visual**: Se desplazó la balanza hacia la izquierda (ajuste de cámara `X: 5`) para eliminar el espacio vacío y mejorar la integración con el texto.
-- **Visibilidad Total**: Se alejó la cámara a `Z: 38` y se amplió el lienzo a `max-w-7xl`, garantizando que **ningún componente** de la balanza se corte en los bordes.
+### Restauración y Evolución Digital
+- **Retorno del 3D Hero**: Se restauraron los cubos cinemáticos del inicio. El error se debía a un "suspense" infinito mientras cargaban las imágenes; ahora los cubos aparecen instantáneamente y cargan sus texturas de forma fluida de fondo.
+- **Chatbot Premium**: Se rediseñó por completo el asistente con una estética de **cristal (glassmorphism)**, acentos en oro y azul marino profundo. Ahora cuenta con animaciones de entrada más suaves y un tono de respuesta mucho más sofisticado y alineado a la firma.
 
 ### Resultado Final
-La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equilibrada y sin interferir con la legibilidad, tal como una pieza central de diseño premium.
+La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente como un conserje de lujo, integrando perfectamente con la **Balanza 3D** que ajustamos previamente.
 */}
                     {[
                       { icon: <Landmark />, title: 'Estrategia Multidisciplinaria', desc: 'Análisis profundo de cada caso para ofrecer soluciones legales integrales y personalizadas.' },
@@ -285,13 +285,24 @@ La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equil
         </div>
       </div>
 
-      <footer className="relative py-24 bg-slate-950 text-white overflow-hidden border-t border-white/5">
-        <div className="absolute inset-0 bg-primary/20 pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px]"></div>
+      {/* Footer */}
+      <footer className="relative bg-[#02050a] border-t border-white/5 pt-24 pb-12 overflow-hidden">
+        {/* Animated background stardust for footer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none"
+        />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20 text-center md:text-left">
-            <div className="md:col-span-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="md:col-span-4"
+            >
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -303,7 +314,7 @@ La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equil
               <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
                 Líderes en asesoría jurídica integral. Combinamos décadas de experiencia con innovación tecnológica para proteger lo que más importa.
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-center md:justify-start">
                 <a href="https://www.facebook.com/LexSumma" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-gold hover:border-gold/30 transition-all">
                   <Facebook size={18} />
                 </a>
@@ -317,35 +328,53 @@ La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equil
                   <Youtube size={18} />
                 </a>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="md:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="md:col-span-2"
+            >
               <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Explorar</h4>
-              <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <li className="hover:text-white transition-colors cursor-pointer">Servicios</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Nosotros</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Blog Legal</li>
+              <ul className="space-y-4 text-xs font-bold tracking-widest text-slate-500">
+                <li className="hover:text-white transition-colors cursor-pointer capitalize">servicios</li>
+                <li className="hover:text-white transition-colors cursor-pointer capitalize">nosotros</li>
+                <li className="hover:text-white transition-colors cursor-pointer capitalize">blog legal</li>
               </ul>
-            </div>
+            </motion.div>
 
-            <div className="md:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="md:col-span-2"
+            >
               <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Legal</h4>
-              <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <li className="hover:text-white transition-colors cursor-pointer">
-                  <Link href="/privacidad">Privacidad</Link>
+              <ul className="space-y-4 text-xs font-bold tracking-widest text-slate-500">
+                <li className="hover:text-white transition-colors cursor-pointer capitalize">
+                  <Link href="/privacidad">privacidad</Link>
                 </li>
-                <li className="hover:text-white transition-colors cursor-pointer">
-                  <Link href="/terminos">Términos</Link>
+                <li className="hover:text-white transition-colors cursor-pointer capitalize">
+                  <Link href="/terminos">términos</Link>
                 </li>
-                <li className="hover:text-white transition-colors cursor-pointer">
-                  <Link href="/cookies">Cookies</Link>
+                <li className="hover:text-white transition-colors cursor-pointer capitalize">
+                  <Link href="/cookies">cookies</Link>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
-            <div className="md:col-span-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="md:col-span-4"
+            >
               <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Newsletter</h4>
-              <div className="flex bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md">
+              <div className="flex bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md focus-within:border-gold/30 transition-all">
                 <input
                   type="email"
                   placeholder="Tu correo"
@@ -355,10 +384,16 @@ La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equil
                   <ArrowRight size={14} />
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
+          >
             <p className="text-[10px] text-slate-600 uppercase tracking-[0.5em] font-bold">
               © 2026 Lex-360 Despacho Jurídico Digital
             </p>
@@ -367,7 +402,7 @@ La balanza ahora luce majestuosa y completa, ocupando el espacio de manera equil
               <Scale size={18} />
               <ShieldCheck size={18} />
             </div>
-          </div>
+          </motion.div>
         </div>
       </footer>
 

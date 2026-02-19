@@ -8,7 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
-    const { messages, sendMessage, status } = useChat();
+    const [userData, setUserData] = useState({ name: '', email: '', step: 'initial' });
+    const { messages, sendMessage, status, setMessages } = useChat();
     const chatEndRef = useRef<HTMLDivElement>(null);
 
     const isLoading = status === 'submitted' || status === 'streaming';
@@ -101,11 +102,15 @@ export default function ChatWidget() {
                                         {[
                                             { label: 'Duda Fiscal', icon: <Bot size={12} /> },
                                             { label: 'Derecho Amparo', icon: <Bot size={12} /> },
-                                            { label: 'Cita Urgente', icon: <Calendar size={12} /> }
+                                            { label: 'Cita Urgente', icon: <Calendar size={12} /> },
+                                            { label: 'Otro', icon: <MessageCircle size={12} /> }
                                         ].map((suggestion) => (
                                             <button
                                                 key={suggestion.label}
-                                                onClick={() => setInput(suggestion.label)}
+                                                onClick={() => {
+                                                    setInput(suggestion.label);
+                                                    setUserData(prev => ({ ...prev, step: 'collecting_name' }));
+                                                }}
                                                 className="text-[11px] bg-white/5 border border-white/10 hover:border-[#c8a96e]/50 hover:bg-white/10 px-4 py-2 rounded-xl transition-all text-white/80 flex items-center gap-2"
                                             >
                                                 {suggestion.icon}
@@ -113,6 +118,40 @@ export default function ChatWidget() {
                                             </button>
                                         ))}
                                     </div>
+
+                                    {userData.step !== 'initial' && (
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="mt-6 p-6 bg-[#c8a96e]/10 border border-[#c8a96e]/20 rounded-2xl mx-6"
+                                        >
+                                            <p className="text-xs text-[#c8a96e] font-bold uppercase tracking-wider mb-4">
+                                                {userData.step === 'collecting_name' ? 'Para comenzar, ¿cómo podemos llamarle?' : '¿A qué correo podemos responderle?'}
+                                            </p>
+                                            <div className="flex gap-2">
+                                                <input
+                                                    autoFocus
+                                                    type={userData.step === 'collecting_name' ? 'text' : 'email'}
+                                                    placeholder={userData.step === 'collecting_name' ? 'Nombre completo' : 'correo@ejemplo.com'}
+                                                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs text-white flex-grow outline-none focus:border-[#c8a96e]/50"
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === 'Enter') {
+                                                            const val = (e.currentTarget as HTMLInputElement).value;
+                                                            if (val.trim()) {
+                                                                if (userData.step === 'collecting_name') {
+                                                                    setUserData(prev => ({ ...prev, name: val, step: 'collecting_email' }));
+                                                                } else {
+                                                                    setUserData(prev => ({ ...prev, email: val, step: 'completed' }));
+                                                                    sendMessage({ text: `Mi nombre es ${userData.name} y mi correo es ${val}. Mi consulta es sobre: ${input}` });
+                                                                }
+                                                                (e.currentTarget as HTMLInputElement).value = '';
+                                                            }
+                                                        }
+                                                    }}
+                                                />
+                                            </div>
+                                        </motion.div>
+                                    )}
                                 </motion.div>
                             )}
 

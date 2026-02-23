@@ -79,7 +79,15 @@ export default function Home() {
 
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
-        <HeroAnimation>
+        {/* Background Image Layer with Team */}
+        <div className="hero-background-layer"></div>
+        
+        {/* Shadow and Volume Effect */}
+        <div className="hero-background-shadow"></div>
+        
+        {/* Content Layer */}
+        <div className="hero-content-layer">
+          <HeroAnimation>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -96,6 +104,7 @@ export default function Home() {
             Conoce el Despacho
           </motion.button>
         </HeroAnimation>
+        </div>
 
         {/* Scroll Indicator */}
         <motion.div

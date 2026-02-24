@@ -50,11 +50,12 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  opacity: 0.15;
+  opacity: 0.3;
+  /* Optimized for transparency */
   position: absolute;
   inset: 0;
   z-index: 0;
-  filter: grayscale(40%) contrast(1.1) blur(0.5px);
+  filter: grayscale(10%) contrast(1.2) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(194, 169, 110, 0.3));
 }
 
 .hero-background-shadow {

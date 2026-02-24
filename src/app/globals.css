@@ -46,7 +46,7 @@ body {
 
 /* Hero Background with Team Image */
 .hero-background-layer {
-  background-image: url('/team/team-group.png');
+  background-image: url('/team/team-group-final.png');
   background-position: center bottom;
   background-size: contain;
   /* Ensure everyone is visible */

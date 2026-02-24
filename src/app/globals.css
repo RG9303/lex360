@@ -52,19 +52,19 @@ body {
   /* Ensure everyone is visible */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  opacity: 0.4;
-  /* Increased visibility as requested */
+  opacity: 0.6;
+  /* Balanced for visibility and premium feel */
   position: absolute;
   inset: 0;
   z-index: 0;
-  filter: grayscale(0%) contrast(1.1) drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
+  filter: grayscale(0%) contrast(1.05) brightness(0.9);
 }
 
 .hero-background-shadow {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(circle at 50% 50%, rgba(2, 5, 10, 0.2) 0%, rgba(2, 5, 10, 0.6) 100%);
+  background: radial-gradient(circle at 50% 50%, rgba(2, 5, 10, 0.1) 0%, rgba(2, 5, 10, 0.5) 100%);
   pointer-events: none;
 }
 

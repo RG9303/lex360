@@ -198,13 +198,11 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
 
     return (
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-            {/* 1. Base Fail-Safe Layer (Transparent now) */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.05)_0%,transparent_70%)]" />
-            </div>
+            {/* 1. Base Contrast Layer (Ensures text visibility) */}
+            <div className="absolute inset-0 z-0 bg-black/40" />
 
-            {/* 2. 3D Engine Layer (Wrapped in Safety) */}
-            <div className="absolute inset-0 z-10 opacity-100">
+            {/* 2. 3D Engine Layer */}
+            <div className="absolute inset-0 z-10">
                 {mounted && (
                     <ErrorBoundary fallback={<div className="absolute inset-0 bg-[#02050a]" />}>
                         <Canvas dpr={1} gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}>

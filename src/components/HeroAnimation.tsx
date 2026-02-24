@@ -197,20 +197,18 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
     }, []);
 
     return (
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#02050a]">
-            {/* 1. Base Fail-Safe Layer (Always visible, even if 3D crashes) */}
-            <div className="absolute inset-0 bg-[#02050a] z-0">
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+            {/* 1. Base Fail-Safe Layer (Transparent now) */}
+            <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.05)_0%,transparent_70%)]" />
             </div>
 
             {/* 2. 3D Engine Layer (Wrapped in Safety) */}
-            <div className="absolute inset-0 z-10 opacity-70">
+            <div className="absolute inset-0 z-10 opacity-100">
                 {mounted && (
                     <ErrorBoundary fallback={<div className="absolute inset-0 bg-[#02050a]" />}>
                         <Canvas dpr={1} gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}>
                             <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={50} />
-                            <color attach="background" args={['#02050a']} />
-                            <fog attach="fog" args={['#02050a', 15, 30]} />
 
                             <ambientLight intensity={0.4} />
                             <spotLight position={[20, 20, 20]} angle={0.15} penumbra={1} intensity={1} color="#00e5ff" />

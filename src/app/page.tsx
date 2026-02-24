@@ -81,29 +81,29 @@ export default function Home() {
       <section ref={targetRef} className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image Layer with Team */}
         <div className="hero-background-layer"></div>
-        
+
         {/* Shadow and Volume Effect */}
         <div className="hero-background-shadow"></div>
-        
+
         {/* Content Layer */}
-        <div className="hero-content-layer">
+        <div className="hero-content-layer w-full h-full relative z-10">
           <HeroAnimation>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-5 bg-gold text-primary font-black rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
-          >
-            Iniciar Consulta
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-          <motion.button
-            whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-            onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-12 py-5 border border-white/20 text-white font-bold rounded-full transition-all backdrop-blur-sm uppercase tracking-widest text-xs"
-          >
-            Conoce el Despacho
-          </motion.button>
-        </HeroAnimation>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-5 bg-gold text-primary font-black rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
+            >
+              Iniciar Consulta
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+            <motion.button
+              whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+              onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-12 py-5 border border-white/20 text-white font-bold rounded-full transition-all backdrop-blur-sm uppercase tracking-widest text-xs"
+            >
+              Conoce el Despacho
+            </motion.button>
+          </HeroAnimation>
         </div>
 
         {/* Scroll Indicator */}

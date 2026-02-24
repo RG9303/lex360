@@ -222,12 +222,12 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                 )}
             </div>
 
-            {/* 3. Cinematic Overlays */}
+            {/* 3. Cinematic Overlays (Lightened) */}
             <div className="absolute inset-0 z-20 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(2,5,10,0.8)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#02050a] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(2,5,10,0.5)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#02050a]/80 via-transparent to-transparent" />
                 {/* Lens Vignette */}
-                <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]" />
+                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
             </div>
 
             {/* 4. Content Container */}

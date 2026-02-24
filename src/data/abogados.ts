@@ -18,64 +18,6 @@ export interface Abogado {
 
 export const abogados: Abogado[] = [
     {
-        slug: 'alejandro-valenzuela',
-        name: 'Alejandro Valenzuela Sosa',
-        title: 'Abogado, Jurista y Consultor Internacional',
-        shortBio: 'Más de veinte años de experiencia en los sectores público y privado, tanto en México como en el extranjero.',
-        fullBio: `Alejandro Valenzuela Sosa es abogado, jurista y consultor internacional con más de veinte años de experiencia en los sectores público y privado, tanto en México como en el extranjero. Es miembro de la Barra de Abogados de París y experto parlamentario reconocido por la Unión Interparlamentaria, lo que refleja su sólida trayectoria en los ámbitos jurídico, legislativo y académico.
-
-A lo largo de su carrera ha ocupado cargos de alta responsabilidad en instituciones nacionales e internacionales. En Europa, se desempeñó como consultor en ciencia y tecnología para la Unión Interparlamentaria en Ginebra, enlace con el Parlamento en la Oficina del Primer Ministro de Francia, y asesor parlamentario en la Asamblea Nacional francesa, donde contribuyó al desarrollo de iniciativas legislativas en materia de innovación y gobernanza pública.
-
-En México, ha ejercido como Jefe de Asesores en la Honorable Cámara de Diputados, participando en la elaboración de marcos normativos estratégicos y en el fortalecimiento de procesos legislativos. Paralelamente, ha desarrollado una destacada labor académica como profesor de posgrado en la Facultad de Derecho y Criminología de la Universidad Autónoma de Nuevo León, impartiendo materias como Amparo, Derecho Administrativo, Civil y Familiar.
-
-Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panthéon-Sorbonne, y domina español, francés e inglés, lo que le ha permitido consolidar una visión jurídica con perspectiva comparada y vocación internacional. Su perfil combina análisis normativo, gestión legislativa y consultoría jurídica de alto nivel, orientado a ofrecer soluciones integrales en entornos complejos y multiculturales.`,
-        specialties: ['Derecho Internacional', 'Consultoría Legislativa', 'Amparo', 'Derecho Administrativo'],
-        image: '/team/alejandro-valenzuela.jpg',
-        socialMedia: {
-            email: 'alejandrovalenl@gmail.com',
-            phone: '5620200020'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/alejandro-valenzuela'
-    },
-    {
-        slug: 'laura-iris-porras',
-        name: 'Laura Iris Porras Espinosa',
-        title: 'Jurista, Académica y Servidora Pública',
-        shortBio: 'Amplia experiencia en el Poder Judicial de la Federación, con especialización en Justicia Constitucional y Derecho Electoral.',
-        fullBio: `Laura Iris Porras Espinosa es jurista, académica y servidora pública con amplia experiencia en el Poder Judicial de la Federación, donde ha desempeñado funciones jurisdiccionales, administrativas y de gestión institucional.
-
-Es Licenciada en Derecho por la Universidad Nacional Autónoma de México (UNAM), Especialista en Carrera Judicial Federal por el Instituto de Especialización Judicial de la Suprema Corte de Justicia de la Nación, y Maestra en Derecho Electoral por la Escuela Judicial Electoral del TEPJF. Asimismo, cuenta con dos maestrías cursadas en la Universidad de Castilla-La Mancha (España): una en Justicia Constitucional, Interpretación y Tutela de los Derechos Fundamentales, y otra en Derecho Antidiscriminatorio.
-
-Dentro del Poder Judicial ha ocupado diversos cargos, entre ellos Directora de Transparencia, Directora de Bienes Asegurados, Abandonados y Decomisados, Directora de Asuntos Contencioso Administrativo y Coordinadora de la Unidad de Estadística y Planeación Judicial del Consejo de la Judicatura Federal, donde participó en el diseño del actual Sistema Integral de Seguimiento de Expedientes (SISE). También se ha desempeñado como Secretaria Proyectista, Jueza de Distrito en funciones en el Estado de Guerrero, y colaboradora en la ponencia de la Ministra Olga Sánchez Cordero en la Suprema Corte de Justicia de la Nación.
-
-En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura Federal y en distintas instituciones educativas, en materias como Juicio de Amparo, Controversias Constitucionales, Administración Judicial y Técnica de Sentencia. Además, ha participado en múltiples diplomados y programas especializados en Derechos Humanos, Transparencia, Argumentación Jurídica e Innovación Judicial, reafirmando su compromiso con la modernización de la justicia y la formación de nuevas generaciones jurídicas.`,
-        specialties: ['Justicia Constitucional', 'Derecho Electoral', 'Amparo', 'Derechos Humanos'],
-        image: '/team/laura-iris-porras.jpg',
-        socialMedia: {
-            email: 'laura.porrase@gmail.com',
-            phone: '5512861589'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/laura-porras'
-    },
-    {
-        slug: 'maria-elena-suarez',
-        name: 'María Elena Suárez Préstamo',
-        title: 'Magistrada, Jurista y Académica',
-        shortBio: 'Más de veinticinco años de experiencia en el Poder Judicial de la Federación, actualmente Magistrada en Materia Civil.',
-        fullBio: `María Elena Suárez Préstamo es magistrada, jurista y académica con más de veinticinco años de experiencia en el Poder Judicial de la Federación, donde ha desempeñado una destacada trayectoria en los ámbitos civil, penal, administrativo y de formación judicial. Actualmente se desempeña como Magistrada Integrante del Primer Tribunal Colegiado en Materia Civil del Primer Circuito, con residencia en la Ciudad de México. Ha logrado diversas responsabilidades en juzgados y tribunales federales, entre ellas Jueza de Distrito en los estados de Tabasco y Veracruz, así como Magistrada de Tribunal Unitario y de Tribunal Colegiado en el Vigésimo Séptimo Circuito, con sede en Quintana Roo. Asimismo, fungió como Visitadora Judicial "A" del Consejo de la Judicatura Federal, donde contribuyó al fortalecimiento de los procesos de supervisión y calidad jurisdiccional.
-
-Es Licenciada en Derecho y Maestra en Derecho Privado por la Universidad Cristóbal Colón, y cuenta con una Maestría en Justicia Adversarial por el Instituto de la Judicatura Federal. Además, ha realizado múltiples especializaciones en Argumentación Jurídica, Comunicación Oral y Escrita, Justicia Penal Acusatoria, Administración Estratégica y Perspectiva de Género, cursadas en el Instituto de la Judicatura Federal y en distintas instituciones del país.
-
-En el ámbito académico, ha sido docente en el Instituto de la Judicatura Federal y en la Universidad Cristóbal Colón, donde impartió asignaturas y talleres en Técnicas de Investigación Jurídica, Juicio de Amparo, Argumentación Jurídica y Perspectiva de Género. También ha participado en congresos nacionales e internacionales sobre sistema penal acusatorio, derechos humanos y transparencia judicial. A lo largo de su trayectoria, ha participado en más de cincuenta cursos, diplomados y programas de actualización enfocados en las transformaciones del derecho procesal, la equidad de género y la justicia constitucional. Es reconocida por su excelencia académica y compromiso institucional, así como por su contribución a las nuevas generaciones de juristas.`,
-        specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica'],
-        image: '/team/maria-elena-suarez.jpg',
-        socialMedia: {
-            email: 'marielsuapre@hotmail.com',
-            phone: '5512477209'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/maria-elena-suarez'
-    },
-    {
         slug: 'alejandro-ornelas',
         name: 'Alejandro Ornelas Nápoles',
         title: 'Abogado Corporativo y Notarial',
@@ -99,106 +41,24 @@ Egresado con excelencia académica de la Universidad de Guadalajara, cuenta con 
         calendarUrl: 'https://calendly.com/lex-360/alejandro-ornelas'
     },
     {
-        slug: 'israel-ascencio-cadenas',
-        name: 'Israel Ascencio Cadenas',
-        title: 'Especialista en Litigio y Consultoría Estratégica',
-        shortBio: 'Abogado con más de 40 años de experiencia en litigación y asesoría jurídica empresarial.',
-        fullBio: `Israel Ascencio Cadenas es abogado con más de 40 años de experiencia en el ejercicio profesional del derecho, con una trayectoria sólida en litigación, asesoría jurídica empresarial y consultoría estratégica. Su práctica se ha distinguido por la búsqueda de soluciones legales eficaces, personalizadas y orientadas a la prevención de riesgos, combinando un profundo conocimiento jurídico con una visión práctica y analítica.
+        slug: 'alejandro-valenzuela',
+        name: 'Alejandro Valenzuela Sosa',
+        title: 'Abogado, Jurista y Consultor Internacional',
+        shortBio: 'Más de veinte años de experiencia en los sectores público y privado, tanto en México como en el extranjero.',
+        fullBio: `Alejandro Valenzuela Sosa es abogado, jurista y consultor internacional con más de veinte años de experiencia en los sectores público y privado, tanto en México como en el extranjero. Es miembro de la Barra de Abogados de París y experto parlamentario reconocido por la Unión Interparlamentaria, lo que refleja su sólida trayectoria en los ámbitos jurídico, legislativo y académico.
 
-A lo largo de su carrera, ha brindado asesoría legal corporativa a empresas de los sectores constructor, comercial y financiero, desarrollando estrategias integrales en materia contractual, cumplimiento normativo y mitigación de riesgos. Asimismo, cuenta con una amplia experiencia como abogado corporativo bancario, colaborando con instituciones de reconocido prestigio como Banamex, Bancomer y Banca Serfin, principalmente en la gestión de litigios y recuperación de cartera vencida.
+A lo largo de su carrera ha ocupado cargos de alta responsabilidad en instituciones nacionales e internacionales. En Europa, se desempeñó como consultor en ciencia y tecnología para la Unión Interparlamentaria en Ginebra, enlace con el Parlamento en la Oficina del Primer Ministro de Francia, y asesor parlamentario en la Asamblea Nacional francesa, donde contribuyó al desarrollo de iniciativas legislativas en materia de innovación y gobernanza pública.
 
-Su especialización en cobranza, recuperación de créditos y reestructuración de deudas le ha permitido representar eficazmente a empresas y organizaciones en procedimientos judiciales y extrajudiciales, destacando por su capacidad de negociación y conciliación. Complementa su perfil jurídico con formación en Psicoterapia Gestalt, lo que fortalece sus habilidades de comunicación, manejo de conflictos y negociación estratégica.
+En México, ha ejercido como Jefe de Asesores en la Honorable Cámara de Diputados, participando en la elaboración de marcos normativos estratégicos y en el fortalecimiento de procesos legislativos. Paralelamente, ha desarrollado una destacada labor académica como profesor de posgrado en la Facultad de Derecho y Criminología de la Universidad Autónoma de Nuevo León, impartiendo materias como Amparo, Derecho Administrativo, Civil y Familiar.
 
-
-Cuenta con Especialidad en Derecho de Amparo, así como con actualización continua, incluyendo un Diplomado en Juicio de Amparo impartido por la Suprema Corte de Justicia de la Nación, lo que respalda su dominio técnico y vigencia profesional. Su compromiso con el aprendizaje permanente, el liderazgo y el trabajo en equipo lo posicionan como un abogado experimentado, confiable y orientado a la excelencia jurídica.`,
-        specialties: ['Derecho Fiscal', 'Litigio Civil', 'Amparo', 'Cobranza Bancaria'],
-        image: '/team/israel-ascencio.jpg',
+Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panthéon-Sorbonne, y domina español, francés e inglés, lo que le ha permitido consolidar una visión jurídica con perspectiva comparada y vocación internacional. Su perfil combina análisis normativo, gestión legislativa y consultoría jurídica de alto nivel, orientado a ofrecer soluciones integrales en entornos complejos y multiculturales.`,
+        specialties: ['Derecho Internacional', 'Consultoría Legislativa', 'Amparo', 'Derecho Administrativo'],
+        image: '/team/alejandro-valenzuela.jpg',
         socialMedia: {
-            phone: '4431460242',
-            email: 'contacto@lex-360.com.mx'
+            email: 'alejandrovalenl@gmail.com',
+            phone: '5620200020'
         },
-        calendarUrl: 'https://calendly.com/lex-360/israel-ascencio'
-    },
-    {
-        slug: 'elena-gil-valle',
-        name: 'Elena Gil Valle',
-        title: 'Especialista en Derecho Penal y Derechos Humanos',
-        shortBio: 'Más de 25 años de trayectoria en defensa de derechos humanos y litigio estratégico colectivo.',
-        fullBio: `M. Elena Gil Valle es Licenciada en Derecho y Especialista en Derecho Penal, con más de 25 años de trayectoria profesional dedicados a la defensa de los derechos humanos, el litigio estratégico y la representación legal de colectivos sociales de gran escala.
-
-A lo largo de su carrera, ha encabezado la representación jurídica de más de 5,000 familias en conflictos de vivienda, urbanización y defensa patrimonial, consolidándose como una figura de referencia en el litigio colectivo y la protección de derechos sociales. Su experiencia incluye la defensa de deudores bancarios, con más de mil procedimientos legales frente a instituciones financieras y sociedades financieras de objeto limitado.
-
-Cuenta con una amplia trayectoria en el sector público, habiendo colaborado con la Procuraduría General de Justicia del Distrito Federal, el sistema penitenciario capitalino y el Sindicato Único de Trabajadores y Poderes del Estado de México (SUTEYM). Asimismo, ha participado en proyectos de vinculación social, enfocados en la rehabilitación de internos y programas de apoyo comunitario a poblaciones vulnerables.
-
-En el ámbito de la sociedad civil, se desempeña como Presidenta de la Fundación de Abogados Egresados del Instituto Universitario ETAC, A.C., y como Procuradora General de la Organización Continental de Derechos Humanos, con presencia internacional y registro ante organismos nacionales e internacionales, incluyendo la Organización de las Naciones Unidas, donde ha participado en foros sociales en Ginebra desde 2009.
-
-Su perfil se complementa con una destacada labor académica como catedrática y asesora jurídica universitaria, impartiendo materias como Derecho Penal, Derecho Procesal Penal, Derecho Mercantil y seminarios de titulación en diversas instituciones de educación superior. La combinación de experiencia jurídica, compromiso social, liderazgo institucional y vocación docente posiciona a M. Elena Gil Valle como una profesional con una visión integral del derecho, orientada a la justicia social, la defensa de los derechos humanos y la formación de nuevas generaciones de juristas.`,
-        specialties: ['Derecho Penal', 'Derechos Humanos', 'Derecho Civil', 'Derecho Mercantil'],
-        image: '/team/elena-gil-valle.jpg',
-        socialMedia: {
-            phone: '5536733684',
-            email: 'contacto@lex-360.com.mx'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/elena-gil-valle'
-    },
-    {
-        slug: 'joel-nunez-garcia',
-        name: 'Joel Núñez García',
-        title: 'Abogado Litigante y Experto en Gestión Gubernamental',
-        shortBio: 'Especialista en derecho civil, mercantil y agrario, con enfoque en la defensa de derechos de pueblos originarios.',
-        fullBio: `Joel Núñez García es abogado litigante con ejercicio profesional desde el año 2004, con amplia experiencia en las materias civil, mercantil, agraria, administrativa en materia aduanera, regularización de inmuebles y juicio de amparo, así como en gestión gubernamental y defensa de derechos humanos, con especial énfasis en la protección de los pueblos originarios.
-
-Es socio fundador del despacho Defensores de Tijuana, con presencia en Baja California, Sonora, Sinaloa y Jalisco, así como socio fundador de Law Firma International, firma con operaciones en San Diego, Los Ángeles y Calexico, California (EE. UU.), y socio corresponsal del despacho BlackDawn, con sede en Guadalajara, Jalisco.
-
-Cuenta con una amplia trayectoria en el sector público, habiendo desempeñado cargos relevantes como Regidor del H. Ayuntamiento de Mazatlán, Director General de Planeación del DIF, Director de Desarrollo Social Rural, así como funciones de secretaría particular, coordinación administrativa y asesoría legislativa en el Congreso de la Unión y en dependencias estatales del Gobierno de Sinaloa. 
-
-En el ámbito de la sociedad civil, ha ocupado cargos de liderazgo y responsabilidad, entre ellos Presidente de la Federación de Estudiantes de Sinaloa, Contralor-Inspector de Derechos Humanos Internacionales y Coordinador Ejecutivo de la asociación civil CHAORDIC KAIZEN, enfocada en el desarrollo integral y la defensa jurídica de comunidades indígenas.
-
-Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consejo Nacional Indígena (SCNI), encabezando la interposición y análisis de recursos legales y juicios de amparo en defensa de los derechos constitucionales de los pueblos originarios, particularmente frente a reformas y leyes federales emitidas sin los procesos de consulta previstos en la Constitución. Su trayectoria se distingue por la combinación de litigio estratégico, experiencia gubernamental y compromiso con los derechos humanos, consolidándolo como un abogado con visión social, rigor jurídico y alcance nacional e internacional.`,
-        specialties: ['Derecho Civil', 'Amparo', 'Derecho Mercantil', 'Litigio Agrario'],
-        image: '/team/joel-nunez.jpg',
-        socialMedia: {
-            phone: '6647864439',
-            email: 'contacto@lex-360.com.mx'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/joel-nunez'
-    },
-    // Nuevos perfiles pendientes de CV
-    {
-        slug: 'guillermo-hamdan',
-        name: 'Guillermo Hamdan',
-        title: 'Abogado Litigante y Estratega Jurídico',
-        shortBio: 'Egresado de la Escuela Libre de Derecho con una trayectoria destacada en asuntos de alta relevancia mediática y política.',
-        fullBio: `Guillermo Hamdan es un distinguido abogado egresado de la prestigiosa Escuela Libre de Derecho, donde se graduó con menciones honoríficas y una tesis laureada. Su carrera comenzó a los 18 años en el despacho del licenciado Felipe Gómez Mont y, años más tarde, colaboró en la Procuraduría General de la República en asuntos especiales para la Presidencia de la República. Fue asociado del reconocido penalista Sergio Vela Treviño antes de fundar su propia firma de abogados litigantes.
-
-A lo largo de su exitosa trayectoria, ha patrocinado asuntos de gran trascendencia en la historia mediática de México, representando a políticos, periodistas, artistas, empresarios y deportistas. Destacan sus denuncias por el fraude en la privatización de Telmex y contra la inexistencia bancaria, así como su vinculación con el movimiento del Barzón y el PRD. Por varias décadas, ha sido el asesor jurídico personal del ingeniero Cuauhtémoc Cárdenas Solórzano.
-
-Como estratega internacional, asesora a algunos de los hombres más acaudalados del mundo y mantiene relaciones con gobiernos y organizaciones internacionales en colaboración con despachos estratégicos poderosos. Se especializa en grandes reclamaciones de operaciones de mercado secundario (MTN’s) y plataformas financieras. En el ámbito académico, ha impartido cátedras de Derecho Penal, Procesal Penal y Constitucional en la Universidad Anáhuac, la Escuela Libre de Derecho y la Universidad Panamericana.
-
-Es un activo comunicador con más de 300 entrevistas y conferencias en foros nacionales e internacionales sobre temas jurídicos y geopolíticos. Es autor de obras como "Infamia a la justicia" y el libro "Cuando lo invisible se hizo visible: Dios y el virus" (2020), y tiene proyectos literarios y cinematográficos en curso como "Mi Legado", "Historia de un Genocidio" e "Historia de un amor o un amor de historia".
-
-Recientemente, ha impulsado el PROYECTO de demandar la declaratoria de nulidad absoluta del Tratado de Guadalupe Hidalgo de 1848, buscando la restitución simbólica y jurídica de los territorios despojados a México. También ha presentado denuncias ante la Fiscalía General de la República y la Corte Penal Internacional relacionadas con la gestión de la pandemia y la violación del consentimiento informado, fundamentadas en su obra "El Holocausto Mexicano".
-
-Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígena y ha sido designado como "EL FISCAL DEL PUEBLO" de los Pueblos Originarios y Ancestrales de México. Es un reconocido activista social, defensor de las madres buscadoras y firme opositor a las reformas judiciales recientes, habiendo presentado más de 20 denuncias contra actos que considera violatorios del Estado de Derecho. Es miembro activo de la Coalición Mundial de Salud y Vida (COMUSAV).`,
-        specialties: ['Derecho Penal', 'Derecho Constitucional', 'Litigio de Alto Impacto', 'Estrategia Geopolítica'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            email: 'abogadohamdan@gmail.com',
-            phone: '5547614616'
-        }
-    },
-    {
-        slug: 'carlos-g-gomez',
-        name: 'Carlos G. Gomez',
-        title: 'Abogado Asociado',
-        shortBio: 'Especialista en derecho administrativo y gestión pública.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Derecho Administrativo', 'Gestión Pública'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            email: 'cgomez@espacio-publico.mx',
-            phone: '5554369589'
-        }
+        calendarUrl: 'https://calendly.com/lex-360/alejandro-valenzuela'
     },
     {
         slug: 'alfonso-jimenez',
@@ -262,6 +122,19 @@ Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígen
         }
     },
     {
+        slug: 'carlos-g-gomez',
+        name: 'Carlos G. Gomez',
+        title: 'Abogado Asociado',
+        shortBio: 'Especialista en derecho administrativo y gestión pública.',
+        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
+        specialties: ['Derecho Administrativo', 'Gestión Pública'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'cgomez@espacio-publico.mx',
+            phone: '5554369589'
+        }
+    },
+    {
         slug: 'desiree-cataneo',
         name: 'Desiree Cataneo',
         title: 'Abogada Asociada',
@@ -300,6 +173,51 @@ Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígen
         }
     },
     {
+        slug: 'elena-gil-valle',
+        name: 'Elena Gil Valle',
+        title: 'Especialista en Derecho Penal y Derechos Humanos',
+        shortBio: 'Más de 25 años de trayectoria en defensa de derechos humanos y litigio estratégico colectivo.',
+        fullBio: `M. Elena Gil Valle es Licenciada en Derecho y Especialista en Derecho Penal, con más de 25 años de trayectoria profesional dedicados a la defensa de los derechos humanos, el litigio estratégico y la representación legal de colectivos sociales de gran escala.
+
+A lo largo de su carrera, ha encabezado la representación jurídica de más de 5,000 familias en conflictos de vivienda, urbanización y defensa patrimonial, consolidándose como una figura de referencia en el litigio colectivo y la protección de derechos sociales. Su experiencia incluye la defensa de deudores bancarios, con más de mil procedimientos legales frente a instituciones financieras y sociedades financieras de objeto limitado.
+
+Cuenta con una amplia trayectoria en el sector público, habiendo colaborado con la Procuraduría General de Justicia del Distrito Federal, el sistema penitenciario capitalino y el Sindicato Único de Trabajadores y Poderes del Estado de México (SUTEYM). Asimismo, ha participado en proyectos de vinculación social, enfocados en la rehabilitación de internos y programas de apoyo comunitario a poblaciones vulnerables.
+
+En el ámbito de la sociedad civil, se desempeña como Presidenta de la Fundación de Abogados Egresados del Instituto Universitario ETAC, A.C., y como Procuradora General de la Organización Continental de Derechos Humanos, con presencia internacional y registro ante organismos nacionales e internacionales, incluyendo la Organización de las Naciones Unidas, donde ha participado en foros sociales en Ginebra desde 2009.
+
+Su perfil se complementa con una destacada labor académica como catedrática y asesora jurídica universitaria, impartiendo materias como Derecho Penal, Derecho Procesal Penal, Derecho Mercantil y seminarios de titulación en diversas instituciones de educación superior. La combinación de experiencia jurídica, compromiso social, liderazgo institucional y vocación docente posiciona a M. Elena Gil Valle como una profesional con una visión integral del derecho, orientada a la justicia social, la defensa de los derechos humanos y la formación de nuevas generaciones de juristas.`,
+        specialties: ['Derecho Penal', 'Derechos Humanos', 'Derecho Civil', 'Derecho Mercantil'],
+        image: '/team/elena-gil-valle.jpg',
+        socialMedia: {
+            phone: '5536733684',
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/elena-gil-valle'
+    },
+    {
+        slug: 'guillermo-hamdan',
+        name: 'Guillermo Hamdan',
+        title: 'Abogado Litigante y Estratega Jurídico',
+        shortBio: 'Egresado de la Escuela Libre de Derecho con una trayectoria destacada en asuntos de alta relevancia mediática y política.',
+        fullBio: `Guillermo Hamdan es un distinguido abogado egresado de la prestigiosa Escuela Libre de Derecho, donde se graduó con menciones honoríficas y una tesis laureada. Su carrera comenzó a los 18 años en el despacho del licenciado Felipe Gómez Mont y, años más tarde, colaboró en la Procuraduría General de la República en asuntos especiales para la Presidencia de la República. Fue asociado del reconocido penalista Sergio Vela Treviño antes de fundar su propia firma de abogados litigantes.
+
+A lo largo de su exitosa trayectoria, ha patrocinado asuntos de gran trascendencia en la historia mediática de México, representando a políticos, periodistas, artistas, empresarios y deportistas. Destacan sus denuncias por el fraude en la privatización de Telmex y contra la inexistencia bancaria, así como su vinculación con el movimiento del Barzón y el PRD. Por varias décadas, ha sido el asesor jurídico personal del ingeniero Cuauhtémoc Cárdenas Solórzano.
+
+Como estratega internacional, asesora a algunos de los hombres más acaudalados del mundo y mantiene relaciones con gobiernos y organizaciones internacionales en colaboración con despachos estratégicos poderosos. Se especializa en grandes reclamaciones de operaciones de mercado secundario (MTN’s) y plataformas financieras. En el ámbito académico, ha impartido cátedras de Derecho Penal, Procesal Penal y Constitucional en la Universidad Anáhuac, la Escuela Libre de Derecho y la Universidad Panamericana.
+
+Es un activo comunicador con más de 300 entrevistas y conferencias en foros nacionales e internacionales sobre temas jurídicos y geopolíticos. Es autor de obras como "Infamia a la justicia" y el libro "Cuando lo invisible se hizo visible: Dios y el virus" (2020), y tiene proyectos literarios y cinematográficos en curso como "Mi Legado", "Historia de un Genocidio" e "Historia de un amor o un amor de historia".
+
+Recientemente, ha impulsado el PROYECTO de demandar la declaratoria de nulidad absoluta del Tratado de Guadalupe Hidalgo de 1848, buscando la restitución simbólica y jurídica de los territorios despojados a México. También ha presentado denuncias ante la Fiscalía General de la República y la Corte Penal Internacional relacionadas con la gestión de la pandemia y la violación del consentimiento informado, fundamentadas en su obra "El Holocausto Mexicano".
+
+Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígena y ha sido designado como "EL FISCAL DEL PUEBLO" de los Pueblos Originarios y Ancestrales de México. Es un reconocido activista social, defensor de las madres buscadoras y firme opositor a las reformas judiciales recientes, habiendo presentado más de 20 denuncias contra actos que considera violatorios del Estado de Derecho. Es miembro activo de la Coalición Mundial de Salud y Vida (COMUSAV).`,
+        specialties: ['Derecho Penal', 'Derecho Constitucional', 'Litigio de Alto Impacto', 'Estrategia Geopolítica'],
+        image: '/team/placeholder-user.jpg',
+        socialMedia: {
+            email: 'abogadohamdan@gmail.com',
+            phone: '5547614616'
+        }
+    },
+    {
         slug: 'hugo-arriaga',
         name: 'Hugo Arriaga',
         title: 'Abogado Asociado',
@@ -312,6 +230,49 @@ Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígen
         }
     },
     {
+        slug: 'israel-ascencio-cadenas',
+        name: 'Israel Ascencio Cadenas',
+        title: 'Especialista en Litigio y Consultoría Estratégica',
+        shortBio: 'Abogado con más de 40 años de experiencia en litigación y asesoría jurídica empresarial.',
+        fullBio: `Israel Ascencio Cadenas es abogado con más de 40 años de experiencia en el ejercicio profesional del derecho, con una trayectoria sólida en litigación, asesoría jurídica empresarial y consultoría estratégica. Su práctica se ha distinguido por la búsqueda de soluciones legales eficaces, personalizadas y orientadas a la prevención de riesgos, combinando un profundo conocimiento jurídico con una visión práctica y analítica.
+
+A lo largo de su carrera, ha brindado asesoría legal corporativa a empresas de los sectores constructor, comercial y financiero, desarrollando estrategias integrales en materia contractual, cumplimiento normativo y mitigación de riesgos. Asimismo, cuenta con una amplia experiencia como abogado corporativo bancario, colaborando con instituciones de reconocido prestigio como Banamex, Bancomer y Banca Serfin, principalmente en la gestión de litigios y recuperación de cartera vencida.
+
+Su especialización en cobranza, recuperación de créditos y reestructuración de deudas le ha permitido representar eficazmente a empresas y organizaciones en procedimientos judiciales y extrajudiciales, destacando por su capacidad de negociación y conciliación. Complementa su perfil jurídico con formación en Psicoterapia Gestalt, lo que fortalece sus habilidades de comunicación, manejo de conflictos y negociación estratégica.
+
+
+Cuenta con Especialidad en Derecho de Amparo, así como con actualización continua, incluyendo un Diplomado en Juicio de Amparo impartido por la Suprema Corte de Justicia de la Nación, lo que respalda su dominio técnico y vigencia profesional. Su compromiso con el aprendizaje permanente, el liderazgo y el trabajo en equipo lo posicionan como un abogado experimentado, confiable y orientado a la excelencia jurídica.`,
+        specialties: ['Derecho Fiscal', 'Litigio Civil', 'Amparo', 'Cobranza Bancaria'],
+        image: '/team/israel-ascencio.jpg',
+        socialMedia: {
+            phone: '4431460242',
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/israel-ascencio'
+    },
+    {
+        slug: 'joel-nunez-garcia',
+        name: 'Joel Núñez García',
+        title: 'Abogado Litigante y Experto en Gestión Gubernamental',
+        shortBio: 'Especialista en derecho civil, mercantil y agrario, con enfoque en la defensa de derechos de pueblos originarios.',
+        fullBio: `Joel Núñez García es abogado litigante con ejercicio profesional desde el año 2004, con amplia experiencia en las materias civil, mercantil, agraria, administrativa en materia aduanera, regularización de inmuebles y juicio de amparo, así como en gestión gubernamental y defensa de derechos humanos, con especial énfasis en la protección de los pueblos originarios.
+
+Es socio fundador del despacho Defensores de Tijuana, con presencia en Baja California, Sonora, Sinaloa y Jalisco, así como socio fundador de Law Firma International, firma con operaciones en San Diego, Los Ángeles y Calexico, California (EE. UU.), y socio corresponsal del despacho BlackDawn, con sede en Guadalajara, Jalisco.
+
+Cuenta con una amplia trayectoria en el sector público, habiendo desempeñado cargos relevantes como Regidor del H. Ayuntamiento de Mazatlán, Director General de Planeación del DIF, Director de Desarrollo Social Rural, así como funciones de secretaría particular, coordinación administrativa y asesoría legislativa en el Congreso de la Unión y en dependencias estatales del Gobierno de Sinaloa. 
+
+En el ámbito de la sociedad civil, ha ocupado cargos de liderazgo y responsabilidad, entre ellos Presidente de la Federación de Estudiantes de Sinaloa, Contralor-Inspector de Derechos Humanos Internacionales y Coordinador Ejecutivo de la asociación civil CHAORDIC KAIZEN, enfocada en el desarrollo integral y la defensa jurídica de comunidades indígenas.
+
+Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consejo Nacional Indígena (SCNI), encabezando la interposición y análisis de recursos legales y juicios de amparo en defensa de los derechos constitucionales de los pueblos originarios, particularmente frente a reformas y leyes federales emitidas sin los procesos de consulta previstos en la Constitución. Su trayectoria se distingue por la combinación de litigio estratégico, experiencia gubernamental y compromiso con los derechos humanos, consolidándolo como un abogado con visión social, rigor jurídico y alcance nacional e internacional.`,
+        specialties: ['Derecho Civil', 'Amparo', 'Derecho Mercantil', 'Litigio Agrario'],
+        image: '/team/joel-nunez.jpg',
+        socialMedia: {
+            phone: '6647864439',
+            email: 'contacto@lex-360.com.mx'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/joel-nunez'
+    },
+    {
         slug: 'jorge-cruz',
         name: 'Jorge Antonio Cruz Ramos',
         title: 'Abogado Asociado',
@@ -322,5 +283,43 @@ Actualmente, es asesor jurídico principal del Supremo Consejo Nacional Indígen
         socialMedia: {
             phone: '5554158693'
         }
+    },
+    {
+        slug: 'laura-iris-porras',
+        name: 'Laura Iris Porras Espinosa',
+        title: 'Jurista, Académica y Servidora Pública',
+        shortBio: 'Amplia experiencia en el Poder Judicial de la Federación, con especialización en Justicia Constitucional y Derecho Electoral.',
+        fullBio: `Laura Iris Porras Espinosa es jurista, académica y servidora pública con amplia experiencia en el Poder Judicial de la Federación, donde ha desempeñado funciones jurisdiccionales, administrativas y de gestión institucional.
+
+Es Licenciada en Derecho por la Universidad Nacional Autónoma de México (UNAM), Especialista en Carrera Judicial Federal por el Instituto de Especialización Judicial de la Suprema Corte de Justicia de la Nación, y Maestra en Derecho Electoral por la Escuela Judicial Electoral del TEPJF. Asimismo, cuenta con dos maestrías cursadas en la Universidad de Castilla-La Mancha (España): una en Justicia Constitucional, Interpretación y Tutela de los Derechos Fundamentales, y otra en Derecho Antidiscriminatorio.
+
+Dentro del Poder Judicial ha ocupado diversos cargos, entre ellos Directora de Transparencia, Directora de Bienes Asegurados, Abandonados y Decomisados, Directora de Asuntos Contencioso Administrativo y Coordinadora de la Unidad de Estadística y Planeación Judicial del Consejo de la Judicatura Federal, donde participó en el diseño del actual Sistema Integral de Seguimiento de Expedientes (SISE). También se ha desempeñado como Secretaria Proyectista, Jueza de Distrito en funciones en el Estado de Guerrero, y colaboradora en la ponencia de la Ministra Olga Sánchez Cordero en la Suprema Corte de Justicia de la Nación.
+
+En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura Federal y en distintas instituciones educativas, en materias como Juicio de Amparo, Controversias Constitucionales, Administración Judicial y Técnica de Sentencia. Además, ha participado en múltiples diplomados y programas especializados en Derechos Humanos, Transparencia, Argumentación Jurídica e Innovación Judicial, reafirmando su compromiso con la modernización de la justicia y la formación de nuevas generaciones jurídicas.`,
+        specialties: ['Justicia Constitucional', 'Derecho Electoral', 'Amparo', 'Derechos Humanos'],
+        image: '/team/laura-iris-porras.jpg',
+        socialMedia: {
+            email: 'laura.porrase@gmail.com',
+            phone: '5512861589'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/laura-porras'
+    },
+    {
+        slug: 'maria-elena-suarez',
+        name: 'María Elena Suárez Préstamo',
+        title: 'Magistrada, Jurista y Académica',
+        shortBio: 'Más de veinticinco años de experiencia en el Poder Judicial de la Federación, actualmente Magistrada en Materia Civil.',
+        fullBio: `María Elena Suárez Préstamo es magistrada, jurista y académica con más de veinticinco años de experiencia en el Poder Judicial de la Federación, donde ha desempeñado una destacada trayectoria en los ámbitos civil, penal, administrativo y de formación judicial. Actualmente se desempeña como Magistrada Integrante del Primer Tribunal Colegiado en Materia Civil del Primer Circuito, con residencia en la Ciudad de México. Ha logrado diversas responsabilidades en juzgados y tribunales federales, entre ellas Jueza de Distrito en los estados de Tabasco y Veracruz, así como Magistrada de Tribunal Unitario y de Tribunal Colegiado en el Vigésimo Séptimo Circuito, con sede en Quintana Roo. Asimismo, fungió como Visitadora Judicial "A" del Consejo de la Judicatura Federal, donde contribuyó al fortalecimiento de los procesos de supervisión y calidad jurisdiccional.
+
+Es Licenciada en Derecho y Maestra en Derecho Privado por la Universidad Cristóbal Colón, y cuenta con una Maestría en Justicia Adversarial por el Instituto de la Judicatura Federal. Además, ha realizado múltiples especializaciones en Argumentación Jurídica, Comunicación Oral y Escrita, Justicia Penal Acusatoria, Administración Estratégica y Perspectiva de Género, cursadas en el Instituto de la Judicatura Federal y en distintas instituciones del país.
+
+En el ámbito académico, ha sido docente en el Instituto de la Judicatura Federal y en la Universidad Cristóbal Colón, donde impartió asignaturas y talleres en Técnicas de Investigación Jurídica, Juicio de Amparo, Argumentación Jurídica y Perspectiva de Género. También ha participado en congresos nacionales e internacionales sobre sistema penal acusatorio, derechos humanos y transparencia judicial. A lo largo de su trayectoria, ha participado en más de cincuenta cursos, diplomados y programas de actualización enfocados en las transformaciones del derecho procesal, la equidad de género y la justicia constitucional. Es reconocida por su excelencia académica y compromiso institucional, así como por su contribución a las nuevas generaciones de juristas.`,
+        specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica'],
+        image: '/team/maria-elena-suarez.jpg',
+        socialMedia: {
+            email: 'marielsuapre@hotmail.com',
+            phone: '5512477209'
+        },
+        calendarUrl: 'https://calendly.com/lex-360/maria-elena-suarez'
     }
 ];

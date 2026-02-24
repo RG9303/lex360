@@ -85,30 +85,6 @@ Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panth�
         }
     },
     {
-        slug: 'aos',
-        name: 'Aos',
-        title: 'Abogado Asociado',
-        shortBio: 'Especialista legal.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Derecho General'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            phone: '6141721984'
-        }
-    },
-    {
-        slug: 'armavargas',
-        name: 'ArmaVargas',
-        title: 'Abogado Asociado',
-        shortBio: 'Especialista legal.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Derecho General'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            phone: '5523047976'
-        }
-    },
-    {
         slug: 'carlos-angulo',
         name: 'Carlos F. Angulo Parra',
         title: 'Abogado Asociado',
@@ -132,32 +108,6 @@ Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panth�
         socialMedia: {
             email: 'cgomez@espacio-publico.mx',
             phone: '5554369589'
-        }
-    },
-    {
-        slug: 'desiree-cataneo',
-        name: 'Desiree Cataneo',
-        title: 'Abogada Asociada',
-        shortBio: 'Especialista en derecho civil y familiar.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Derecho Civil', 'Familiar'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            email: 'desireecat@yahoo.com',
-            phone: '5579152328'
-        }
-    },
-    {
-        slug: 'diana-partida',
-        name: 'Diana Partida',
-        title: 'Abogada Asociada',
-        shortBio: 'Especialista en amparo y derechos humanos.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Amparo', 'Derechos Humanos'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            email: 'dianapartida@hotmail.com',
-            phone: '6141923923'
         }
     },
     {

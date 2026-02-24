@@ -199,7 +199,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
     return (
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             {/* 1. Base Contrast Layer (Ensures text visibility) */}
-            <div className="absolute inset-0 z-0 bg-black/40" />
+            <div className="absolute inset-0 z-0 bg-black/25" />
 
             {/* 2. 3D Engine Layer */}
             <div className="absolute inset-0 z-10">

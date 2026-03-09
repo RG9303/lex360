@@ -27,7 +27,7 @@ const mainSpecialties = [
 ];
 
 export default function EspecializacionAccordion() {
-    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     // Filter the services to only include the main 6 from the reference HTML
     const featuredServices = mainSpecialties.map(title => 
@@ -54,7 +54,7 @@ export default function EspecializacionAccordion() {
                     return (
                         <article
                             key={index}
-                            onClick={() => setActiveIndex(index)}
+                            onClick={() => setActiveIndex(isActive ? null : index)}
                             className={`group border-b border-white/10 transition-all duration-500 overflow-hidden cursor-pointer ${
                                 isActive ? 'h-auto md:h-[400px]' : 'hover:bg-white/5 py-6 h-auto'
                             }`}
@@ -72,11 +72,12 @@ export default function EspecializacionAccordion() {
                                         {/* Background Image */}
                                         <div className="absolute inset-0 z-0">
                                             <div 
-                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
+                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105 grayscale opacity-40 mix-blend-luminosity"
                                                 style={{ backgroundImage: `url(${bgImage})` }}
                                             />
                                             {/* Gradient Overlay using generic tailwind properties */}
-                                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/40"></div>
+                                            <div className="absolute inset-0 bg-[#c6a87c]/10 mix-blend-overlay"></div>
                                         </div>
 
                                         <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center w-full px-4 md:px-8">

@@ -8,7 +8,6 @@ import { useRef } from 'react';
 import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube, Lock } from 'lucide-react';
 import EspecializacionAccordion from '@/components/EspecializacionAccordion';
 import MobileMenu from '@/components/MobileMenu';
-import HeroAnimation from '@/components/HeroAnimation';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -75,16 +74,9 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section ref={targetRef} className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image Layer with Team */}
-        <div className="hero-background-layer"></div>
-
-        {/* Shadow and Volume Effect */}
-        <div className="hero-background-shadow"></div>
-
+      <section ref={targetRef} className="relative h-[90vh] md:h-screen flex flex-col items-center justify-center overflow-hidden">
         {/* Content Layer */}
-        <div className="hero-content-layer w-full h-full relative z-10">
-          <HeroAnimation>
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -100,7 +92,6 @@ export default function Home() {
             >
               Conoce el Despacho
             </motion.button>
-          </HeroAnimation>
         </div>
 
         {/* Scroll Indicator */}

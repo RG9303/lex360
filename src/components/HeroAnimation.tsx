@@ -242,7 +242,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
                             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                             className="text-center px-4"
                         >
-                            <h1 className={`${isBrand ? "text-6xl md:text-8xl lg:text-[8.5rem] font-black tracking-tighter" : "text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em]"} text-white leading-[1.2] uppercase relative drop-shadow-[0_20px_50px_rgba(200,169,110,0.3)]`}>
+                            <h1 className={`${isBrand ? "text-6xl md:text-8xl lg:text-[8.5rem] font-serif font-normal tracking-wide" : "text-4xl md:text-6xl lg:text-7xl font-serif font-light tracking-[0.2em]"} text-white leading-[1.2] uppercase relative drop-shadow-[0_20px_50px_rgba(200,169,110,0.3)]`}>
                                 {isBrand ? (
                                     <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#c8a96e] via-white to-[#c8a96e] animate-shimmer inline-flex items-baseline gap-2">
                                         LEX 360<span className="text-[0.6em] leading-none">°</span>

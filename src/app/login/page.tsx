@@ -31,9 +31,9 @@ export default function LoginPage() {
     };
 
     return (
-        <main className="min-h-screen bg-[#02050a] flex flex-col md:flex-row">
+        <main className="min-h-screen bg-primary-dark flex flex-col md:flex-row">
             {/* Left Side: Branding / Info */}
-            <div className="hidden md:flex flex-col flex-1 relative bg-primary/20 overflow-hidden p-12 justify-center items-start">
+            <div className="hidden md:flex flex-col flex-1 relative bg-secondary-dark/50 overflow-hidden p-12 justify-center items-start">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none" />
                 <div className="absolute -top-40 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-[120px]" />
 
@@ -42,7 +42,7 @@ export default function LoginPage() {
                         <img src="/logo.jpg" alt="Lex-360 Logo" className="w-16 h-16 rounded-full object-cover shadow-2xl border-2 border-gold/30 hover:border-gold transition-colors" />
                     </Link>
 
-                    <h1 className="text-4xl lg:text-5xl font-black text-white mb-6 tracking-tighter uppercase italic leading-tight">
+                    <h1 className="text-4xl lg:text-5xl font-serif font-normal text-white mb-6 uppercase leading-tight">
                         Portal Privado <br /> de Clientes
                     </h1>
                     <p className="text-slate-400 text-lg font-light leading-relaxed mb-12">
@@ -82,7 +82,7 @@ export default function LoginPage() {
                 >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-3xl -z-10" />
 
-                    <h2 className="text-2xl font-black text-white mb-2 uppercase tracking-wide">Ingreso Seguro</h2>
+                    <h2 className="text-2xl font-serif font-medium text-white mb-2 uppercase tracking-wide">Ingreso Seguro</h2>
                     <p className="text-xs text-slate-500 mb-8 uppercase tracking-[0.2em]">Identificación de Cliente</p>
 
                     <form onSubmit={handleLogin} className="space-y-6">
@@ -125,7 +125,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-gold text-primary font-black py-4 rounded-xl text-xs uppercase tracking-[0.2em] hover:bg-white transition-all shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group mt-8"
+                            className="w-full bg-gold text-primary-dark font-bold py-4 rounded-xl text-xs uppercase tracking-[0.2em] hover:bg-white transition-all shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group mt-8"
                         >
                             {isLoading ? (
                                 <span className="animate-pulse">Autenticando...</span>

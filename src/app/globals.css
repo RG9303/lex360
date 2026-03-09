@@ -1,29 +1,34 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --primary: #112741;
-  /* Navy from logo */
-  --accent: #3b82f6;
-  --accent-gold: #b2935b;
-  /* Metallic Gold from logo */
+  --background: #080808;
+  --foreground: #ffffff;
+  --primary: #09101d; /* Using tertiary dark as primary accent background */
+  --primary-dark: #080808;
+  --secondary-dark: #121212;
+  --tertiary-dark: #09101d;
+  --accent-gold: #c6a87c;
+  --text-secondary: #888888;
+  --text-muted: #b0b8c6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-accent: var(--accent);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-tertiary-dark: var(--tertiary-dark);
   --color-gold: var(--accent-gold);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617;
-    --foreground: #f8fafc;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
 }
 
 body {

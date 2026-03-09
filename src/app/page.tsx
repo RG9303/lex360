@@ -46,7 +46,7 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen bg-[#02050a]">
+    <main className="min-h-screen bg-primary-dark">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-lg bg-white/5 border-b border-white/5">
         <motion.div
@@ -55,7 +55,7 @@ export default function Home() {
           className="flex items-center gap-3"
         >
           <img src="/logo.jpg" alt="Lex-360 Logo" className="w-10 h-10 rounded-full object-cover shadow-lg border border-gold/30" />
-          <span className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase italic">Lex-360</span>
+          <span className="text-xl md:text-2xl font-serif font-medium tracking-widest text-white uppercase">Lex-360</span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -91,7 +91,7 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-5 bg-gold text-primary font-black rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
+              className="px-12 py-5 bg-gold text-primary-dark font-bold rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
             >
               Iniciar Consulta
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -141,7 +141,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03]" />
           {/* Transition blend Hero -> Content */}
-          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#02050a] to-transparent" />
+          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-primary-dark to-transparent" />
         </div>
 
         {/* Content Layers (Sections 2 to 4) */}
@@ -158,8 +158,8 @@ export default function Home() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
                   >
-                    <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-8">¿Quiénes somos?</h2>
-                    <h3 className="text-3xl md:text-5xl font-black text-primary dark:text-white leading-tight mb-8 tracking-tighter">
+                    <h2 className="text-sm font-medium text-gold uppercase tracking-[0.5em] mb-8 font-sans">¿Quiénes somos?</h2>
+                    <h3 className="text-4xl md:text-6xl font-serif font-normal text-white leading-tight mb-8">
                       Estrategia Jurídica <br /> con Visión 360°
                     </h3>
                     <div className="space-y-6 text-slate-400 text-lg leading-relaxed font-light">
@@ -231,8 +231,8 @@ export default function Home() {
                 className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
               >
                 <div className="max-w-2xl">
-                  <h2 className="text-sm font-black text-gold uppercase tracking-[0.5em] mb-6">Especialización</h2>
-                  <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Servicios Legales Premium</h3>
+                  <h2 className="text-sm font-medium text-gold uppercase tracking-[0.5em] mb-6 font-sans">Especialización</h2>
+                  <h3 className="text-4xl md:text-6xl font-serif font-normal mb-6 text-white">Servicios Legales Premium</h3>
                   <p className="text-slate-400 text-lg font-light">Soluciones integrales con el respaldo tecnológico de Lex-360.</p>
                 </div>
               </motion.div>
@@ -250,7 +250,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Excelencia Jurídica Especializada</h2>
+                  <h2 className="text-4xl md:text-6xl font-serif font-normal mb-12 leading-tight">Excelencia Jurídica Especializada</h2>
                   <div className="space-y-10">
                     {/*
 ### Restauración y Evolución Digital
@@ -299,7 +299,7 @@ La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente c
       </div>
 
       {/* Footer */}
-      <footer className="relative bg-[#02050a] border-t border-white/5 pt-24 pb-12 overflow-hidden">
+      <footer className="relative bg-primary-dark border-t border-white/5 pt-24 pb-12 overflow-hidden">
         {/* Animated background stardust for footer */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -322,7 +322,7 @@ La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente c
                 className="flex items-center gap-4 mb-8 justify-center md:justify-start"
               >
                 <img src="/logo.jpg" alt="Lex-360 Logo" className="w-12 h-12 rounded-full border border-gold/30" />
-                <span className="text-2xl font-black italic tracking-tighter uppercase">Lex-360</span>
+                <span className="text-2xl font-serif font-medium uppercase tracking-widest text-[#c6a87c]">Lex-360</span>
               </motion.div>
               <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
                 Líderes en asesoría jurídica integral. Combinamos décadas de experiencia con innovación tecnológica para proteger lo que más importa.
@@ -350,7 +350,7 @@ La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente c
               transition={{ duration: 0.8, delay: 0.1 }}
               className="md:col-span-2"
             >
-              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Explorar</h4>
+              <h4 className="text-xs font-bold uppercase tracking-[0.4em] mb-8 text-gold">Explorar</h4>
               <ul className="space-y-4 text-xs font-bold tracking-widest text-slate-500">
                 <li className="hover:text-white transition-colors cursor-pointer capitalize">servicios</li>
                 <li className="hover:text-white transition-colors cursor-pointer capitalize">nosotros</li>
@@ -365,7 +365,7 @@ La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente c
               transition={{ duration: 0.8, delay: 0.2 }}
               className="md:col-span-2"
             >
-              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Legal</h4>
+              <h4 className="text-xs font-bold uppercase tracking-[0.4em] mb-8 text-gold">Legal</h4>
               <ul className="space-y-4 text-xs font-bold tracking-widest text-slate-500">
                 <li className="hover:text-white transition-colors cursor-pointer capitalize">
                   <Link href="/privacidad">privacidad</Link>
@@ -386,14 +386,14 @@ La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente c
               transition={{ duration: 0.8, delay: 0.3 }}
               className="md:col-span-4"
             >
-              <h4 className="text-xs font-black uppercase tracking-[0.4em] mb-8 text-gold">Newsletter</h4>
+              <h4 className="text-xs font-bold uppercase tracking-[0.4em] mb-8 text-gold">Newsletter</h4>
               <div className="flex bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md focus-within:border-gold/30 transition-all">
                 <input
                   type="email"
                   placeholder="Tu correo"
                   className="bg-transparent border-none focus:ring-0 text-xs px-6 flex-grow"
                 />
-                <button className="bg-gold text-primary p-3 rounded-full hover:bg-white transition-all shadow-xl">
+                <button className="bg-gold text-primary-dark p-3 rounded-full hover:bg-white transition-all shadow-xl">
                   <ArrowRight size={14} />
                 </button>
               </div>

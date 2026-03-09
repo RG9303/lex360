@@ -27,12 +27,12 @@ export default function AbogadosPage() {
     };
 
     return (
-        <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white pb-24">
+        <main className="min-h-screen bg-primary-dark text-white pb-24">
             {/* Navigation */}
             <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-lg bg-white/5 border-b border-white/5">
                 <Link href="/" className="flex items-center gap-3">
                     <img src="/logo.jpg" alt="Lex-360 Logo" className="w-10 h-10 rounded-full object-cover shadow-lg border border-gold/30" />
-                    <span className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase italic">Lex-360</span>
+                    <span className="text-xl md:text-2xl font-serif font-medium tracking-widest text-white uppercase">Lex-360</span>
                 </Link>
                 <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300">
                     <Link href="/" className="hover:text-gold transition-colors">Inicio</Link>
@@ -52,10 +52,10 @@ export default function AbogadosPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase italic">
+                        <h1 className="text-5xl md:text-7xl font-serif font-normal mb-6 uppercase">
                             Nuestra <span className="text-gold">Elite</span> Legal
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed mb-12">
+                        <p className="text-xl md:text-2xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
                             Un equipo multidisciplinario de juristas internacionales, magistrados y consultores estratégicos dedicados a la excelencia y protección 360°.
                         </p>
                     </motion.div>
@@ -89,7 +89,7 @@ export default function AbogadosPage() {
                                         </div>
                                     </div>
 
-                                    <h3 className="text-2xl font-black mb-2 tracking-tight group-hover:text-gold transition-colors">
+                                    <h3 className="text-2xl font-serif font-medium mb-2 group-hover:text-gold transition-colors">
                                         {abogado.name}
                                     </h3>
                                     <p className="text-gold/80 text-xs font-bold uppercase tracking-widest mb-4">
@@ -117,7 +117,7 @@ export default function AbogadosPage() {
                 <div className="glass-card bg-white/5 border border-white/10 p-16 rounded-[4rem] relative overflow-hidden text-center max-w-5xl mx-auto">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[80px]"></div>
                     <Users className="mx-auto w-16 h-16 text-gold mb-8 opacity-30" />
-                    <h2 className="text-3xl md:text-4xl font-black mb-6 tracking-tight">Compromiso Institucional</h2>
+                    <h2 className="text-3xl md:text-4xl font-serif font-normal mb-6">Compromiso Institucional</h2>
                     <p className="text-xl text-slate-400 font-light italic leading-relaxed">
                         &quot;La fuerza de Lex-360 reside en la diversidad de talentos y la profundidad del conocimiento de nuestros líderes de área, unidos por una sola misión: su tranquilidad legal.&quot;
                     </p>

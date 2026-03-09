@@ -92,22 +92,22 @@ export default function ServicesCarousel() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.05 }}
                         >
-                            <div className="group relative bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all border border-slate-100 dark:border-white/5 h-[480px] flex flex-col overflow-hidden">
+                            <div className="group relative bg-secondary-dark p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all border border-white/5 h-[480px] flex flex-col overflow-hidden">
                                 <div className="mb-8 p-4 w-fit rounded-2xl bg-gold/5 border border-gold/10 text-gold group-hover:scale-110 transition-transform duration-500">
                                     {getIcon(service.iconName)}
                                 </div>
-                                <h3 className="text-2xl font-black mb-4 tracking-tight group-hover:text-gold transition-colors">{service.title}</h3>
+                                <h3 className="text-2xl font-serif font-medium mb-4 tracking-wide group-hover:text-gold transition-colors">{service.title}</h3>
                                 <p className="text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-6 flex-grow line-clamp-3">
                                     {service.description}
                                 </p>
 
                                 {/* Overlay Content (Hidden by default, shown on hover like original) */}
-                                <div className="absolute inset-0 bg-slate-950 p-8 flex flex-col justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-2xl z-20">
+                                <div className="absolute inset-0 bg-tertiary-dark/95 backdrop-blur-md p-8 flex flex-col justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-2xl z-20">
                                     {leader && (
                                         <>
                                             <p className="text-[10px] text-gold font-bold uppercase tracking-widest mb-2">Líder de Área</p>
                                             <Link href={`/abogados/${leader.slug}`} className="block group/leader">
-                                                <p className="text-lg font-black mb-1 text-white group-hover/leader:text-gold transition-colors">{leader.name}</p>
+                                                <p className="text-lg font-serif font-medium mb-1 text-white group-hover/leader:text-gold transition-colors">{leader.name}</p>
                                                 <p className="text-[9px] text-slate-500 uppercase tracking-widest mb-4">{leader.title}</p>
                                             </Link>
                                         </>
@@ -135,14 +135,14 @@ export default function ServicesCarousel() {
                                         {leader ? (
                                             <Link
                                                 href={`/abogados/${leader.slug}`}
-                                                className="bg-gold text-primary font-black px-6 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl inline-block"
+                                                className="bg-gold text-primary-dark font-bold px-6 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl inline-block"
                                             >
                                                 Ver Líder de Área
                                             </Link>
                                         ) : (
                                             <Link
                                                 href="/abogados"
-                                                className="bg-gold text-primary font-black px-6 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl inline-block"
+                                                className="bg-gold text-primary-dark font-bold px-6 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl inline-block"
                                             >
                                                 Ver Especialistas
                                             </Link>

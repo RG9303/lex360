@@ -37,7 +37,7 @@ export default function MobileMenu() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsOpen(false)}
-                            className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[60]"
+                            className="fixed inset-0 bg-primary-dark/80 backdrop-blur-md z-[60]"
                         />
 
                         {/* Menu Drawer */}
@@ -46,12 +46,12 @@ export default function MobileMenu() {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-slate-900 border-l border-white/10 z-[70] shadow-2xl p-8 flex flex-col"
+                            className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-primary-dark border-l border-white/10 z-[70] shadow-2xl p-8 flex flex-col"
                         >
                             <div className="flex justify-between items-center mb-12">
                                 <div className="flex items-center gap-3">
                                     <img src="/logo.jpg" alt="Logo" className="w-10 h-10 rounded-full border border-gold/30" />
-                                    <span className="text-xl font-black italic tracking-tighter text-white">LEX-360</span>
+                                    <span className="text-xl font-serif font-medium tracking-widest text-white uppercase">LEX-360</span>
                                 </div>
                                 <button
                                     onClick={() => setIsOpen(false)}

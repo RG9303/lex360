@@ -9,9 +9,6 @@ import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, 
 import EspecializacionAccordion from '@/components/EspecializacionAccordion';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
-import { JusticeScaleModel } from '@/components/JusticeScale';
-import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera, Environment } from '@react-three/drei';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -118,24 +115,6 @@ export default function Home() {
 
       {/* Atmospheric Mid-Section Container */}
       <div className="relative overflow-hidden bg-[#02050a]">
-        {/* Floating 3D Justice Scale (Golden) - Now actual 3D, Move to Right */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-100">
-          <div className="w-full h-full relative">
-            <Canvas dpr={[1, 2]} gl={{ alpha: true }}>
-              <PerspectiveCamera makeDefault position={[8, 4, 52]} fov={35} />
-              <ambientLight intensity={0.8} />
-              <spotLight position={[10, 20, 10]} angle={0.3} penumbra={1} intensity={2} color="#c8a96e" />
-              <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" />
-              <pointLight position={[-10, 5, -10]} intensity={0.8} color="#c8a96e" />
-
-              <JusticeScaleModel />
-
-              <Environment preset="night" />
-            </Canvas>
-            {/* Ambient Glow behind scale - shifted to match camera placement */}
-            <div className="absolute right-[5%] top-[20%] w-[500px] h-[500px] bg-gold/5 blur-[150px] rounded-full -z-10" />
-          </div>
-        </div>
 
         {/* 1. Subtle Background Layer (Stardust only) */}
         <div className="absolute inset-0 z-0 pointer-events-none">

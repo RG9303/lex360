@@ -6,7 +6,7 @@ import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube, Lock } from 'lucide-react';
-import ServicesCarousel from '@/components/ServicesCarousel';
+import EspecializacionAccordion from '@/components/EspecializacionAccordion';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
 import { JusticeScaleModel } from '@/components/JusticeScale';
@@ -224,20 +224,7 @@ export default function Home() {
           {/* Services Section */}
           <section id="servicios" className="py-32 bg-transparent relative">
             <div className="container mx-auto px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
-              >
-                <div className="max-w-2xl">
-                  <h2 className="text-sm font-medium text-gold uppercase tracking-[0.5em] mb-6 font-sans">Especialización</h2>
-                  <h3 className="text-4xl md:text-6xl font-serif font-normal mb-6 text-white">Servicios Legales Premium</h3>
-                  <p className="text-slate-400 text-lg font-light">Soluciones integrales con el respaldo tecnológico de Lex-360.</p>
-                </div>
-              </motion.div>
-
-              <ServicesCarousel />
+              <EspecializacionAccordion />
             </div>
           </section>
 

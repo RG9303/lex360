@@ -77,3 +77,20 @@ body {
   position: relative;
   z-index: 10;
 }
+
+/* Custom scrollbar for a sleek look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #151515;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c6a87c;
+}

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, ExternalLink } from 'lucide-react';
 
 export default function TechMap() {
-  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Campos+El%C3%ADseos+Polanco+Ciudad+de+Mexico";
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Camino+a+Sta.+Teresa+763+Jardines+del+Pedregal+Alvaro+Obregon+01900+CDMX";
 
   return (
     <motion.div
@@ -19,7 +19,7 @@ export default function TechMap() {
       <div className="relative flex-grow rounded-[3.5rem] overflow-hidden border border-white/10 mb-4 h-[400px]">
         <img 
           src="/tech-map.png" 
-          alt="Mapa Tecnológico de Polanco" 
+          alt="Mapa Tecnológico" 
           className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
         />
         
@@ -38,7 +38,7 @@ export default function TechMap() {
         <div className="absolute top-6 right-6 flex flex-col gap-2 items-end opacity-40 pointer-events-none">
             <div className="h-[1px] w-20 bg-gold/30"></div>
             <div className="h-[1px] w-12 bg-gold/30"></div>
-            <span className="text-[10px] font-mono text-gold tracking-tighter uppercase whitespace-nowrap">GPS LOCK: 19.4326° N, 99.1913° W</span>
+            <span className="text-[10px] font-mono text-gold tracking-tighter uppercase whitespace-nowrap">GPS LOCK: 19.3031° N, 99.2178° W</span>
         </div>
       </div>
 
@@ -47,11 +47,11 @@ export default function TechMap() {
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
             <MapPin size={16} className="text-gold" />
-            <h4 className="text-xs font-bold text-white uppercase tracking-[0.3em]">Ubicación Polanco</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-[0.3em]">Ubicación Pedregal</h4>
           </div>
-          <p className="text-slate-300 text-sm font-light leading-relaxed">
-            Campos Elíseos, Polanco, <br />
-            Ciudad de México, Miguel Hidalgo
+          <p className="text-slate-300 text-sm font-light leading-relaxed whitespace-pre-line">
+            Camino a Sta. Teresa 763, Jardines del Pedregal,{"\n"}
+            Álvaro Obregón, 01900, CDMX
           </p>
         </div>
 

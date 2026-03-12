@@ -111,18 +111,6 @@ Valenzuela Sosa cursó estudios de posgrado en la Universidad de París 1 Panth�
         }
     },
     {
-        slug: 'eduardo',
-        name: 'Eduardo',
-        title: 'Abogado Asociado',
-        shortBio: 'Especialista legal.',
-        fullBio: 'Trayectoria profesional y biografía completa en proceso de actualización.',
-        specialties: ['Derecho General'],
-        image: '/team/placeholder-user.jpg',
-        socialMedia: {
-            phone: '5572101184'
-        }
-    },
-    {
         slug: 'elena-gil-valle',
         name: 'Elena Gil Valle',
         title: 'Especialista en Derecho Penal y Derechos Humanos',

@@ -156,10 +156,10 @@ export default function EspecializacionAccordion() {
 
             <div className="text-center mt-16 pb-8">
                 <Link 
-                    href="/abogados"
-                    className="inline-flex items-center gap-3 text-gold uppercase text-xs tracking-widest border border-gold/30 px-8 py-4 rounded-full hover:bg-gold hover:text-primary-dark transition-all group shadow-lg shadow-gold/5"
+                    href="/catalogo-juridico"
+                    className="inline-flex items-center gap-3 text-gold uppercase text-xs tracking-widest border border-gold/30 px-8 py-4 rounded-full transition-all group shadow-lg shadow-gold/5 bg-white/5 hover:bg-gold hover:text-primary-dark"
                 >
-                    Ver Especialistas en las +30 Áreas de Práctica
+                    Ver Catálogo Jurídico Completo
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
             </div>

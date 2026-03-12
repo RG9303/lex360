@@ -9,6 +9,7 @@ import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, 
 import EspecializacionAccordion from '@/components/EspecializacionAccordion';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
+import TechMap from '@/components/TechMap';
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -235,20 +236,7 @@ La web ha recuperado su dinamismo visual completo y el chatbot ahora se siente c
                   </div>
                 </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="glass-card bg-white/5 border-white/10 p-16 rounded-[4rem] relative shadow-2xl backdrop-blur-md"
-                >
-                  <div className="absolute -top-20 -right-20 w-80 h-80 bg-gold/10 rounded-full blur-[100px]"></div>
-                  <div className="text-center">
-                    <Scale className="mx-auto w-20 h-20 text-gold mb-10 opacity-30" />
-                    <p className="text-2xl md:text-3xl font-light italic text-slate-300 leading-relaxed">
-                      &quot;Nuestra visión integra la maestría del derecho tradicional con la agilidad de la era digital para proteger su <span className="text-white font-medium">patrimonio y futuro</span>.&quot;
-                    </p>
-                  </div>
-                </motion.div>
+                <TechMap />
               </div>
             </div>
           </section>

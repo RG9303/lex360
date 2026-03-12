@@ -7,10 +7,9 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
     return (
         <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
             {/* Background Image */}
-            {/* User should ensure they place their desired image at public/hero-bg.jpg */}
             <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-                style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+                style={{ backgroundImage: "url('/hero-bg.jpg?v=1')" }}
             />
 
             {/* Base Background/Shadow Overlays */}

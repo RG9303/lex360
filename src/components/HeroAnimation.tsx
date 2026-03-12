@@ -9,7 +9,7 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
             {/* Background Image */}
             <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-                style={{ backgroundImage: "url('/hero-bg.jpg?v=1')" }}
+                style={{ backgroundImage: "url('/hero-bg.jpg?v=2')" }}
             />
 
             {/* Base Background/Shadow Overlays */}
@@ -24,6 +24,17 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
 
             {/* Content Container (Recuadros / Botones) */}
             <div className="relative z-30 w-full max-w-7xl mx-auto px-6 flex flex-col items-center justify-center h-full">
+                {/* Text Overlay */}
+                <div className="flex flex-col items-center justify-center flex-grow text-center mt-32 md:mt-40">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white font-medium tracking-wide drop-shadow-2xl mb-4 leading-tight">
+                        Tu tranquilidad tiene nombre: <br className="hidden md:block" />
+                        <span className="text-gold">Lex 360°.</span>
+                    </h1>
+                    <p className="text-sm md:text-lg lg:text-xl text-white/90 font-light tracking-widest uppercase mt-4 max-w-2xl">
+                        La máxima autoridad legal de la era digital.
+                    </p>
+                </div>
+
                 {/* CTA Section (Buttons) */}
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-12 justify-center items-center mt-auto mb-32 md:mb-40">
                     {children}

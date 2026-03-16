@@ -8,8 +8,8 @@ export default function HeroAnimation({ children }: { children?: React.ReactNode
         <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
             {/* Background Image */}
             <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-                style={{ backgroundImage: "url('/hero-bg.png?v=4')" }}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transform scale-110"
+                style={{ backgroundImage: "url('/hero-bg.png?v=4')", filter: "blur(6px)" }}
             />
 
             {/* Base Background/Shadow Overlays */}

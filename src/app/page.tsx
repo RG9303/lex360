@@ -83,7 +83,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               className="px-12 py-5 bg-gold text-primary-dark font-bold rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
             >
-              Iniciar Consulta
+              Programa una cita
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
             <motion.button

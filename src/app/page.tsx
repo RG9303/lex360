@@ -46,7 +46,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-primary-dark">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-lg bg-white/5 border-b border-white/5">
+      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center border-b border-white/5">
+        <div className="absolute inset-0 backdrop-blur-lg bg-white/5 -z-10"></div>
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}

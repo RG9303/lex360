@@ -79,14 +79,15 @@ export default function Home() {
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-[90vh] md:h-screen flex flex-col items-center justify-center overflow-hidden">
         <HeroAnimation>
-            <motion.button
+            <motion.a
+              href="mailto:lex360mx@gmail.com?subject=Solicitud%20de%20Cita"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-5 bg-gold text-primary-dark font-bold rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs"
+              className="px-12 py-5 bg-gold text-primary-dark font-bold rounded-full shadow-2xl transition-all flex items-center justify-center gap-3 group uppercase tracking-widest text-xs inline-flex"
             >
               Programa una cita
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </motion.a>
             <motion.button
               whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               onClick={() => document.getElementById('quienes-somos')?.scrollIntoView({ behavior: 'smooth' })}
@@ -136,10 +137,10 @@ export default function Home() {
                     </h3>
                     <div className="space-y-6 text-slate-400 text-lg leading-relaxed font-light">
                       <p>
-                        En <span className="font-bold text-white">Lex 360° Bufete de Abogados</span>, entendemos que el derecho no se limita a la interpretación de las leyes, sino que abarca la comprensión profunda de las personas y sus contextos.
+                        En <span className="font-bold text-white">Lex 360° Bufete de Abogados</span>, redefinimos el ejercicio del derecho. Entendemos que tu tranquilidad requiere más que la simple interpretación de las leyes; exige una auténtica protección 360° adaptada a tu entorno.
                       </p>
                       <p>
-                        Nacimos con la visión de ofrecer asesoría jurídica integral que combina la experiencia tradicional del litigio con la innovación tecnológica.
+                        Somos un despacho moderno donde el talento de los mejores especialistas se potencia con tecnología de punta e Inteligencia Artificial (I.A.). Nuestra visión es ofrecerte una asesoría jurídica integral que combina la solidez de la experiencia con las herramientas del futuro, garantizando respuestas más rápidas, precisas y estratégicas.
                       </p>
                     </div>
                   </motion.div>

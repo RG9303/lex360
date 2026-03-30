@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ChatWidget from '@/components/chatbot/ChatWidget';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube, Lock } from 'lucide-react';
+import { Scale, ShieldCheck, ArrowRight, Landmark, Facebook, Twitter, Linkedin, Youtube, Lock, Cpu, Activity, Search, Database, UserCheck, Eye } from 'lucide-react';
 import EspecializacionAccordion from '@/components/EspecializacionAccordion';
 import MobileMenu from '@/components/MobileMenu';
 import HeroAnimation from '@/components/HeroAnimation';
@@ -123,74 +123,155 @@ export default function Home() {
           <section id="quienes-somos" className="py-32 bg-transparent relative">
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
             <div className="container mx-auto px-6">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+              
+              {/* 1. LEX360 es */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className="text-center max-w-4xl mx-auto mb-24"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
+                  <Cpu className="text-gold w-4 h-4" />
+                  <span className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold to-[#c6a87c] uppercase tracking-[0.3em]">IA Legal Integrada</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-serif font-normal text-white leading-tight mb-8">
+                  Conocimiento y experiencia humana <br className="hidden md:block"/> con <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-white">Inteligencia Artificial.</span>
+                </h2>
+                <p className="text-xl md:text-2xl text-slate-300 font-light mb-6 italic">
+                  &quot;El futuro del Derecho no se predice, se construye con Inteligencia Artificial.&quot;
+                </p>
+                <p className="text-lg text-slate-400 font-light leading-relaxed">
+                  Elevamos la precisión jurídica mediante la integración estratégica de IA Legal. Transformamos la complejidad en soluciones ágiles, seguras y vanguardistas.
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
+                {/* 2. Sobre Nosotros */}
                 <div className="lg:col-span-5">
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
+                    className="sticky top-32"
                   >
-                    <h2 className="text-sm font-medium text-gold uppercase tracking-[0.5em] mb-8 font-sans">¿Quiénes somos?</h2>
-                    <h3 className="text-4xl md:text-6xl font-serif font-normal text-white leading-tight mb-8">
-                      Estrategia Jurídica <br /> con Visión 360°
-                    </h3>
+                    <h3 className="text-sm font-medium text-gold uppercase tracking-[0.4em] mb-6 font-sans">Sobre Nosotros</h3>
+                    <h4 className="text-3xl md:text-4xl font-serif text-white mb-6">La Nueva Era de la Consultoría</h4>
                     <div className="space-y-6 text-slate-400 text-lg leading-relaxed font-light">
                       <p>
-                        En <span className="font-bold text-white">Lex 360° Bufete de Abogados</span>, redefinimos el ejercicio del derecho. Entendemos que tu tranquilidad requiere más que la simple interpretación de las leyes; exige una auténtica protección 360° adaptada a tu entorno.
+                        En <span className="text-white font-medium">LEX360</span> entendemos que la Inteligencia Artificial <span className="text-gold">no reemplaza al abogado</span>, sino que potencia su capacidad analítica. Hemos evolucionado nuestra práctica para liderar la intersección entre el código y la ley.
                       </p>
                       <p>
-                        Somos un despacho moderno donde el talento de los mejores especialistas se potencia con tecnología de punta e Inteligencia Artificial (I.A.). Nuestra visión es ofrecerte una asesoría jurídica integral que combina la solidez de la experiencia con las herramientas del futuro, garantizando respuestas más rápidas, precisas y estratégicas.
+                        No solo usamos herramientas de IA; comprendemos su arquitectura ética, técnica y legal. Esto nos permite ofrecer una asesoría que es, al mismo tiempo, <span className="text-white font-medium">hiper-eficiente y profundamente humana.</span>
                       </p>
                     </div>
                   </motion.div>
                 </div>
 
+                {/* 3. ¿Cómo aplicamos la IA en su beneficio? */}
                 <div className="lg:col-span-7">
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="bg-white/[0.03] p-8 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-md"
                   >
-                    <p className="text-slate-300 text-xl md:text-2xl mb-12 italic font-light leading-relaxed">
-                      &quot;Desde nuestra fundación, trabajamos con un principio esencial: la justicia debe ser tan <span className="text-gold">precisa como humana</span>.&quot;
+                    <h4 className="text-2xl font-serif text-white mb-4">¿Cómo aplicamos la IA en su beneficio?</h4>
+                    <p className="text-slate-400 mb-10 font-light text-lg">
+                      Nuestra metodología integra algoritmos avanzados para maximizar el valor en cada caso:
                     </p>
 
-                    <h4 className="text-xs font-bold text-white uppercase tracking-[0.3em] mb-10 border-b border-gold/30 pb-4 inline-block">
-                      Objetivos Estratégicos
-                    </h4>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {[
-                        { title: 'Cobertura Total', desc: 'Expertos de primer nivel en todas las áreas del derecho mexicano.' },
-                        { title: 'Visión Preventiva', desc: 'Modelo &quot;Auditoría Legal 360°&quot; enfocado en la prevención de litigios.' },
-                        { title: 'Innovación Tecnológica', desc: 'Herramientas LegalTech para un servicio ágil y transparente.' },
-                        { title: 'Colaboración Interna', desc: 'Cultura multidisciplinaria para análisis legales integrales.' },
-                        { title: 'Referente de Opinión', desc: 'Fuente de análisis estratégico sobre cambios legislativos.' }
-                      ].map((obj, i) => (
-                        <motion.div
-                          key={i}
-                          className="group"
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.3 + (i * 0.1) }}
-                        >
-                          <h5 className="font-bold text-white mb-3 flex gap-3 transition-all">
-                            <span className="text-gold">0{i + 1}.</span>
-                            {obj.title}
-                          </h5>
-                          <p className="text-sm text-slate-400 leading-relaxed font-light">
-                            {obj.desc}
-                          </p>
-                        </motion.div>
+                        { 
+                          icon: <Activity className="w-6 h-6" />, 
+                          title: 'Análisis Predictivo de Litigios', 
+                          desc: 'Utilizamos modelos de procesamiento de datos para evaluar probabilidades de éxito y riesgos procesales basados en jurisprudencia masiva.' 
+                        },
+                        { 
+                          icon: <Search className="w-6 h-6" />, 
+                          title: 'Auditoría de Contratos (CLMS)', 
+                          desc: 'Revisión automatizada de documentos para detectar cláusulas de riesgo en segundos, garantizando una precisión que el ojo humano podría pasar por alto.' 
+                        },
+                        { 
+                          icon: <Database className="w-6 h-6" />, 
+                          title: 'Investigación Jurídica Aumentada', 
+                          desc: 'Acceso inmediato a una base de conocimientos global y actualizada, permitiéndonos encontrar argumentos sólidos en tiempos récord.' 
+                        },
+                        { 
+                          icon: <ShieldCheck className="w-6 h-6" />, 
+                          title: 'Compliance en Algoritmos', 
+                          desc: 'Asesoramos a empresas en la implementación ética de IA, asegurando que sus sistemas cumplan con las normativas de protección de datos y transparencia.' 
+                        }
+                      ].map((feature, i) => (
+                        <div key={i} className="bg-white/[0.02] border border-white/5 hover:border-gold/30 transition-colors p-8 rounded-3xl backdrop-blur-sm group">
+                          <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition-transform">
+                            {feature.icon}
+                          </div>
+                          <h5 className="text-white font-bold mb-3">{feature.title}</h5>
+                          <p className="text-sm text-slate-400 leading-relaxed font-light">{feature.desc}</p>
+                        </div>
                       ))}
                     </div>
                   </motion.div>
                 </div>
               </div>
+
+              {/* 4. Compromiso Ético y Seguridad */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 p-10 md:p-16 rounded-[3rem] backdrop-blur-md relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 blur-[100px] rounded-full pointer-events-none"></div>
+                
+                <div className="max-w-3xl mb-12 relative z-10">
+                  <h4 className="text-3xl font-serif text-white mb-6">Compromiso Ético y Seguridad</h4>
+                  <p className="text-gold text-xl font-medium mb-4">La tecnología solo es valiosa si es segura.</p>
+                  <p className="text-slate-400 text-lg font-light leading-relaxed">
+                    Entendemos las preocupaciones sobre la privacidad. Por ello, operamos bajo protocolos estrictos:
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                  {[
+                    {
+                      icon: <Lock className="w-5 h-5" />,
+                      number: "01",
+                      title: "Privacidad por diseño",
+                      desc: "Los datos de nuestros clientes nunca alimentan modelos públicos de IA."
+                    },
+                    {
+                      icon: <UserCheck className="w-5 h-5" />,
+                      number: "02",
+                      title: "Supervisión Humana",
+                      desc: "Cada resultado generado por IA es validado y refinado por nuestros consultores senior."
+                    },
+                    {
+                      icon: <Eye className="w-5 h-5" />,
+                      number: "03",
+                      title: "Transparencia",
+                      desc: "Informamos siempre a nuestros clientes sobre las herramientas utilizadas en su proceso."
+                    }
+                  ].map((item, i) => (
+                    <div key={i} className="flex flex-col">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="text-4xl font-serif text-white/10 font-bold">{item.number}</span>
+                        <div className="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center border border-gold/20">
+                          {item.icon}
+                        </div>
+                      </div>
+                      <h5 className="text-white font-bold mb-2">{item.title}</h5>
+                      <p className="text-sm text-slate-400 leading-relaxed font-light">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
             </div>
           </section>
 

@@ -237,43 +237,5 @@ Desde febrero de 2025, se desempeña como Consejero Jurídico del Supremo Consej
         socialMedia: {
             phone: '5554158693'
         }
-    },
-    {
-        slug: 'laura-iris-porras',
-        name: 'Laura Iris Porras Espinosa',
-        title: 'Jurista, Académica y Servidora Pública',
-        shortBio: 'Amplia experiencia en el Poder Judicial de la Federación, con especialización en Justicia Constitucional y Derecho Electoral.',
-        fullBio: `Laura Iris Porras Espinosa es jurista, académica y servidora pública con amplia experiencia en el Poder Judicial de la Federación, donde ha desempeñado funciones jurisdiccionales, administrativas y de gestión institucional.
-
-Es Licenciada en Derecho por la Universidad Nacional Autónoma de México (UNAM), Especialista en Carrera Judicial Federal por el Instituto de Especialización Judicial de la Suprema Corte de Justicia de la Nación, y Maestra en Derecho Electoral por la Escuela Judicial Electoral del TEPJF. Asimismo, cuenta con dos maestrías cursadas en la Universidad de Castilla-La Mancha (España): una en Justicia Constitucional, Interpretación y Tutela de los Derechos Fundamentales, y otra en Derecho Antidiscriminatorio.
-
-Dentro del Poder Judicial ha ocupado diversos cargos, entre ellos Directora de Transparencia, Directora de Bienes Asegurados, Abandonados y Decomisados, Directora de Asuntos Contencioso Administrativo y Coordinadora de la Unidad de Estadística y Planeación Judicial del Consejo de la Judicatura Federal, donde participó en el diseño del actual Sistema Integral de Seguimiento de Expedientes (SISE). También se ha desempeñado como Secretaria Proyectista, Jueza de Distrito en funciones en el Estado de Guerrero, y colaboradora en la ponencia de la Ministra Olga Sánchez Cordero en la Suprema Corte de Justicia de la Nación.
-
-En el ámbito académico, ha impartido cursos en el Instituto de la Judicatura Federal y en distintas instituciones educativas, en materias como Juicio de Amparo, Controversias Constitucionales, Administración Judicial y Técnica de Sentencia. Además, ha participado en múltiples diplomados y programas especializados en Derechos Humanos, Transparencia, Argumentación Jurídica e Innovación Judicial, reafirmando su compromiso con la modernización de la justicia y la formación de nuevas generaciones jurídicas.`,
-        specialties: ['Justicia Constitucional', 'Derecho Electoral', 'Amparo', 'Derechos Humanos'],
-        image: '/team/laura-iris-porras.jpg',
-        socialMedia: {
-            email: 'laura.porrase@gmail.com',
-            phone: '5512861589'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/laura-porras'
-    },
-    {
-        slug: 'maria-elena-suarez',
-        name: 'María Elena Suárez Préstamo',
-        title: 'Magistrada, Jurista y Académica',
-        shortBio: 'Más de veinticinco años de experiencia en el Poder Judicial de la Federación, actualmente Magistrada en Materia Civil.',
-        fullBio: `María Elena Suárez Préstamo es magistrada, jurista y académica con más de veinticinco años de experiencia en el Poder Judicial de la Federación, donde ha desempeñado una destacada trayectoria en los ámbitos civil, penal, administrativo y de formación judicial. Actualmente se desempeña como Magistrada Integrante del Primer Tribunal Colegiado en Materia Civil del Primer Circuito, con residencia en la Ciudad de México. Ha logrado diversas responsabilidades en juzgados y tribunales federales, entre ellas Jueza de Distrito en los estados de Tabasco y Veracruz, así como Magistrada de Tribunal Unitario y de Tribunal Colegiado en el Vigésimo Séptimo Circuito, con sede en Quintana Roo. Asimismo, fungió como Visitadora Judicial "A" del Consejo de la Judicatura Federal, donde contribuyó al fortalecimiento de los procesos de supervisión y calidad jurisdiccional.
-
-Es Licenciada en Derecho y Maestra en Derecho Privado por la Universidad Cristóbal Colón, y cuenta con una Maestría en Justicia Adversarial por el Instituto de la Judicatura Federal. Además, ha realizado múltiples especializaciones en Argumentación Jurídica, Comunicación Oral y Escrita, Justicia Penal Acusatoria, Administración Estratégica y Perspectiva de Género, cursadas en el Instituto de la Judicatura Federal y en distintas instituciones del país.
-
-En el ámbito académico, ha sido docente en el Instituto de la Judicatura Federal y en la Universidad Cristóbal Colón, donde impartió asignaturas y talleres en Técnicas de Investigación Jurídica, Juicio de Amparo, Argumentación Jurídica y Perspectiva de Género. También ha participado en congresos nacionales e internacionales sobre sistema penal acusatorio, derechos humanos y transparencia judicial. A lo largo de su trayectoria, ha participado en más de cincuenta cursos, diplomados y programas de actualización enfocados en las transformaciones del derecho procesal, la equidad de género y la justicia constitucional. Es reconocida por su excelencia académica y compromiso institucional, así como por su contribución a las nuevas generaciones de juristas.`,
-        specialties: ['Derecho Civil', 'Amparo', 'Justicia Adversarial', 'Argumentación Jurídica'],
-        image: '/team/maria-elena-suarez.jpg',
-        socialMedia: {
-            email: 'marielsuapre@hotmail.com',
-            phone: '5512477209'
-        },
-        calendarUrl: 'https://calendly.com/lex-360/maria-elena-suarez'
     }
 ];

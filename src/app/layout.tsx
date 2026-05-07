@@ -30,6 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'white', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <h1 style={{ color: 'black', fontSize: '2rem', textAlign: 'center', padding: '2rem' }}>El sitio web no está disponible por el momento.</h1>
+        </div>
         {children}
       </body>
     </html>
